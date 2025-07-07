@@ -1,0 +1,75 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\SoftUni\\C# Web\\GrandHotelPetrichMVC\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{FB6C4249-0326-46D3-BF27-E5621F2B8C22}|GrandHotelPetrichMVC.Data\\GrandHotelPetrichMVC.Data.csproj|d:\\softuni\\c# web\\grandhotelpetrichmvc\\grandhotelpetrichmvc.data\\configurations\\revenueconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FB6C4249-0326-46D3-BF27-E5621F2B8C22}|GrandHotelPetrichMVC.Data\\GrandHotelPetrichMVC.Data.csproj|solutionrelative:grandhotelpetrichmvc.data\\configurations\\revenueconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FB6C4249-0326-46D3-BF27-E5621F2B8C22}|GrandHotelPetrichMVC.Data\\GrandHotelPetrichMVC.Data.csproj|d:\\softuni\\c# web\\grandhotelpetrichmvc\\grandhotelpetrichmvc.data\\configurations\\gallerycategoryconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FB6C4249-0326-46D3-BF27-E5621F2B8C22}|GrandHotelPetrichMVC.Data\\GrandHotelPetrichMVC.Data.csproj|solutionrelative:grandhotelpetrichmvc.data\\configurations\\gallerycategoryconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FB6C4249-0326-46D3-BF27-E5621F2B8C22}|GrandHotelPetrichMVC.Data\\GrandHotelPetrichMVC.Data.csproj|d:\\softuni\\c# web\\grandhotelpetrichmvc\\grandhotelpetrichmvc.data\\configurations\\paymentmethodconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FB6C4249-0326-46D3-BF27-E5621F2B8C22}|GrandHotelPetrichMVC.Data\\GrandHotelPetrichMVC.Data.csproj|solutionrelative:grandhotelpetrichmvc.data\\configurations\\paymentmethodconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "GalleryCategoryConfiguration.cs",
+              "DocumentMoniker": "D:\\SoftUni\\C# Web\\GrandHotelPetrichMVC\\GrandHotelPetrichMVC.Data\\Configurations\\GalleryCategoryConfiguration.cs",
+              "RelativeDocumentMoniker": "GrandHotelPetrichMVC.Data\\Configurations\\GalleryCategoryConfiguration.cs",
+              "ToolTip": "D:\\SoftUni\\C# Web\\GrandHotelPetrichMVC\\GrandHotelPetrichMVC.Data\\Configurations\\GalleryCategoryConfiguration.cs",
+              "RelativeToolTip": "GrandHotelPetrichMVC.Data\\Configurations\\GalleryCategoryConfiguration.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-07T19:37:23.335Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "PaymentMethodConfiguration.cs",
+              "DocumentMoniker": "D:\\SoftUni\\C# Web\\GrandHotelPetrichMVC\\GrandHotelPetrichMVC.Data\\Configurations\\PaymentMethodConfiguration.cs",
+              "RelativeDocumentMoniker": "GrandHotelPetrichMVC.Data\\Configurations\\PaymentMethodConfiguration.cs",
+              "ToolTip": "D:\\SoftUni\\C# Web\\GrandHotelPetrichMVC\\GrandHotelPetrichMVC.Data\\Configurations\\PaymentMethodConfiguration.cs",
+              "RelativeToolTip": "GrandHotelPetrichMVC.Data\\Configurations\\PaymentMethodConfiguration.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-07T19:37:22.463Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "RevenueConfiguration.cs",
+              "DocumentMoniker": "D:\\SoftUni\\C# Web\\GrandHotelPetrichMVC\\GrandHotelPetrichMVC.Data\\Configurations\\RevenueConfiguration.cs",
+              "RelativeDocumentMoniker": "GrandHotelPetrichMVC.Data\\Configurations\\RevenueConfiguration.cs",
+              "ToolTip": "D:\\SoftUni\\C# Web\\GrandHotelPetrichMVC\\GrandHotelPetrichMVC.Data\\Configurations\\RevenueConfiguration.cs",
+              "RelativeToolTip": "GrandHotelPetrichMVC.Data\\Configurations\\RevenueConfiguration.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAABsAAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-07T19:37:19.444Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

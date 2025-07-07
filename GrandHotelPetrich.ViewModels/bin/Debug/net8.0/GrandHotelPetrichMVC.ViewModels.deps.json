@@ -1,0 +1,39 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "GrandHotelPetrichMVC.ViewModels/1.0.0": {
+        "dependencies": {
+          "GrandHotelPetrichMVC.GCommon": "1.0.0"
+        },
+        "runtime": {
+          "GrandHotelPetrichMVC.ViewModels.dll": {}
+        }
+      },
+      "GrandHotelPetrichMVC.GCommon/1.0.0": {
+        "runtime": {
+          "GrandHotelPetrichMVC.GCommon.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "GrandHotelPetrichMVC.ViewModels/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "GrandHotelPetrichMVC.GCommon/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

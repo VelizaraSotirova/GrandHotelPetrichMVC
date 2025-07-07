@@ -1,0 +1,11 @@
+D:\SoftUni\C# Web\GrandHotelPetrichMVC\GrandHotelPetrichMVC\bin\Debug\net8.0\GrandHotelPetrichMVC.GCommon.deps.json
+D:\SoftUni\C# Web\GrandHotelPetrichMVC\GrandHotelPetrichMVC\bin\Debug\net8.0\GrandHotelPetrichMVC.GCommon.dll
+D:\SoftUni\C# Web\GrandHotelPetrichMVC\GrandHotelPetrichMVC\bin\Debug\net8.0\GrandHotelPetrichMVC.GCommon.pdb
+D:\SoftUni\C# Web\GrandHotelPetrichMVC\GrandHotelPetrichMVC\obj\Debug\net8.0\GrandHotelPetrichMVC.GCommon.GeneratedMSBuildEditorConfig.editorconfig
+D:\SoftUni\C# Web\GrandHotelPetrichMVC\GrandHotelPetrichMVC\obj\Debug\net8.0\GrandHotelPetrichMVC.GCommon.AssemblyInfoInputs.cache
+D:\SoftUni\C# Web\GrandHotelPetrichMVC\GrandHotelPetrichMVC\obj\Debug\net8.0\GrandHotelPetrichMVC.GCommon.AssemblyInfo.cs
+D:\SoftUni\C# Web\GrandHotelPetrichMVC\GrandHotelPetrichMVC\obj\Debug\net8.0\GrandHotelPetrichMVC.GCommon.csproj.CoreCompileInputs.cache
+D:\SoftUni\C# Web\GrandHotelPetrichMVC\GrandHotelPetrichMVC\obj\Debug\net8.0\GrandHotelPetrichMVC.GCommon.dll
+D:\SoftUni\C# Web\GrandHotelPetrichMVC\GrandHotelPetrichMVC\obj\Debug\net8.0\refint\GrandHotelPetrichMVC.GCommon.dll
+D:\SoftUni\C# Web\GrandHotelPetrichMVC\GrandHotelPetrichMVC\obj\Debug\net8.0\GrandHotelPetrichMVC.GCommon.pdb
+D:\SoftUni\C# Web\GrandHotelPetrichMVC\GrandHotelPetrichMVC\obj\Debug\net8.0\ref\GrandHotelPetrichMVC.GCommon.dll

@@ -1,0 +1,15 @@
+D:\SoftUni\C# Web\GrandHotelPetrichMVC\GrandHotelPetrich.ViewModels\bin\Debug\net8.0\GrandHotelPetrichMVC.ViewModels.deps.json
+D:\SoftUni\C# Web\GrandHotelPetrichMVC\GrandHotelPetrich.ViewModels\bin\Debug\net8.0\GrandHotelPetrichMVC.ViewModels.dll
+D:\SoftUni\C# Web\GrandHotelPetrichMVC\GrandHotelPetrich.ViewModels\bin\Debug\net8.0\GrandHotelPetrichMVC.ViewModels.pdb
+D:\SoftUni\C# Web\GrandHotelPetrichMVC\GrandHotelPetrich.ViewModels\bin\Debug\net8.0\GrandHotelPetrichMVC.GCommon.dll
+D:\SoftUni\C# Web\GrandHotelPetrichMVC\GrandHotelPetrich.ViewModels\bin\Debug\net8.0\GrandHotelPetrichMVC.GCommon.pdb
+D:\SoftUni\C# Web\GrandHotelPetrichMVC\GrandHotelPetrich.ViewModels\obj\Debug\net8.0\GrandHotelPetrichMVC.ViewModels.csproj.AssemblyReference.cache
+D:\SoftUni\C# Web\GrandHotelPetrichMVC\GrandHotelPetrich.ViewModels\obj\Debug\net8.0\GrandHotelPetrichMVC.ViewModels.GeneratedMSBuildEditorConfig.editorconfig
+D:\SoftUni\C# Web\GrandHotelPetrichMVC\GrandHotelPetrich.ViewModels\obj\Debug\net8.0\GrandHotelPetrichMVC.ViewModels.AssemblyInfoInputs.cache
+D:\SoftUni\C# Web\GrandHotelPetrichMVC\GrandHotelPetrich.ViewModels\obj\Debug\net8.0\GrandHotelPetrichMVC.ViewModels.AssemblyInfo.cs
+D:\SoftUni\C# Web\GrandHotelPetrichMVC\GrandHotelPetrich.ViewModels\obj\Debug\net8.0\GrandHotelPetrichMVC.ViewModels.csproj.CoreCompileInputs.cache
+D:\SoftUni\C# Web\GrandHotelPetrichMVC\GrandHotelPetrich.ViewModels\obj\Debug\net8.0\GrandHot.023BD86A.Up2Date
+D:\SoftUni\C# Web\GrandHotelPetrichMVC\GrandHotelPetrich.ViewModels\obj\Debug\net8.0\GrandHotelPetrichMVC.ViewModels.dll
+D:\SoftUni\C# Web\GrandHotelPetrichMVC\GrandHotelPetrich.ViewModels\obj\Debug\net8.0\refint\GrandHotelPetrichMVC.ViewModels.dll
+D:\SoftUni\C# Web\GrandHotelPetrichMVC\GrandHotelPetrich.ViewModels\obj\Debug\net8.0\GrandHotelPetrichMVC.ViewModels.pdb
+D:\SoftUni\C# Web\GrandHotelPetrichMVC\GrandHotelPetrich.ViewModels\obj\Debug\net8.0\ref\GrandHotelPetrichMVC.ViewModels.dll

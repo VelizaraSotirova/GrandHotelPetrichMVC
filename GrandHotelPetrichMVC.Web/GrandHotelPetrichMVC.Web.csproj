@@ -1,0 +1,36 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>aspnet-GrandHotelPetrichMVC.Web-149f036d-c1ce-4913-9a3f-6fb7bef8d256</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="8.0.17" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.17" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="8.0.17" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="8.0.11" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.17" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.17" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.1" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.7" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\GrandHotelPetrich.ViewModels\GrandHotelPetrichMVC.ViewModels.csproj" />
+    <ProjectReference Include="..\GrandHotelPetrichMVC.Data\GrandHotelPetrichMVC.Data.csproj" />
+    <ProjectReference Include="..\GrandHotelPetrichMVC.Models\GrandHotelPetrichMVC.Data.Models.csproj" />
+    <ProjectReference Include="..\GrandHotelPetrichMVC.Services.Core\GrandHotelPetrichMVC.Services.Core.csproj" />
+    <ProjectReference Include="..\GrandHotelPetrichMVC\GrandHotelPetrichMVC.GCommon.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Views\Contact\" />
+    <Folder Include="Views\Amenities\" />
+    <Folder Include="Views\Restaurant\" />
+    <Folder Include="Views\Rooms\" />
+  </ItemGroup>
+
+</Project>

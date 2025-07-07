@@ -1,0 +1,102 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Grand Hotel Petrich</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        .font-serif {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .font-sans {
+            font-family: 'Open Sans', sans-serif;
+        }
+    </style>
+</head>
+<body class="font-sans">
+    <nav class="absolute top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm shadow-sm">
+        <div class="container mx-auto px-4">
+            <div class="flex items-center justify-between h-16">
+                <a href="/" class="text-2xl font-bold text-amber-800 font-serif">Grand Hotel Petrich</a>
+
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="/" class="text-gray-700 hover:text-amber-800 transition-colors">Home</a>
+                    <a href="/Rooms" class="text-gray-700 hover:text-amber-800 transition-colors">Rooms</a>
+                    <a href="/Restaurant" class="text-gray-700 hover:text-amber-800 transition-colors">Restaurant</a>
+                    <a href="/Amenities" class="text-gray-700 hover:text-amber-800 transition-colors">Amenities</a>
+                    <a href="/Gallery" class="text-gray-700 hover:text-amber-800 transition-colors">Gallery</a>
+                    <a href="/About" class="text-gray-700 hover:text-amber-800 transition-colors">About Us</a>
+                    <a href="/Reviews" class="text-gray-700 hover:text-amber-800 transition-colors">Reviews</a>
+                    <a href="/Contact" class="text-gray-700 hover:text-amber-800 transition-colors">Contact</a>
+                </div>
+
+                <div class="hidden md:flex items-center space-x-4">
+                    <a href="/SignIn" class="px-4 py-2 border border-gray-300 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-50">
+                        Sign In
+                    </a>
+                    <a href="/Booking" class="px-4 py-2 bg-amber-600 text-white rounded-md text-sm font-medium hover:bg-amber-700">
+                        Book Now
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        @RenderBody()
+    </main>
+
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-2xl font-bold mb-4 font-serif">Grand Hotel Petrich</h3>
+                    <p class="text-gray-400 mb-4">Experience luxury and elegance in the heart of Petrich. Your comfort is our priority.</p>
+                </div>
+
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+                    <div class="space-y-2">
+                        <a href="/Rooms" class="text-gray-400 hover:text-white transition-colors block">Rooms & Suites</a>
+                        <a href="/Restaurant" class="text-gray-400 hover:text-white transition-colors block">Restaurant</a>
+                        <a href="/Amenities" class="text-gray-400 hover:text-white transition-colors block">Amenities</a>
+                        <a href="/About" class="text-gray-400 hover:text-white transition-colors block">About Us</a>
+                        <a href="/Reviews" class="text-gray-400 hover:text-white transition-colors block">Reviews</a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Services</h4>
+                    <div class="space-y-2 text-gray-400">
+                        <div>24/7 Room Service</div>
+                        <div>Concierge</div>
+                        <div>Airport Transfer</div>
+                        <div>Laundry Service</div>
+                        <div>Business Center</div>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Contact Info</h4>
+                    <div class="space-y-3">
+                        <div class="text-gray-400">
+                            123 Central Street<br />
+                            Petrich, Bulgaria 2850
+                        </div>
+                        <div class="text-gray-400">+359 888 123 456</div>
+                        <div class="text-gray-400">info@grandhotelpetrich.bg</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2025 Grand Hotel Petrich. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>
