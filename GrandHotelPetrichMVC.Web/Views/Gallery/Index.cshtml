@@ -18,10 +18,10 @@
 <section class="py-8">
     <div class="container mx-auto px-4">
         <div class="flex flex-wrap gap-4 justify-center">
-            <button class="px-4 py-2 bg-amber-600 text-white rounded hover:bg-amber-700">All Photos</button>
-            <button class="px-4 py-2 border border-gray-300 text-gray-700 rounded hover:bg-gray-50">Rooms & Suites</button>
-            <button class="px-4 py-2 border border-gray-300 text-gray-700 rounded hover:bg-gray-50">Restaurant</button>
-            <button class="px-4 py-2 border border-gray-300 text-gray-700 rounded hover:bg-gray-50">Amenities</button>
+            <button class="filter-btn px-4 py-2 bg-amber-600 text-white rounded hover:bg-amber-700" data-filter="all">All Photos</button>
+            <button class="filter-btn px-4 py-2 border border-gray-300 text-gray-700 rounded hover:bg-gray-50" data-filter="rooms">Rooms & Suites</button>
+            <button class="filter-btn px-4 py-2 border border-gray-300 text-gray-700 rounded hover:bg-gray-50" data-filter="restaurant">Restaurant</button>
+            <button class="filter-btn px-4 py-2 border border-gray-300 text-gray-700 rounded hover:bg-gray-50" data-filter="amenities">Amenities</button>
         </div>
     </div>
 </section>
@@ -31,9 +31,9 @@
     <div class="container mx-auto px-4">
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
 
-            @* Static images for now – replace with dynamic loop later if using DB *@
+            @* Static images for now – replace with dynamic loop later *@
 
-            <div class="bg-white rounded-lg shadow overflow-hidden hover:shadow-lg transition-shadow group">
+            <div class="gallery-item category-amenities">
                 <img src="https://images.unsplash.com/photo-1564501049412-61c2a3083791?auto=format&fit=crop&w=800&q=80"
                      alt="Elegant Hotel Lobby"
                      class="w-full h-64 object-cover transition-transform group-hover:scale-105" />
@@ -43,7 +43,7 @@
                 </div>
             </div>
 
-            <div class="bg-white rounded-lg shadow overflow-hidden hover:shadow-lg transition-shadow group">
+            <div class="gallery-item category-rooms">
                 <img src="https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?auto=format&fit=crop&w=800&q=80"
                      alt="Deluxe Suite"
                      class="w-full h-64 object-cover transition-transform group-hover:scale-105" />
@@ -53,7 +53,7 @@
                 </div>
             </div>
 
-            <div class="bg-white rounded-lg shadow overflow-hidden hover:shadow-lg transition-shadow group">
+            <div class="gallery-item category-restaurant">
                 <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80"
                      alt="Fine Dining Restaurant"
                      class="w-full h-64 object-cover transition-transform group-hover:scale-105" />
@@ -63,7 +63,7 @@
                 </div>
             </div>
 
-            <div class="bg-white rounded-lg shadow overflow-hidden hover:shadow-lg transition-shadow group">
+            <div class="gallery-item category-amenities">
                 <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=800&q=80"
                      alt="Relaxing Spa"
                      class="w-full h-64 object-cover transition-transform group-hover:scale-105" />
@@ -73,7 +73,7 @@
                 </div>
             </div>
 
-            <div class="bg-white rounded-lg shadow overflow-hidden hover:shadow-lg transition-shadow group">
+            <div class="gallery-item category-amenities">
                 <img src="https://images.unsplash.com/photo-1544148103-0773bf10d330?auto=format&fit=crop&w=800&q=80"
                      alt="Outdoor Pool"
                      class="w-full h-64 object-cover transition-transform group-hover:scale-105" />
@@ -83,7 +83,7 @@
                 </div>
             </div>
 
-            <div class="bg-white rounded-lg shadow overflow-hidden hover:shadow-lg transition-shadow group">
+            <div class="gallery-item category-rooms">
                 <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=800&q=80"
                      alt="Executive Suite"
                      class="w-full h-64 object-cover transition-transform group-hover:scale-105" />
@@ -96,3 +96,38 @@
         </div>
     </div>
 </section>
+
+<!-- 3. Client-Side Filtering Script -->
+@section Scripts {
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const buttons = document.querySelectorAll(".filter-btn");
+            const items = document.querySelectorAll(".gallery-item");
+
+            buttons.forEach(button => {
+                button.addEventListener("click", () => {
+                    const filter = button.getAttribute("data-filter");
+
+                    // Toggle button active style
+                    buttons.forEach(btn => {
+                        btn.classList.remove("bg-amber-500", "text-white");
+                        btn.classList.add("bg-gray-200", "text-black");
+                    });
+                    button.classList.remove("bg-gray-200", "text-black");
+                    button.classList.add("bg-amber-500", "text-white");
+
+                    // Filter logic
+                    items.forEach(item => {
+                        if (filter === "all") {
+                            item.classList.remove("hidden");
+                        } else if (item.classList.contains(`category-${filter}`)) {
+                            item.classList.remove("hidden");
+                        } else {
+                            item.classList.add("hidden");
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+}

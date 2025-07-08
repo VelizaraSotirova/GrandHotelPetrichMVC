@@ -29,3 +29,5 @@ D:\SoftUni\GitHub\GrandHotelPetrichMVC\GrandHotelPetrich.ViewModels\obj\Debug\ne
 D:\SoftUni\GitHub\GrandHotelPetrichMVC\GrandHotelPetrich.ViewModels\obj\Debug\net8.0\refint\GrandHotelPetrichMVC.ViewModels.dll
 D:\SoftUni\GitHub\GrandHotelPetrichMVC\GrandHotelPetrich.ViewModels\obj\Debug\net8.0\GrandHotelPetrichMVC.ViewModels.pdb
 D:\SoftUni\GitHub\GrandHotelPetrichMVC\GrandHotelPetrich.ViewModels\obj\Debug\net8.0\ref\GrandHotelPetrichMVC.ViewModels.dll
+D:\SoftUni\GitHub\GrandHotelPetrichMVC\GrandHotelPetrich.ViewModels\bin\Debug\net8.0\GrandHotelPetrichMVC.Data.Models.dll
+D:\SoftUni\GitHub\GrandHotelPetrichMVC\GrandHotelPetrich.ViewModels\bin\Debug\net8.0\GrandHotelPetrichMVC.Data.Models.pdb

@@ -26,4 +26,10 @@
     <ProjectReference Include="..\GrandHotelPetrichMVC\GrandHotelPetrichMVC.GCommon.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Areas\Guest\" />
+    <Folder Include="Areas\Admin\" />
+    <Folder Include="Areas\Receptionist\" />
+  </ItemGroup>
+
 </Project>

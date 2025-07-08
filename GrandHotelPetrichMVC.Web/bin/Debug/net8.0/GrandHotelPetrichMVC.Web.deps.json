@@ -2226,6 +2226,7 @@
       },
       "GrandHotelPetrichMVC.ViewModels/1.0.0": {
         "dependencies": {
+          "GrandHotelPetrichMVC.Data.Models": "1.0.0",
           "GrandHotelPetrichMVC.GCommon": "1.0.0"
         },
         "runtime": {

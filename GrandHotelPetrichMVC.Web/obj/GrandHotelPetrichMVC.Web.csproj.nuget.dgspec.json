@@ -33,6 +33,9 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
+              "D:\\SoftUni\\GitHub\\GrandHotelPetrichMVC\\GrandHotelPetrichMVC.Models\\GrandHotelPetrichMVC.Data.Models.csproj": {
+                "projectPath": "D:\\SoftUni\\GitHub\\GrandHotelPetrichMVC\\GrandHotelPetrichMVC.Models\\GrandHotelPetrichMVC.Data.Models.csproj"
+              },
               "D:\\SoftUni\\GitHub\\GrandHotelPetrichMVC\\GrandHotelPetrichMVC\\GrandHotelPetrichMVC.GCommon.csproj": {
                 "projectPath": "D:\\SoftUni\\GitHub\\GrandHotelPetrichMVC\\GrandHotelPetrichMVC\\GrandHotelPetrichMVC.GCommon.csproj"
               }
