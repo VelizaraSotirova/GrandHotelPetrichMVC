@@ -3012,11 +3012,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\SoftUni\\C# Web\\GrandHotelPetrichMVC\\GrandHotelPetrichMVC.Services.Core\\GrandHotelPetrichMVC.Services.Core.csproj",
+      "projectUniqueName": "D:\\SoftUni\\GitHub\\GrandHotelPetrichMVC\\GrandHotelPetrichMVC.Services.Core\\GrandHotelPetrichMVC.Services.Core.csproj",
       "projectName": "GrandHotelPetrichMVC.Services.Core",
-      "projectPath": "D:\\SoftUni\\C# Web\\GrandHotelPetrichMVC\\GrandHotelPetrichMVC.Services.Core\\GrandHotelPetrichMVC.Services.Core.csproj",
+      "projectPath": "D:\\SoftUni\\GitHub\\GrandHotelPetrichMVC\\GrandHotelPetrichMVC.Services.Core\\GrandHotelPetrichMVC.Services.Core.csproj",
       "packagesPath": "C:\\Users\\veliz\\.nuget\\packages\\",
-      "outputPath": "D:\\SoftUni\\C# Web\\GrandHotelPetrichMVC\\GrandHotelPetrichMVC.Services.Core\\obj\\",
+      "outputPath": "D:\\SoftUni\\GitHub\\GrandHotelPetrichMVC\\GrandHotelPetrichMVC.Services.Core\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -3038,14 +3038,14 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "D:\\SoftUni\\C# Web\\GrandHotelPetrichMVC\\GrandHotelPetrich.ViewModels\\GrandHotelPetrichMVC.ViewModels.csproj": {
-              "projectPath": "D:\\SoftUni\\C# Web\\GrandHotelPetrichMVC\\GrandHotelPetrich.ViewModels\\GrandHotelPetrichMVC.ViewModels.csproj"
+            "D:\\SoftUni\\GitHub\\GrandHotelPetrichMVC\\GrandHotelPetrich.ViewModels\\GrandHotelPetrichMVC.ViewModels.csproj": {
+              "projectPath": "D:\\SoftUni\\GitHub\\GrandHotelPetrichMVC\\GrandHotelPetrich.ViewModels\\GrandHotelPetrichMVC.ViewModels.csproj"
             },
-            "D:\\SoftUni\\C# Web\\GrandHotelPetrichMVC\\GrandHotelPetrichMVC.Data\\GrandHotelPetrichMVC.Data.csproj": {
-              "projectPath": "D:\\SoftUni\\C# Web\\GrandHotelPetrichMVC\\GrandHotelPetrichMVC.Data\\GrandHotelPetrichMVC.Data.csproj"
+            "D:\\SoftUni\\GitHub\\GrandHotelPetrichMVC\\GrandHotelPetrichMVC.Data\\GrandHotelPetrichMVC.Data.csproj": {
+              "projectPath": "D:\\SoftUni\\GitHub\\GrandHotelPetrichMVC\\GrandHotelPetrichMVC.Data\\GrandHotelPetrichMVC.Data.csproj"
             },
-            "D:\\SoftUni\\C# Web\\GrandHotelPetrichMVC\\GrandHotelPetrichMVC.Models\\GrandHotelPetrichMVC.Data.Models.csproj": {
-              "projectPath": "D:\\SoftUni\\C# Web\\GrandHotelPetrichMVC\\GrandHotelPetrichMVC.Models\\GrandHotelPetrichMVC.Data.Models.csproj"
+            "D:\\SoftUni\\GitHub\\GrandHotelPetrichMVC\\GrandHotelPetrichMVC.Models\\GrandHotelPetrichMVC.Data.Models.csproj": {
+              "projectPath": "D:\\SoftUni\\GitHub\\GrandHotelPetrichMVC\\GrandHotelPetrichMVC.Models\\GrandHotelPetrichMVC.Data.Models.csproj"
             }
           }
         }

@@ -13,3 +13,19 @@ D:\SoftUni\C# Web\GrandHotelPetrichMVC\GrandHotelPetrich.ViewModels\obj\Debug\ne
 D:\SoftUni\C# Web\GrandHotelPetrichMVC\GrandHotelPetrich.ViewModels\obj\Debug\net8.0\refint\GrandHotelPetrichMVC.ViewModels.dll
 D:\SoftUni\C# Web\GrandHotelPetrichMVC\GrandHotelPetrich.ViewModels\obj\Debug\net8.0\GrandHotelPetrichMVC.ViewModels.pdb
 D:\SoftUni\C# Web\GrandHotelPetrichMVC\GrandHotelPetrich.ViewModels\obj\Debug\net8.0\ref\GrandHotelPetrichMVC.ViewModels.dll
+D:\SoftUni\GitHub\GrandHotelPetrichMVC\GrandHotelPetrich.ViewModels\bin\Debug\net8.0\GrandHotelPetrichMVC.ViewModels.deps.json
+D:\SoftUni\GitHub\GrandHotelPetrichMVC\GrandHotelPetrich.ViewModels\bin\Debug\net8.0\GrandHotelPetrichMVC.ViewModels.dll
+D:\SoftUni\GitHub\GrandHotelPetrichMVC\GrandHotelPetrich.ViewModels\bin\Debug\net8.0\GrandHotelPetrichMVC.ViewModels.pdb
+D:\SoftUni\GitHub\GrandHotelPetrichMVC\GrandHotelPetrich.ViewModels\bin\Debug\net8.0\GrandHotelPetrichMVC.GCommon.dll
+D:\SoftUni\GitHub\GrandHotelPetrichMVC\GrandHotelPetrich.ViewModels\bin\Debug\net8.0\GrandHotelPetrichMVC.GCommon.pdb
+D:\SoftUni\GitHub\GrandHotelPetrichMVC\GrandHotelPetrich.ViewModels\obj\Debug\net8.0\GrandHotelPetrichMVC.ViewModels.csproj.AssemblyReference.cache
+D:\SoftUni\GitHub\GrandHotelPetrichMVC\GrandHotelPetrich.ViewModels\obj\Debug\net8.0\GrandHotelPetrichMVC.ViewModels.GeneratedMSBuildEditorConfig.editorconfig
+D:\SoftUni\GitHub\GrandHotelPetrichMVC\GrandHotelPetrich.ViewModels\obj\Debug\net8.0\GrandHotelPetrichMVC.ViewModels.AssemblyInfoInputs.cache
+D:\SoftUni\GitHub\GrandHotelPetrichMVC\GrandHotelPetrich.ViewModels\obj\Debug\net8.0\GrandHotelPetrichMVC.ViewModels.AssemblyInfo.cs
+D:\SoftUni\GitHub\GrandHotelPetrichMVC\GrandHotelPetrich.ViewModels\obj\Debug\net8.0\GrandHotelPetrichMVC.ViewModels.csproj.CoreCompileInputs.cache
+D:\SoftUni\GitHub\GrandHotelPetrichMVC\GrandHotelPetrich.ViewModels\obj\Debug\net8.0\GrandHotelPetrichMVC.ViewModels.sourcelink.json
+D:\SoftUni\GitHub\GrandHotelPetrichMVC\GrandHotelPetrich.ViewModels\obj\Debug\net8.0\GrandHot.023BD86A.Up2Date
+D:\SoftUni\GitHub\GrandHotelPetrichMVC\GrandHotelPetrich.ViewModels\obj\Debug\net8.0\GrandHotelPetrichMVC.ViewModels.dll
+D:\SoftUni\GitHub\GrandHotelPetrichMVC\GrandHotelPetrich.ViewModels\obj\Debug\net8.0\refint\GrandHotelPetrichMVC.ViewModels.dll
+D:\SoftUni\GitHub\GrandHotelPetrichMVC\GrandHotelPetrich.ViewModels\obj\Debug\net8.0\GrandHotelPetrichMVC.ViewModels.pdb
+D:\SoftUni\GitHub\GrandHotelPetrichMVC\GrandHotelPetrich.ViewModels\obj\Debug\net8.0\ref\GrandHotelPetrichMVC.ViewModels.dll

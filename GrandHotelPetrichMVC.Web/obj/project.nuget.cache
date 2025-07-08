@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "1566d0TjjK0=",
+  "dgSpecHash": "tGslR2WK6Xs=",
   "success": true,
-  "projectFilePath": "D:\\SoftUni\\C# Web\\GrandHotelPetrichMVC\\GrandHotelPetrichMVC.Web\\GrandHotelPetrichMVC.Web.csproj",
+  "projectFilePath": "D:\\SoftUni\\GitHub\\GrandHotelPetrichMVC\\GrandHotelPetrichMVC.Web\\GrandHotelPetrichMVC.Web.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\veliz\\.nuget\\packages\\azure.core\\1.38.0\\azure.core.1.38.0.nupkg.sha512",
     "C:\\Users\\veliz\\.nuget\\packages\\azure.identity\\1.11.4\\azure.identity.1.11.4.nupkg.sha512",

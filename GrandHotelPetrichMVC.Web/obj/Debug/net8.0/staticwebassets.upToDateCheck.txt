@@ -5,6 +5,7 @@ wwwroot\images\gallery\pool.jpg
 wwwroot\images\gallery\restaurant.jpg
 wwwroot\images\gallery\spa.jpg
 wwwroot\images\gallery\suite.jpg
+wwwroot\images\restaurant\restaurant.jpg
 wwwroot\images\rooms\deluxe.jpg
 wwwroot\images\rooms\executive-suite.jpg
 wwwroot\images\rooms\family-room.jpg

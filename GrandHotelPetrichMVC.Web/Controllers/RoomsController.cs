@@ -1,0 +1,13 @@
+﻿using GrandHotelPetrichMVC.ViewModels.Rooms;
+using Microsoft.AspNetCore.Mvc;
+
+namespace GrandHotelPetrichMVC.Web.Controllers
+{
+    public class RoomsController : Controller
+    {
+        public IActionResult Index()
+        {
+            return View();
+        }
+    }
+}

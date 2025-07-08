@@ -1,0 +1,84 @@
+﻿@model GrandHotelPetrichMVC.ViewModels.Restaurant.RestaurantViewModel
+@{
+    ViewData["Title"] = Model.Title;
+}
+
+<!-- Hero Section -->
+<section class="pt-20 pb-12 bg-gradient-to-r from-amber-50 to-amber-100">
+    <div class="container mx-auto px-4 text-center">
+        <h1 class="text-5xl font-bold mb-4 font-serif text-amber-900">@Model.Title</h1>
+        <p class="text-xl text-amber-800 max-w-3xl mx-auto">@Model.Description</p>
+    </div>
+</section>
+
+<!-- Restaurant Info -->
+<section class="py-16">
+    <div class="container mx-auto px-4">
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
+            <div>
+                <h2 class="text-4xl font-bold mb-6 font-serif">Fine Dining Experience</h2>
+                <p class="text-gray-600 mb-6 text-lg">
+                    Our restaurant offers a sophisticated dining experience with carefully crafted menus that celebrate both local Bulgarian traditions and international culinary excellence.
+                </p>
+                <div class="grid grid-cols-2 gap-6">
+                    <div class="flex items-center space-x-3">
+                        <svg class="h-8 w-8 text-amber-600" ...></svg>
+                        <div>
+                            <div class="font-semibold">Opening Hours</div>
+                            <div class="text-gray-600">6:00 AM - 10:30 PM</div>
+                        </div>
+                    </div>
+                    <div class="flex items-center space-x-3">
+                        <svg class="h-8 w-8 text-amber-600" ...></svg>
+                        <div>
+                            <div class="font-semibold">Capacity</div>
+                            <div class="text-gray-600">120 guests</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="grid grid-cols-2 gap-4">
+                <div class="h-48 bg-cover bg-center rounded-lg" style="background-image: url('https://images.unsplash.com/photo-1472396961693-142e6e269027?auto=format&fit=crop&w=600&q=80')"></div>
+                <div class="h-48 bg-cover bg-center rounded-lg" style="background-image: url('https://images.unsplash.com/photo-1487958449943-2429e8be8625?auto=format&fit=crop&w=600&q=80')"></div>
+                <div class="h-48 bg-cover bg-center rounded-lg col-span-2" style="background-image: url('https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?auto=format&fit=crop&w=1200&q=80')"></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Menu Section -->
+<section class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+            <h2 class="text-4xl font-bold mb-4 font-serif">Our Menu</h2>
+            <p class="text-gray-600 max-w-2xl mx-auto">
+                Discover our carefully curated selection of dishes, featuring fresh local ingredients and international flavors.
+            </p>
+        </div>
+
+        <div class="space-y-12">
+            @foreach (var section in Model.MenuSections)
+            {
+                <div>
+                    <div class="flex items-center justify-between mb-6">
+                        <h3 class="text-3xl font-bold text-amber-900 font-serif">Name</h3>
+                        <span class="px-3 py-1 border border-amber-300 text-amber-700 rounded-full text-sm">Hours</span>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 gap-6">
+                        @foreach (var item in section.Items)
+                        {
+                            <div class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition-shadow">
+                                <div class="flex justify-between items-start mb-3">
+                                    <h4 class="text-xl font-semibold text-gray-900">@item.Title</h4>
+                                    <span class="text-xl font-bold text-amber-600">@item.Price</span>
+                                </div>
+                                <p class="text-gray-600">@item.Description</p>
+                            </div>
+                        }
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>

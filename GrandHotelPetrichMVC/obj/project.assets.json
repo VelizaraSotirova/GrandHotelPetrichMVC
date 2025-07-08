@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\SoftUni\\C# Web\\GrandHotelPetrichMVC\\GrandHotelPetrichMVC\\GrandHotelPetrichMVC.GCommon.csproj",
+      "projectUniqueName": "D:\\SoftUni\\GitHub\\GrandHotelPetrichMVC\\GrandHotelPetrichMVC\\GrandHotelPetrichMVC.GCommon.csproj",
       "projectName": "GrandHotelPetrichMVC.GCommon",
-      "projectPath": "D:\\SoftUni\\C# Web\\GrandHotelPetrichMVC\\GrandHotelPetrichMVC\\GrandHotelPetrichMVC.GCommon.csproj",
+      "projectPath": "D:\\SoftUni\\GitHub\\GrandHotelPetrichMVC\\GrandHotelPetrichMVC\\GrandHotelPetrichMVC.GCommon.csproj",
       "packagesPath": "C:\\Users\\veliz\\.nuget\\packages\\",
-      "outputPath": "D:\\SoftUni\\C# Web\\GrandHotelPetrichMVC\\GrandHotelPetrichMVC\\obj\\",
+      "outputPath": "D:\\SoftUni\\GitHub\\GrandHotelPetrichMVC\\GrandHotelPetrichMVC\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
