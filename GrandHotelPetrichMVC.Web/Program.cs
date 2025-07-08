@@ -69,6 +69,20 @@ namespace GrandHotelPetrichMVC.Web
             app.UseAuthentication();
             app.UseAuthorization();
 
+            // Custom routes for sign-in and sign-up
+            app.MapGet("/SignIn", context =>
+            {
+                context.Response.Redirect("/Identity/Account/Login");
+                return Task.CompletedTask;
+            });
+
+            app.MapGet("/SignUp", context =>
+            {
+                context.Response.Redirect("/Identity/Account/Register");
+                return Task.CompletedTask;
+            });
+
+
             app.MapControllerRoute(
                 name: "areas",
                 pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
