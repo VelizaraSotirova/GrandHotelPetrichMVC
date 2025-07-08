@@ -1,5 +1,4 @@
-﻿using GrandHotelPetrichMVC.ViewModels.Rooms;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 
 namespace GrandHotelPetrichMVC.Web.Controllers
 {
