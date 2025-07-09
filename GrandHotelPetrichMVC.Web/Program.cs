@@ -8,7 +8,7 @@ namespace GrandHotelPetrichMVC.Web
 {
     public class Program
     {
-        public static void Main(string[] args)
+        public static async Task Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
 
@@ -30,23 +30,11 @@ namespace GrandHotelPetrichMVC.Web
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
 
-
-            //builder.Services.AddDefaultIdentity<IdentityUser>(options => 
-            //    {
-            //        options.SignIn.RequireConfirmedAccount = false;
-            //        options.Password.RequireDigit = true;
-            //        options.Password.RequireLowercase = true;
-            //        options.Password.RequireNonAlphanumeric = false;
-            //        options.Password.RequireUppercase = true;
-            //        options.Password.RequiredLength = 6;
-            //    })
-            //    .AddRoles<IdentityRole>()
-            //    .AddEntityFrameworkStores<ApplicationDbContext>();
-
             // Configure the login redirect path
             builder.Services.ConfigureApplicationCookie(options =>
             {
                 options.LoginPath = "/Identity/Account/Login"; // default login path from scaffolding
+                options.AccessDeniedPath = "/Identity/Account/AccessDenied";
             });
 
 
@@ -63,6 +51,27 @@ namespace GrandHotelPetrichMVC.Web
                 {
                     var context = services.GetRequiredService<ApplicationDbContext>();
                     DataSeed.Initialize(context);
+
+                    // START: Assign role to user
+                    var userManager = services.GetRequiredService<UserManager<User>>();
+                    var roleManager = services.GetRequiredService<RoleManager<IdentityRole>>();
+
+                    var roleName = "Customer";
+                    var userEmail = "john@customer.com"; // Use the actual email of your seeded user
+
+                    // Ensure role exists
+                    if (!await roleManager.RoleExistsAsync(roleName))
+                    {
+                        await roleManager.CreateAsync(new IdentityRole(roleName));
+                    }
+
+                    // Assign role to seeded user if not already
+                    var user = await userManager.FindByEmailAsync(userEmail);
+                    if (user != null && !await userManager.IsInRoleAsync(user, roleName))
+                    {
+                        await userManager.AddToRoleAsync(user, roleName);
+                    }
+                    // END
                 }
                 catch (Exception ex)
                 {

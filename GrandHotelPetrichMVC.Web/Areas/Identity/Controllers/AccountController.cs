@@ -1,9 +1,11 @@
-﻿using GrandHotelPetrichMVC.Data.Models;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using GrandHotelPetrichMVC.Data.Models;
 
-namespace GrandHotelPetrichMVC.Web.Areas.Guests.Controllers
+namespace GrandHotelPetrichMVC.Web.Areas.Identity.Controllers
 {
+    [Area("Identity")]
     public class AccountController : Controller
     {
         private readonly SignInManager<User> _signInManager;
@@ -18,7 +20,7 @@ namespace GrandHotelPetrichMVC.Web.Areas.Guests.Controllers
         public async Task<IActionResult> Logout()
         {
             await _signInManager.SignOutAsync();
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "Home", new { area = "" });
         }
     }
 }
