@@ -5,7 +5,7 @@ namespace GrandHotelPetrichMVC.Services.Core.Contracts
 {
     public interface IRoomService
     {
-        Task<IEnumerable<RoomAvailabilityViewModel>> GetAvailableRoomsAsync(DateTime checkIn, DateTime checkOut, int guests, RoomType? roomType);
+        Task<IEnumerable<AvailableRoomViewModel>> GetAvailableRoomsAsync(DateTime checkIn, DateTime checkOut, int guests, RoomType? roomType);
         Task<RoomDetailsViewModel?> GetRoomDetailsAsync(Guid roomId);
         Task<bool> MarkRoomAsOccupiedAsync(Guid roomId);
     }

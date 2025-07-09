@@ -15,7 +15,7 @@ namespace GrandHotelPetrichMVC.Services.Core
             _context = context;
         }
 
-        public async Task<IEnumerable<RoomAvailabilityViewModel>> GetAvailableRoomsAsync(DateTime checkIn, DateTime checkOut, int guests, RoomType? roomType)
+        public async Task<IEnumerable<AvailableRoomViewModel>> GetAvailableRoomsAsync(DateTime checkIn, DateTime checkOut, int guests, RoomType? roomType)
         {
             var overlappingBookings = await _context.Bookings
                 .Where(b => b.CheckInDate < checkOut && b.CheckOutDate > checkIn)
@@ -23,7 +23,6 @@ namespace GrandHotelPetrichMVC.Services.Core
                 .ToListAsync();
 
             var query = _context.Rooms
-                .Include(r => r.RoomType)
                 .Where(r => !overlappingBookings.Contains(r.Id) && r.MaxCapacity >= guests);
 
             if (roomType.HasValue)
@@ -32,7 +31,7 @@ namespace GrandHotelPetrichMVC.Services.Core
             }
 
             return await query
-                .Select(r => new RoomAvailabilityViewModel
+                .Select(r => new AvailableRoomViewModel
                 {
                     Id = r.Id,
                     Name = r.Name,
