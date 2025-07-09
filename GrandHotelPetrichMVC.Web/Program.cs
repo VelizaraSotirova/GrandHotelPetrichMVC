@@ -1,5 +1,6 @@
 using GrandHotelPetrichMVC.Data;
 using GrandHotelPetrichMVC.Data.DataSeed;
+using GrandHotelPetrichMVC.Data.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -17,19 +18,40 @@ namespace GrandHotelPetrichMVC.Web
                 options.UseSqlServer(connectionString));
             builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
-            builder.Services.AddDefaultIdentity<IdentityUser>(options => 
+            builder.Services.AddIdentity<User, IdentityRole>(options =>
                 {
-                    options.SignIn.RequireConfirmedAccount = false;
+                    options.SignIn.RequireConfirmedAccount = true;
                     options.Password.RequireDigit = true;
                     options.Password.RequireLowercase = true;
                     options.Password.RequireNonAlphanumeric = false;
                     options.Password.RequireUppercase = true;
                     options.Password.RequiredLength = 6;
                 })
-                .AddRoles<IdentityRole>()
-                .AddEntityFrameworkStores<ApplicationDbContext>();
+                .AddEntityFrameworkStores<ApplicationDbContext>()
+                .AddDefaultTokenProviders();
+
+
+            //builder.Services.AddDefaultIdentity<IdentityUser>(options => 
+            //    {
+            //        options.SignIn.RequireConfirmedAccount = false;
+            //        options.Password.RequireDigit = true;
+            //        options.Password.RequireLowercase = true;
+            //        options.Password.RequireNonAlphanumeric = false;
+            //        options.Password.RequireUppercase = true;
+            //        options.Password.RequiredLength = 6;
+            //    })
+            //    .AddRoles<IdentityRole>()
+            //    .AddEntityFrameworkStores<ApplicationDbContext>();
+
+            // Configure the login redirect path
+            builder.Services.ConfigureApplicationCookie(options =>
+            {
+                options.LoginPath = "/Identity/Account/Login"; // default login path from scaffolding
+            });
+
 
             builder.Services.AddControllersWithViews();
+            builder.Services.AddRazorPages();
 
             var app = builder.Build();
 
@@ -48,6 +70,8 @@ namespace GrandHotelPetrichMVC.Web
                     logger.LogError(ex, "An error occurred while seeding the database.");
                 }
             }
+
+
 
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
@@ -84,13 +108,15 @@ namespace GrandHotelPetrichMVC.Web
 
 
             app.MapControllerRoute(
-                name: "areas",
+                name: "area",
                 pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
 
 
             app.MapControllerRoute(
                 name: "default",
                 pattern: "{controller=Home}/{action=Index}/{id?}");
+
+            app.MapDefaultControllerRoute();
             app.MapRazorPages();
 
             app.Run();

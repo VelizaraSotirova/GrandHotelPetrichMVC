@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GrandHotelPetrichMVC.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250707174859_InitialDbCreateAndDataseed")]
-    partial class InitialDbCreateAndDataseed
+    [Migration("20250709074823_InitialDbCreate")]
+    partial class InitialDbCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

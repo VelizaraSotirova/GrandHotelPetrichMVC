@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace GrandHotelPetrichMVC.Data.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialDbCreateAndDataseed : Migration
+    public partial class InitialDbCreate : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
