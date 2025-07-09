@@ -28,7 +28,7 @@
 
   <ItemGroup>
     <Folder Include="Areas\Admin\" />
-    <Folder Include="Areas\Receptionist\" />
+    <Folder Include="Areas\Receptionists\" />
   </ItemGroup>
 
 </Project>
