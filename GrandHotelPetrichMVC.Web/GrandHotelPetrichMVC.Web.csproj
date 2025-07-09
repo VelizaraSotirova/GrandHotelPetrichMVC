@@ -28,6 +28,7 @@
 
   <ItemGroup>
     <Folder Include="Areas\Admin\" />
+    <Folder Include="Areas\Guests\Views\Booking\" />
     <Folder Include="Areas\Receptionists\" />
   </ItemGroup>
 

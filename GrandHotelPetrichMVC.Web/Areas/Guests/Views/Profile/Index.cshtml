@@ -54,7 +54,12 @@
                 </div>
 
                 <div class="flex justify-end space-x-4 pt-6">
-                    <a asp-controller="Home" asp-action="Index" class="px-6 py-2 text-gray-700 border border-gray-300 rounded hover:bg-gray-100">Cancel</a>
+
+                    <a asp-area="" asp-controller="Home" asp-action="Index"
+                       class="px-6 border-2 hover:bg-muted/50 transition-colors duration-200 inline-flex items-center justify-center border-gray-300 text-gray-700 rounded-md text-sm font-medium">
+                        Cancel
+                    </a>
+
                     <button type="submit" class="px-6 py-2 bg-amber-600 text-white font-medium rounded-md hover:bg-amber-700 transition">
                         Save Changes
                     </button>

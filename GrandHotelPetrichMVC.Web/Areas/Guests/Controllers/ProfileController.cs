@@ -1,4 +1,5 @@
 ﻿using GrandHotelPetrichMVC.Data.Models;
+using GrandHotelPetrichMVC.Services.Core.Contracts;
 using GrandHotelPetrichMVC.ViewModels.Guests.Profile;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -10,10 +11,12 @@ namespace GrandHotelPetrichMVC.Web.Areas.Guests.Controllers
     [Authorize(Roles = "Customer")]
     public class ProfileController : Controller
     {
+        private readonly IProfileService _profileService;
         private readonly UserManager<User> _userManager;
 
-        public ProfileController(UserManager<User> userManager)
+        public ProfileController(IProfileService profileService, UserManager<User> userManager)
         {
+            _profileService = profileService;
             _userManager = userManager;
         }
 
@@ -21,19 +24,12 @@ namespace GrandHotelPetrichMVC.Web.Areas.Guests.Controllers
         public async Task<IActionResult> Index()
         {
             var user = await _userManager.GetUserAsync(User);
-
             if (user == null) return NotFound();
 
-            var viewModel = new ProfileViewModel
-            {
-                FirstName = user.FirstName,
-                LastName = user.LastName,
-                PhoneNumber = user.PhoneNumber,
-                Address = user.Address,
-                Email = user.Email!
-            };
+            var profile = await _profileService.GetProfileAsync(user.Id);
+            if (profile == null) return NotFound();
 
-            return View(viewModel);
+            return View(profile);
         }
 
         [HttpPost]
@@ -41,20 +37,18 @@ namespace GrandHotelPetrichMVC.Web.Areas.Guests.Controllers
         public async Task<IActionResult> Index(ProfileViewModel model)
         {
             if (!ModelState.IsValid)
-            {
                 return View(model);
-            }
 
             var user = await _userManager.GetUserAsync(User);
-
             if (user == null) return NotFound();
 
-            user.FirstName = model.FirstName;
-            user.LastName = model.LastName;
-            user.PhoneNumber = model.PhoneNumber;
-            user.Address = model.Address;
+            var success = await _profileService.UpdateProfileAsync(user.Id, model);
 
-            await _userManager.UpdateAsync(user);
+            if (!success)
+            {
+                ModelState.AddModelError("", "Failed to update profile.");
+                return View(model);
+            }
 
             TempData["Success"] = "Your profile was updated successfully.";
             return RedirectToAction(nameof(Index));

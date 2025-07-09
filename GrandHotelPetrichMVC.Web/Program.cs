@@ -1,6 +1,8 @@
 using GrandHotelPetrichMVC.Data;
 using GrandHotelPetrichMVC.Data.DataSeed;
 using GrandHotelPetrichMVC.Data.Models;
+using GrandHotelPetrichMVC.Services;
+using GrandHotelPetrichMVC.Services.Core.Contracts;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -36,6 +38,8 @@ namespace GrandHotelPetrichMVC.Web
                 options.LoginPath = "/Identity/Account/Login"; // default login path from scaffolding
                 options.AccessDeniedPath = "/Identity/Account/AccessDenied";
             });
+
+            builder.Services.AddScoped<IProfileService, ProfileService>();
 
 
             builder.Services.AddControllersWithViews();
