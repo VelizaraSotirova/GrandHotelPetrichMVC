@@ -17,6 +17,7 @@
                 <a asp-controller="Gallery" asp-action="Index" asp-area="" class="text-gray-700 hover:text-amber-800">Gallery</a>
                 <a asp-controller="Contact" asp-action="Index" asp-area="" class="text-gray-700 hover:text-amber-800">Contact</a>
                 <a asp-controller="About" asp-action="Index" asp-area="" class="text-gray-700 hover:text-amber-800">About</a>
+                <a asp-controller="Reviews" asp-action="Index" asp-area="" class="text-gray-700 hover:text-amber-800">Reviews</a>
             </div>
 
             <div class="hidden md:flex items-center space-x-4">
@@ -28,7 +29,7 @@
                 else
                 {
                     <a asp-area="Identity" asp-page="/Account/Login" class="btn border px-4 py-2 rounded">Sign In</a>
-                    <a asp-area="Identity" asp-page="/Account/Register" class="btn bg-amber-600 text-white hover:bg-amber-700 px-4 py-2 rounded">Book Now</a>
+                    <a asp-area="Identity" asp-page="/Booking" class="btn bg-amber-600 text-white hover:bg-amber-700 px-4 py-2 rounded">Book Now</a>
                 }
             </div>
         </div>

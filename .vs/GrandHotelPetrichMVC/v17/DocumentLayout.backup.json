@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "D:\\SoftUni\\GitHub\\GrandHotelPetrichMVC\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{58CF629B-AE79-43E8-A586-2CD0CACE887F}|GrandHotelPetrichMVC.Web\\GrandHotelPetrichMVC.Web.csproj|d:\\softuni\\github\\grandhotelpetrichmvc\\grandhotelpetrichmvc.web\\views\\shared\\_navbar.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{58CF629B-AE79-43E8-A586-2CD0CACE887F}|GrandHotelPetrichMVC.Web\\GrandHotelPetrichMVC.Web.csproj|solutionrelative:grandhotelpetrichmvc.web\\views\\shared\\_navbar.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{58CF629B-AE79-43E8-A586-2CD0CACE887F}|GrandHotelPetrichMVC.Web\\GrandHotelPetrichMVC.Web.csproj|d:\\softuni\\github\\grandhotelpetrichmvc\\grandhotelpetrichmvc.web\\areas\\guests\\views\\profile\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{58CF629B-AE79-43E8-A586-2CD0CACE887F}|GrandHotelPetrichMVC.Web\\GrandHotelPetrichMVC.Web.csproj|solutionrelative:grandhotelpetrichmvc.web\\areas\\guests\\views\\profile\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
@@ -23,10 +27,6 @@
       "RelativeMoniker": "D:0:0:{0DAB41D3-1DB7-4E77-872C-0326C2C23F73}|GrandHotelPetrichMVC.Services.Core\\GrandHotelPetrichMVC.Services.Core.csproj|solutionrelative:grandhotelpetrichmvc.services.core\\contracts\\iprofileservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{58CF629B-AE79-43E8-A586-2CD0CACE887F}|GrandHotelPetrichMVC.Web\\GrandHotelPetrichMVC.Web.csproj|d:\\softuni\\github\\grandhotelpetrichmvc\\grandhotelpetrichmvc.web\\views\\shared\\_navbar.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{58CF629B-AE79-43E8-A586-2CD0CACE887F}|GrandHotelPetrichMVC.Web\\GrandHotelPetrichMVC.Web.csproj|solutionrelative:grandhotelpetrichmvc.web\\views\\shared\\_navbar.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{58CF629B-AE79-43E8-A586-2CD0CACE887F}|GrandHotelPetrichMVC.Web\\GrandHotelPetrichMVC.Web.csproj|d:\\softuni\\github\\grandhotelpetrichmvc\\grandhotelpetrichmvc.web\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{58CF629B-AE79-43E8-A586-2CD0CACE887F}|GrandHotelPetrichMVC.Web\\GrandHotelPetrichMVC.Web.csproj|solutionrelative:grandhotelpetrichmvc.web\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
@@ -38,7 +38,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 7,
           "Children": [
             {
               "$type": "Bookmark",
@@ -46,12 +46,12 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "Index.cshtml",
               "DocumentMoniker": "D:\\SoftUni\\GitHub\\GrandHotelPetrichMVC\\GrandHotelPetrichMVC.Web\\Areas\\Guests\\Views\\Profile\\Index.cshtml",
               "RelativeDocumentMoniker": "GrandHotelPetrichMVC.Web\\Areas\\Guests\\Views\\Profile\\Index.cshtml",
-              "ToolTip": "D:\\SoftUni\\GitHub\\GrandHotelPetrichMVC\\GrandHotelPetrichMVC.Web\\Areas\\Guests\\Views\\Profile\\Index.cshtml*",
-              "RelativeToolTip": "GrandHotelPetrichMVC.Web\\Areas\\Guests\\Views\\Profile\\Index.cshtml*",
+              "ToolTip": "D:\\SoftUni\\GitHub\\GrandHotelPetrichMVC\\GrandHotelPetrichMVC.Web\\Areas\\Guests\\Views\\Profile\\Index.cshtml",
+              "RelativeToolTip": "GrandHotelPetrichMVC.Web\\Areas\\Guests\\Views\\Profile\\Index.cshtml",
               "ViewState": "AgIAADAAAAAAAAAAAAAAAD0AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-07-09T15:12:03.192Z",
@@ -59,7 +59,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "Program.cs",
               "DocumentMoniker": "D:\\SoftUni\\GitHub\\GrandHotelPetrichMVC\\GrandHotelPetrichMVC.Web\\Program.cs",
               "RelativeDocumentMoniker": "GrandHotelPetrichMVC.Web\\Program.cs",
@@ -67,12 +67,11 @@
               "RelativeToolTip": "GrandHotelPetrichMVC.Web\\Program.cs",
               "ViewState": "AgIAABsAAAAAAAAAAAAQwCoAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-09T15:08:47.141Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-09T15:08:47.141Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "ProfileService.cs",
               "DocumentMoniker": "D:\\SoftUni\\GitHub\\GrandHotelPetrichMVC\\GrandHotelPetrichMVC.Services.Core\\ProfileService.cs",
               "RelativeDocumentMoniker": "GrandHotelPetrichMVC.Services.Core\\ProfileService.cs",
@@ -80,12 +79,11 @@
               "RelativeToolTip": "GrandHotelPetrichMVC.Services.Core\\ProfileService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAnAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-09T15:08:22.846Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-09T15:08:22.846Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "IProfileService.cs",
               "DocumentMoniker": "D:\\SoftUni\\GitHub\\GrandHotelPetrichMVC\\GrandHotelPetrichMVC.Services.Core\\Contracts\\IProfileService.cs",
               "RelativeDocumentMoniker": "GrandHotelPetrichMVC.Services.Core\\Contracts\\IProfileService.cs",
@@ -93,12 +91,11 @@
               "RelativeToolTip": "GrandHotelPetrichMVC.Services.Core\\Contracts\\IProfileService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-09T15:07:52.35Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-09T15:07:52.35Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "ProfileController.cs",
               "DocumentMoniker": "D:\\SoftUni\\GitHub\\GrandHotelPetrichMVC\\GrandHotelPetrichMVC.Web\\Areas\\Guests\\Controllers\\ProfileController.cs",
               "RelativeDocumentMoniker": "GrandHotelPetrichMVC.Web\\Areas\\Guests\\Controllers\\ProfileController.cs",
@@ -106,8 +103,7 @@
               "RelativeToolTip": "GrandHotelPetrichMVC.Web\\Areas\\Guests\\Controllers\\ProfileController.cs",
               "ViewState": "AgIAABsAAAAAAAAAAAAgwDUAAAAzAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-09T15:03:48.331Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-09T15:03:48.331Z"
             },
             {
               "$type": "Document",
@@ -119,18 +115,17 @@
               "RelativeToolTip": "GrandHotelPetrichMVC.Web\\Views\\Home\\Index.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-07-09T14:57:53.902Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-09T14:57:53.902Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 0,
               "Title": "_Navbar.cshtml",
               "DocumentMoniker": "D:\\SoftUni\\GitHub\\GrandHotelPetrichMVC\\GrandHotelPetrichMVC.Web\\Views\\Shared\\_Navbar.cshtml",
               "RelativeDocumentMoniker": "GrandHotelPetrichMVC.Web\\Views\\Shared\\_Navbar.cshtml",
               "ToolTip": "D:\\SoftUni\\GitHub\\GrandHotelPetrichMVC\\GrandHotelPetrichMVC.Web\\Views\\Shared\\_Navbar.cshtml",
               "RelativeToolTip": "GrandHotelPetrichMVC.Web\\Views\\Shared\\_Navbar.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAABJAAAAAAAAAA==",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAABYAAAA/AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-07-09T14:57:00.384Z",
               "EditorCaption": ""
