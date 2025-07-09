@@ -1,0 +1,90 @@
+﻿@model GrandHotelPetrichMVC.ViewModels.Guests.Booking.BookingSearchViewModel
+@{
+    ViewData["Title"] = "Book Your Stay";
+}
+
+<section class="pt-20 pb-12 bg-gradient-to-r from-amber-50 to-amber-100">
+    <div class="container mx-auto px-4 text-center">
+        <h1 class="text-5xl font-bold font-serif text-amber-900 mb-4">Book Your Stay</h1>
+        <p class="text-xl text-amber-800 max-w-3xl mx-auto">
+            Find the perfect room and enjoy your luxurious experience at Grand Hotel Petrich.
+        </p>
+    </div>
+</section>
+
+<section class="py-16">
+    <div class="container mx-auto px-4">
+        <div class="grid lg:grid-cols-3 gap-10">
+            <!-- Booking Form -->
+            <div class="bg-white p-6 rounded-lg shadow-lg">
+                <h2 class="text-2xl font-bold font-serif mb-6">Reservation Details</h2>
+                <form asp-action="Index" method="post" class="space-y-4">
+                    <div>
+                        <label asp-for="CheckInDate" class="block font-medium mb-1">Check-in Date</label>
+                        <input asp-for="CheckInDate" type="date" class="form-input w-full" />
+                        <span asp-validation-for="CheckInDate" class="text-red-600 text-sm"></span>
+                    </div>
+
+                    <div>
+                        <label asp-for="CheckOutDate" class="block font-medium mb-1">Check-out Date</label>
+                        <input asp-for="CheckOutDate" type="date" class="form-input w-full" />
+                        <span asp-validation-for="CheckOutDate" class="text-red-600 text-sm"></span>
+                    </div>
+
+                    <div>
+                        <label asp-for="NumberOfGuests" class="block font-medium mb-1">Number of Guests</label>
+                        <input asp-for="NumberOfGuests" type="number" class="form-input w-full" min="1" max="6" />
+                        <span asp-validation-for="NumberOfGuests" class="text-red-600 text-sm"></span>
+                    </div>
+
+                    <button type="submit" class="w-full bg-amber-600 text-white py-2 rounded hover:bg-amber-700">
+                        Search Available Rooms
+                    </button>
+                </form>
+            </div>
+
+            <!-- Available Rooms -->
+            <div class="lg:col-span-2">
+                <h2 class="text-2xl font-bold font-serif mb-6">Available Rooms</h2>
+
+                @if (Model.AvailableRooms != null && Model.AvailableRooms.Any())
+                {
+                    <div class="space-y-6">
+                        @foreach (var room in Model.AvailableRooms)
+                        {
+                            <div class="bg-white rounded-lg shadow-md overflow-hidden flex flex-col md:flex-row">
+                                <img src="@room.ImageUrl" alt="@room.RoomTypeName" class="w-full md:w-1/3 h-48 object-cover" />
+
+                                <div class="p-6 flex flex-col justify-between w-full">
+                                    <div>
+                                        <h3 class="text-xl font-semibold">@room.RoomTypeName</h3>
+                                        <p class="text-gray-600 text-sm mb-4">@room.Description</p>
+                                        <p class="text-lg text-amber-600 font-bold">€@room.PricePerNight / night</p>
+                                    </div>
+                                    <div class="mt-4">
+                                        <a asp-action="SelectRoom"
+                                           asp-route-roomId="@room.Id"
+                                           asp-route-checkIn="@Model.CheckInDate.ToString("yyyy-MM-dd")"
+                                           asp-route-checkOut="@Model.CheckOutDate.ToString("yyyy-MM-dd")"
+                                           asp-route-guests="@Model.NumberOfGuests"
+                                           class="inline-block bg-amber-600 hover:bg-amber-700 text-white px-4 py-2 rounded">
+                                            Select Room
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                }
+                else if (Model.AvailableRooms != null)
+                {
+                    <p class="text-gray-500">No available rooms match your criteria. Try different dates or guest count.</p>
+                }
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

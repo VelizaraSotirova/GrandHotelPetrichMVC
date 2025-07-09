@@ -2,6 +2,7 @@ using GrandHotelPetrichMVC.Data;
 using GrandHotelPetrichMVC.Data.DataSeed;
 using GrandHotelPetrichMVC.Data.Models;
 using GrandHotelPetrichMVC.Services;
+using GrandHotelPetrichMVC.Services.Core;
 using GrandHotelPetrichMVC.Services.Core.Contracts;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -40,6 +41,7 @@ namespace GrandHotelPetrichMVC.Web
             });
 
             builder.Services.AddScoped<IProfileService, ProfileService>();
+            builder.Services.AddScoped<IRoomService, RoomService>();
 
 
             builder.Services.AddControllersWithViews();
