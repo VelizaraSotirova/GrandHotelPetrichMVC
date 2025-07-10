@@ -176,21 +176,30 @@ namespace GrandHotelPetrichMVC.Data.DataSeed
             context.SaveChanges();
         }
 
-        private static void SeedPaymentMethods(ApplicationDbContext context)
+        // This method is public because the data wasn't seeded in the DB and I called it in Program.cs to seed correctly, but just once.
+        // Now after I have the methods in the DB, it is commented in Program.cs
+        public static void SeedPaymentMethods(ApplicationDbContext context)
         {
-            if (!context.PaymentMethods.Any())
-            {
-                var methods = new List<PaymentMethod>
-                {
-                    new PaymentMethod { Id = Guid.NewGuid(), Name = "Credit Card", IsActive = true },
-                    new PaymentMethod { Id = Guid.NewGuid(), Name = "PayPal", IsActive = true },
-                    new PaymentMethod { Id = Guid.NewGuid(), Name = "Cash", IsActive = true }
-                };
+            var existing = context.PaymentMethods.Select(p => p.Name).ToHashSet();
 
-                context.PaymentMethods.AddRange(methods);
+            var methodsToSeed = new List<PaymentMethod>
+            {
+                new PaymentMethod { Id = Guid.NewGuid(), Name = "Credit Card" },
+                new PaymentMethod { Id = Guid.NewGuid(), Name = "PayPal" },
+                new PaymentMethod { Id = Guid.NewGuid(), Name = "Cash" }
+            };
+
+            var newMethods = methodsToSeed
+                .Where(m => !existing.Contains(m.Name))
+                .ToList();
+
+            if (newMethods.Any())
+            {
+                context.PaymentMethods.AddRange(newMethods);
                 context.SaveChanges();
             }
         }
+
 
         private static List<Booking> SeedBookings(ApplicationDbContext context, List<User> users, List<Room> rooms)
         {

@@ -59,6 +59,7 @@ namespace GrandHotelPetrichMVC.Web
                 {
                     var context = services.GetRequiredService<ApplicationDbContext>();
                     DataSeed.Initialize(context);
+                    //DataSeed.SeedPaymentMethods(context); 
 
                     var roleManager = services.GetRequiredService<RoleManager<IdentityRole>>();
                     var userManager = services.GetRequiredService<UserManager<User>>();
