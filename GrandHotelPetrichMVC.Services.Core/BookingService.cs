@@ -143,5 +143,18 @@ namespace GrandHotelPetrichMVC.Services.Core
                 .ToListAsync();
         }
 
+        public async Task CreateBookingAsync(Booking booking)
+        {
+            // Mark the room as occupied
+            var room = await _context.Rooms.FindAsync(booking.RoomId);
+            if (room != null)
+            {
+                room.IsActive = true;
+            }
+
+            _context.Bookings.Add(booking);
+            await _context.SaveChangesAsync();
+        }
+
     }
 }

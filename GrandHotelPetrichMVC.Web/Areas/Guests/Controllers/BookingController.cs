@@ -44,6 +44,33 @@ namespace GrandHotelPetrichMVC.Web.Areas.Guests.Controllers
         }
 
         [HttpGet]
+        public async Task<IActionResult> SelectRoom(Guid roomId, DateTime checkIn, DateTime checkOut, int guests)
+        {
+            var room = await _roomService.GetRoomDetailsAsync(roomId);
+            if (room == null)
+            {
+                return NotFound();
+            }
+
+            var viewModel = new BookingConfirmationViewModel
+            {
+                RoomId = roomId,
+                RoomType = room.RoomTypeName,
+                RoomImageUrl = room.ImageUrl,
+                Description = room.Description,
+                PricePerNight = room.PricePerNight,
+                CheckInDate = checkIn,
+                CheckOutDate = checkOut,
+                NumberOfGuests = guests,
+                TotalAmount = (decimal)(checkOut - checkIn).TotalDays * room.PricePerNight,
+                PaymentMethods = await _roomService.GetPaymentMethodsAsync()
+            };
+
+            return View("Confirm", viewModel);
+        }
+
+
+        [HttpGet]
         public async Task<IActionResult> Confirm(Guid roomId, DateTime checkIn, DateTime checkOut, int guests)
         {
             try
