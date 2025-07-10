@@ -137,14 +137,37 @@ namespace GrandHotelPetrichMVC.Services.Core
         }
 
 
-        public async Task<bool> ConfirmBookingAsync(BookingConfirmationViewModel model, string userId)
+        //public async Task<bool> ConfirmBookingAsync(BookingConfirmationViewModel model, string userId)
+        //{
+        //    var room = await _context.Rooms.FirstOrDefaultAsync(r => r.Id == model.RoomId);
+        //    if (room == null) return false;
+
+        //    var days = (model.CheckOutDate - model.CheckInDate).Days;
+        //    var total = room.PricePerNight * days;
+
+        //    var booking = new Booking
+        //    {
+        //        Id = Guid.NewGuid(),
+        //        UserId = userId,
+        //        RoomId = model.RoomId,
+        //        CheckInDate = model.CheckInDate,
+        //        CheckOutDate = model.CheckOutDate,
+        //        NumberOfGuests = model.NumberOfGuests,
+        //        TotalAmount = total,
+        //        SpecialRequests = model.SpecialRequests,
+        //        BookingStatus = BookingStatus.Confirmed,
+        //        PaymentStatus = PaymentStatus.Paid,
+        //        PaymentMethodId = model.PaymentMethodId
+        //    };
+
+        //    _context.Bookings.Add(booking);
+        //    await _context.SaveChangesAsync();
+
+        //    return true;
+        //}
+
+        public async Task<Guid> ConfirmBookingAsync(BookingConfirmationViewModel model, string userId)
         {
-            var room = await _context.Rooms.FirstOrDefaultAsync(r => r.Id == model.RoomId);
-            if (room == null) return false;
-
-            var days = (model.CheckOutDate - model.CheckInDate).Days;
-            var total = room.PricePerNight * days;
-
             var booking = new Booking
             {
                 Id = Guid.NewGuid(),
@@ -153,18 +176,20 @@ namespace GrandHotelPetrichMVC.Services.Core
                 CheckInDate = model.CheckInDate,
                 CheckOutDate = model.CheckOutDate,
                 NumberOfGuests = model.NumberOfGuests,
-                TotalAmount = total,
-                SpecialRequests = model.SpecialRequests,
+                PaymentMethodId = model.PaymentMethodId,
+                TotalAmount = model.TotalAmount,
                 BookingStatus = BookingStatus.Confirmed,
                 PaymentStatus = PaymentStatus.Paid,
-                PaymentMethodId = model.PaymentMethodId
+                CreatedAt = DateTime.UtcNow,
+                UpdatedAt = DateTime.UtcNow
             };
 
             _context.Bookings.Add(booking);
             await _context.SaveChangesAsync();
 
-            return true;
+            return booking.Id;
         }
+
 
 
         public async Task<List<PaymentMethodViewModel>> GetPaymentMethodsAsync()
@@ -176,6 +201,27 @@ namespace GrandHotelPetrichMVC.Services.Core
                     Name = pm.Name
                 })
                 .ToListAsync();
+        }
+
+        public async Task<BookingSuccessViewModel?> GetBookingSuccessAsync(Guid bookingId, string userId)
+        {
+            var booking = await _context.Bookings
+                .Include(b => b.Room)
+                .Include(b => b.PaymentMethod)
+                .FirstOrDefaultAsync(b => b.Id == bookingId && b.UserId == userId);
+
+            if (booking == null) return null;
+
+            return new BookingSuccessViewModel
+            {
+                BookingId = booking.Id,
+                RoomName = booking.Room.Name,
+                CheckInDate = booking.CheckInDate,
+                CheckOutDate = booking.CheckOutDate,
+                TotalAmount = booking.TotalAmount,
+                PaymentMethod = booking.PaymentMethod?.Name ?? "N/A",
+                BookingStatus = booking.BookingStatus.ToString()
+            };
         }
     }
 }

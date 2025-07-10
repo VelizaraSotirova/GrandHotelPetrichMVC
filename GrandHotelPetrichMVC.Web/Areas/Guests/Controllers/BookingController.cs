@@ -5,6 +5,7 @@ using GrandHotelPetrichMVC.ViewModels.Guests.Booking;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace GrandHotelPetrichMVC.Web.Areas.Guests.Controllers
 {
@@ -90,28 +91,38 @@ namespace GrandHotelPetrichMVC.Web.Areas.Guests.Controllers
         {
             if (!ModelState.IsValid)
             {
-                model.PaymentMethods = await _roomService.GetPaymentMethodsAsync(); // optional helper
-                return View(model);
+                //foreach (var error in ModelState.Values.SelectMany(v => v.Errors))
+                //{
+                //    Console.WriteLine(error.ErrorMessage);
+                //}
+                //model.PaymentMethods = await _roomService.GetPaymentMethodsAsync(); // optional helper
+                //return View(model);
             }
 
             var user = await _userManager.GetUserAsync(User);
             if (user == null) return Unauthorized();
 
-            var success = await _roomService.ConfirmBookingAsync(model, user.Id);
+            var bookingId = await _roomService.ConfirmBookingAsync(model, user.Id);
 
-            if (!success) return BadRequest(); // or custom error page
+            if (bookingId == Guid.Empty)
+            {
+                ModelState.AddModelError(string.Empty, "Booking could not be created.");
+                return View(model);
+            }
 
-            TempData["Success"] = "Your booking was confirmed!";
-            return RedirectToAction("Index", "Home", new { area = "" });
+            return RedirectToAction("Success", new { id = bookingId });
         }
-
 
         [HttpGet]
-        public IActionResult Success()
+        public async Task<IActionResult> Success(Guid id)
         {
-            return View();
+            var user = await _userManager.GetUserAsync(User);
+            if (user == null) return Unauthorized();
+
+            var viewModel = await _roomService.GetBookingSuccessAsync(id, user.Id);
+            if (viewModel == null) return NotFound();
+
+            return View(viewModel);
         }
-
     }
-
 }
