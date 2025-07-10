@@ -102,6 +102,41 @@ namespace GrandHotelPetrichMVC.Services.Core
             };
         }
 
+        public async Task<BookingConfirmationViewModel> GetBookingConfirmationAsync(Guid roomId, DateTime checkIn, DateTime checkOut, int guests)
+        {
+            var room = await _context.Rooms
+                .Include(r => r.RoomType)
+                .FirstOrDefaultAsync(r => r.Id == roomId);
+
+            if (room == null) throw new ArgumentException("Invalid room");
+
+            var paymentMethods = await _context.PaymentMethods
+                .Where(p => p.IsActive)
+                .Select(p => new PaymentMethodViewModel
+                {
+                    Id = p.Id,
+                    Name = p.Name
+                }).ToListAsync();
+
+            var nights = (checkOut - checkIn).Days;
+            var total = nights * room.PricePerNight;
+
+            return new BookingConfirmationViewModel
+            {
+                RoomId = room.Id,
+                RoomName = room.Name,
+                RoomImageUrl = room.ImageUrl,
+                RoomType = room.RoomType,
+                PricePerNight = room.PricePerNight,
+                CheckInDate = checkIn,
+                CheckOutDate = checkOut,
+                NumberOfGuests = guests,
+                TotalAmount = total,
+                PaymentMethods = paymentMethods
+            };
+        }
+
+
         public async Task<bool> ConfirmBookingAsync(BookingConfirmationViewModel model, string userId)
         {
             var room = await _context.Rooms.FirstOrDefaultAsync(r => r.Id == model.RoomId);
@@ -142,19 +177,5 @@ namespace GrandHotelPetrichMVC.Services.Core
                 })
                 .ToListAsync();
         }
-
-        public async Task CreateBookingAsync(Booking booking)
-        {
-            // Mark the room as occupied
-            var room = await _context.Rooms.FindAsync(booking.RoomId);
-            if (room != null)
-            {
-                room.IsActive = true;
-            }
-
-            _context.Bookings.Add(booking);
-            await _context.SaveChangesAsync();
-        }
-
     }
 }

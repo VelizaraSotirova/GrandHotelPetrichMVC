@@ -228,9 +228,9 @@ namespace GrandHotelPetrichMVC.Data.DataSeed
             {
                 var sources = new List<RevenueSource>
                 {
-                    new RevenueSource { Id = new Guid(), Name = "Room" },
-                    new RevenueSource { Id = new Guid(), Name = "Restaurant" },
-                    new RevenueSource { Id = new Guid(), Name = "Spa" }
+                    new RevenueSource { Id = Guid.NewGuid(), Name = "Room" },
+                    new RevenueSource { Id = Guid.NewGuid(), Name = "Restaurant" },
+                    new RevenueSource { Id = Guid.NewGuid(), Name = "Spa" }
                 };
 
                 context.RevenueSources.AddRange(sources);

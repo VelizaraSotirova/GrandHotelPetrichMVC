@@ -9,14 +9,8 @@ namespace GrandHotelPetrichMVC.Services.Core.Contracts
         Task<IEnumerable<AvailableRoomViewModel>> GetAvailableRoomsAsync(DateTime checkIn, DateTime checkOut, int guests, RoomType? roomType);
         Task<RoomDetailsViewModel?> GetRoomDetailsAsync(Guid roomId);
         Task<bool> MarkRoomAsOccupiedAsync(Guid roomId);
-
         Task<BookingConfirmationViewModel> PrepareBookingConfirmationAsync(Guid roomId, DateTime checkIn, DateTime checkOut, int guests);
         Task<bool> ConfirmBookingAsync(BookingConfirmationViewModel model, string userId);
-
-
         Task<List<PaymentMethodViewModel>> GetPaymentMethodsAsync();
-        Task CreateBookingAsync(Booking booking);
-
-
     }
 }

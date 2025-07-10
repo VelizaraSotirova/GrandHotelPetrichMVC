@@ -6,6 +6,7 @@ namespace GrandHotelPetrichMVC.ViewModels.Guests.Booking
     public class BookingConfirmationViewModel
     {
         public Guid RoomId { get; set; }
+        public string RoomName { get; set; } = null!;
         public RoomType RoomType { get; set; }
         public string Description { get; set; } = null!;
         public string? RoomImageUrl { get; set; }
