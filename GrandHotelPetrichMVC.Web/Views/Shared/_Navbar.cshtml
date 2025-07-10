@@ -29,7 +29,10 @@
                 else
                 {
                     <a asp-area="Identity" asp-page="/Account/Login" class="btn border px-4 py-2 rounded">Sign In</a>
-                    <a asp-area="Identity" asp-page="/Booking" class="btn bg-amber-600 text-white hover:bg-amber-700 px-4 py-2 rounded">Book Now</a>
+                    <a asp-area="Guests" asp-controller="Booking" asp-action="Index" class="btn bg-amber-600 text-white hover:bg-amber-700 px-4 py-2 rounded">
+                        Book Now
+                    </a>
+
                 }
             </div>
         </div>
