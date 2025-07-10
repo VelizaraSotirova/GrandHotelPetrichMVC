@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="8.0.17" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\GrandHotelPetrich.ViewModels\GrandHotelPetrichMVC.ViewModels.csproj" />
     <ProjectReference Include="..\GrandHotelPetrichMVC.Data\GrandHotelPetrichMVC.Data.csproj" />
     <ProjectReference Include="..\GrandHotelPetrichMVC.Models\GrandHotelPetrichMVC.Data.Models.csproj" />

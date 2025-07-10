@@ -6,6 +6,7 @@ using GrandHotelPetrichMVC.Services.Core;
 using GrandHotelPetrichMVC.Services.Core.Contracts;
 using Humanizer;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.Blazor;
 
@@ -25,7 +26,7 @@ namespace GrandHotelPetrichMVC.Web
 
             builder.Services.AddIdentity<User, IdentityRole>(options =>
                 {
-                    options.SignIn.RequireConfirmedAccount = true;
+                    options.SignIn.RequireConfirmedAccount = false;
                     options.Password.RequireDigit = true;
                     options.Password.RequireLowercase = true;
                     options.Password.RequireNonAlphanumeric = false;
@@ -44,6 +45,9 @@ namespace GrandHotelPetrichMVC.Web
 
             builder.Services.AddScoped<IProfileService, ProfileService>();
             builder.Services.AddScoped<IBookingService, BookingService>();
+
+            builder.Services.AddSingleton<IEmailSender, DummyEmailSender>();
+
 
 
             builder.Services.AddControllersWithViews();

@@ -136,36 +136,6 @@ namespace GrandHotelPetrichMVC.Services.Core
             };
         }
 
-
-        //public async Task<bool> ConfirmBookingAsync(BookingConfirmationViewModel model, string userId)
-        //{
-        //    var room = await _context.Rooms.FirstOrDefaultAsync(r => r.Id == model.RoomId);
-        //    if (room == null) return false;
-
-        //    var days = (model.CheckOutDate - model.CheckInDate).Days;
-        //    var total = room.PricePerNight * days;
-
-        //    var booking = new Booking
-        //    {
-        //        Id = Guid.NewGuid(),
-        //        UserId = userId,
-        //        RoomId = model.RoomId,
-        //        CheckInDate = model.CheckInDate,
-        //        CheckOutDate = model.CheckOutDate,
-        //        NumberOfGuests = model.NumberOfGuests,
-        //        TotalAmount = total,
-        //        SpecialRequests = model.SpecialRequests,
-        //        BookingStatus = BookingStatus.Confirmed,
-        //        PaymentStatus = PaymentStatus.Paid,
-        //        PaymentMethodId = model.PaymentMethodId
-        //    };
-
-        //    _context.Bookings.Add(booking);
-        //    await _context.SaveChangesAsync();
-
-        //    return true;
-        //}
-
         public async Task<Guid> ConfirmBookingAsync(BookingConfirmationViewModel model, string userId)
         {
             var booking = new Booking

@@ -2516,7 +2516,8 @@
         "dependencies": {
           "GrandHotelPetrichMVC.Data": "1.0.0",
           "GrandHotelPetrichMVC.Data.Models": "1.0.0",
-          "GrandHotelPetrichMVC.ViewModels": "1.0.0"
+          "GrandHotelPetrichMVC.ViewModels": "1.0.0",
+          "Microsoft.AspNetCore.Identity.UI": "8.0.17"
         },
         "runtime": {
           "GrandHotelPetrichMVC.Services.Core.dll": {
