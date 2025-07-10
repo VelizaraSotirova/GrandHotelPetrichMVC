@@ -41,7 +41,7 @@ namespace GrandHotelPetrichMVC.Web
             });
 
             builder.Services.AddScoped<IProfileService, ProfileService>();
-            builder.Services.AddScoped<IRoomService, RoomService>();
+            builder.Services.AddScoped<IBookingService, BookingService>();
 
 
             builder.Services.AddControllersWithViews();

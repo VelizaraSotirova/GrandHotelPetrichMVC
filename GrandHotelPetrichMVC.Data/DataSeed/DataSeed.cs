@@ -182,9 +182,9 @@ namespace GrandHotelPetrichMVC.Data.DataSeed
             {
                 var methods = new List<PaymentMethod>
                 {
-                    new PaymentMethod { Id = new Guid(), Name = "Credit Card" },
-                    new PaymentMethod { Id = new Guid(), Name = "PayPal" },
-                    new PaymentMethod { Id = new Guid(), Name = "Cash" }
+                    new PaymentMethod { Id = Guid.NewGuid(), Name = "Credit Card", IsActive = true },
+                    new PaymentMethod { Id = Guid.NewGuid(), Name = "PayPal", IsActive = true },
+                    new PaymentMethod { Id = Guid.NewGuid(), Name = "Cash", IsActive = true }
                 };
 
                 context.PaymentMethods.AddRange(methods);

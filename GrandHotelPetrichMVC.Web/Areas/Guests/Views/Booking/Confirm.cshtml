@@ -1,0 +1,54 @@
+﻿@model GrandHotelPetrichMVC.ViewModels.Guests.Booking.BookingConfirmationViewModel
+@{
+    ViewData["Title"] = "Confirm Your Booking";
+}
+
+<section class="pt-20 pb-12 bg-amber-50">
+    <div class="container mx-auto px-4">
+        <h1 class="text-3xl font-bold font-serif mb-6">Confirm Your Booking</h1>
+
+        <div class="grid md:grid-cols-2 gap-8">
+            <!-- Room Summary -->
+            <div class="bg-white shadow p-6 rounded">
+                <img src="@Model.RoomImageUrl" class="w-full h-48 object-cover rounded mb-4" />
+                <h2 class="text-xl font-bold">@Model.RoomType</h2>
+                <p class="text-gray-600 mb-4">@Model.Description</p>
+                <p><strong>Price per Night:</strong> €@Model.PricePerNight</p>
+                <p><strong>Total:</strong> €@Model.TotalAmount</p>
+            </div>
+
+            <!-- Booking Form -->
+            <div class="bg-white shadow p-6 rounded">
+                <form asp-action="Confirm" method="post">
+                    @Html.HiddenFor(m => m.RoomId)
+                    @Html.HiddenFor(m => m.CheckInDate)
+                    @Html.HiddenFor(m => m.CheckOutDate)
+                    @Html.HiddenFor(m => m.NumberOfGuests)
+                    @Html.HiddenFor(m => m.PricePerNight)
+
+                    <div class="mb-4">
+                        <label asp-for="PaymentMethodId" class="block font-medium mb-1">Payment Method</label>
+                        <select asp-for="PaymentMethodId" asp-items="@(new SelectList(Model.PaymentMethods, "Id", "Name"))" class="form-select w-full" required>
+                            <option value="">Choose a method...</option>
+                        </select>
+                        <span asp-validation-for="PaymentMethodId" class="text-red-600 text-sm"></span>
+                    </div>
+
+                    <div class="mb-4">
+                        <label asp-for="SpecialRequests" class="block font-medium mb-1">Special Requests</label>
+                        <textarea asp-for="SpecialRequests" class="form-textarea w-full" rows="3" placeholder="e.g. Extra pillows, early check-in..."></textarea>
+                        <span asp-validation-for="SpecialRequests" class="text-red-600 text-sm"></span>
+                    </div>
+
+                    <button type="submit" class="bg-amber-600 hover:bg-amber-700 text-white px-4 py-2 rounded">
+                        Confirm Booking
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
