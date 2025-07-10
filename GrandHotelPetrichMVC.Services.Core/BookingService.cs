@@ -223,5 +223,41 @@ namespace GrandHotelPetrichMVC.Services.Core
                 BookingStatus = booking.BookingStatus.ToString()
             };
         }
+
+        public async Task<MyBookingsViewModel> GetBookingsForUserAsync(string userId, string filter)
+        {
+            var query = _context.Bookings
+                .Where(b => b.UserId == userId)
+                .Include(b => b.Room)
+                .AsQueryable();
+
+            var today = DateTime.UtcNow;
+
+            filter = filter.ToLower();
+            if (filter == "active")
+                query = query.Where(b => b.CheckOutDate >= today);
+            else if (filter == "passed")
+                query = query.Where(b => b.CheckOutDate < today);
+
+            var bookings = await query
+                .OrderByDescending(b => b.CheckInDate)
+                .Select(b => new BookingDisplayViewModel
+                {
+                    Id = b.Id,
+                    RoomName = b.Room.Name,
+                    ImageUrl = b.Room.ImageUrl,
+                    CheckInDate = b.CheckInDate,
+                    CheckOutDate = b.CheckOutDate,
+                    TotalAmount = b.TotalAmount,
+                    BookingStatus = b.BookingStatus
+                })
+                .ToListAsync();
+
+            return new MyBookingsViewModel
+            {
+                Filter = filter,
+                Bookings = bookings
+            };
+        }
     }
 }

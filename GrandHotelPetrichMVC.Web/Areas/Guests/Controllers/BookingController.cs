@@ -89,16 +89,6 @@ namespace GrandHotelPetrichMVC.Web.Areas.Guests.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Confirm(BookingConfirmationViewModel model)
         {
-            if (!ModelState.IsValid)
-            {
-                //foreach (var error in ModelState.Values.SelectMany(v => v.Errors))
-                //{
-                //    Console.WriteLine(error.ErrorMessage);
-                //}
-                //model.PaymentMethods = await _roomService.GetPaymentMethodsAsync(); // optional helper
-                //return View(model);
-            }
-
             var user = await _userManager.GetUserAsync(User);
             if (user == null) return Unauthorized();
 
@@ -122,6 +112,15 @@ namespace GrandHotelPetrichMVC.Web.Areas.Guests.Controllers
             var viewModel = await _roomService.GetBookingSuccessAsync(id, user.Id);
             if (viewModel == null) return NotFound();
 
+            return View(viewModel);
+        }
+
+        public async Task<IActionResult> MyBookings(string filter = "All")
+        {
+            var user = await _userManager.GetUserAsync(User);
+            if (user == null) return Unauthorized();
+
+            var viewModel = await _roomService.GetBookingsForUserAsync(user.Id, filter);
             return View(viewModel);
         }
     }
