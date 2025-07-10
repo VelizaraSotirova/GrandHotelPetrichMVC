@@ -4,8 +4,10 @@ using GrandHotelPetrichMVC.Data.Models;
 using GrandHotelPetrichMVC.Services;
 using GrandHotelPetrichMVC.Services.Core;
 using GrandHotelPetrichMVC.Services.Core.Contracts;
+using Humanizer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.Blazor;
 
 namespace GrandHotelPetrichMVC.Web
 {
@@ -58,26 +60,31 @@ namespace GrandHotelPetrichMVC.Web
                     var context = services.GetRequiredService<ApplicationDbContext>();
                     DataSeed.Initialize(context);
 
-                    // START: Assign role to user
-                    var userManager = services.GetRequiredService<UserManager<User>>();
                     var roleManager = services.GetRequiredService<RoleManager<IdentityRole>>();
-
-                    var roleName = "Customer";
-                    var userEmail = "john@customer.com"; // Use the actual email of your seeded user
-
-                    // Ensure role exists
-                    if (!await roleManager.RoleExistsAsync(roleName))
+                    var userManager = services.GetRequiredService<UserManager<User>>();
+                    // START: Assign role to user
+                    // Create roles if they don't exist
+                    var roles = new[] { "Admin", "Customer", "Receptionist", "Manager" };
+                    foreach (var role in roles)
                     {
-                        await roleManager.CreateAsync(new IdentityRole(roleName));
+                        if (!await roleManager.RoleExistsAsync(role))
+                        {
+                            await roleManager.CreateAsync(new IdentityRole(role));
+                        }
                     }
 
-                    // Assign role to seeded user if not already
-                    var user = await userManager.FindByEmailAsync(userEmail);
-                    if (user != null && !await userManager.IsInRoleAsync(user, roleName))
+                    // Assign users to roles
+                    var adminUser = await userManager.FindByEmailAsync("admin@hotel.com");
+                    if (adminUser != null && !await userManager.IsInRoleAsync(adminUser, "Admin"))
                     {
-                        await userManager.AddToRoleAsync(user, roleName);
+                        await userManager.AddToRoleAsync(adminUser, "Admin");
                     }
-                    // END
+
+                    var customerUser = await userManager.FindByEmailAsync("john@customer.com");
+                    if (customerUser != null && !await userManager.IsInRoleAsync(customerUser, "Customer"))
+                    {
+                        await userManager.AddToRoleAsync(customerUser, "Customer");
+                    }
                 }
                 catch (Exception ex)
                 {
