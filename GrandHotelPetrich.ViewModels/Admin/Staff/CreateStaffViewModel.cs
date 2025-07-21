@@ -6,7 +6,10 @@ namespace GrandHotelPetrichMVC.ViewModels.Admin.Staff
     public class CreateStaffViewModel
     {
         [Required]
-        public string UserEmail { get; set; } = string.Empty;
+        public string UserEmail { get; set; } = null!;
+
+        [Required]
+        public string FullName { get; set; } = null!;
 
         [Required]
         public StaffRole Role { get; set; }
@@ -14,8 +17,7 @@ namespace GrandHotelPetrichMVC.ViewModels.Admin.Staff
         [Required]
         public StaffShifts Shift { get; set; }
 
-        [Range(0, double.MaxValue)]
+        [Range(600, 10000)]
         public decimal Salary { get; set; }
     }
-
 }

@@ -1,44 +1,43 @@
-﻿@using GrandHotelPetrichMVC.ViewModels.Admin.Staff
+﻿@using GrandHotelPetrichMVC.GCommon.Enums
+@using GrandHotelPetrichMVC.ViewModels.Admin.Staff
 @model CreateStaffViewModel
 @{
-    ViewData["Title"] = "Add New Staff";
+    ViewData["Title"] = "Create Staff";
 }
 
-<section class="container mx-auto px-4 pt-20 max-w-xl">
-    <h2 class="text-2xl font-bold mb-6 text-gray-800">Create New Staff Member</h2>
+<section class="py-8">
+    <div class="container mx-auto max-w-lg">
+        <h2 class="text-2xl font-semibold mb-4">Create Staff Member</h2>
 
-    <form method="post" class="space-y-6">
-        <div>
-            <label asp-for="UserEmail" class="block text-sm font-medium mb-1">User Email</label>
-            <input asp-for="UserEmail" class="w-full border rounded px-3 py-2" placeholder="Existing user email" />
-            <span asp-validation-for="UserEmail" class="text-red-600 text-sm"></span>
-        </div>
+        <form asp-action="Create" method="post">
 
-        <div>
-            <label asp-for="Role" class="block text-sm font-medium mb-1">Staff Role</label>
-            <select asp-for="Role" asp-items="Html.GetEnumSelectList<GrandHotelPetrichMVC.GCommon.Enums.StaffRole>()" class="w-full border rounded px-3 py-2"></select>
-            <span asp-validation-for="Role" class="text-red-600 text-sm"></span>
-        </div>
+            <div class="mb-4">
+                <label asp-for="UserEmail" class="block font-medium">User</label>
+                <select asp-for="UserEmail" asp-items="ViewBag.EligibleUsers" class="form-select w-full" required></select>
+                <span asp-validation-for="UserEmail" class="text-red-600 text-sm"></span>
+            </div>
 
-        <div>
-            <label asp-for="Shift" class="block text-sm font-medium mb-1">Shift</label>
-            <select asp-for="Shift" asp-items="Html.GetEnumSelectList<GrandHotelPetrichMVC.GCommon.Enums.StaffShifts>()" class="w-full border rounded px-3 py-2"></select>
-            <span asp-validation-for="Shift" class="text-red-600 text-sm"></span>
-        </div>
+            <div class="mb-4">
+                <label asp-for="Role" class="block font-medium">Role</label>
+                <select asp-for="Role" class="form-select w-full" asp-items="Html.GetEnumSelectList<StaffRole>()"></select>
+            </div>
 
-        <div>
-            <label asp-for="Salary" class="block text-sm font-medium mb-1">Salary</label>
-            <input asp-for="Salary" class="w-full border rounded px-3 py-2" placeholder="e.g. 2500.00" />
-            <span asp-validation-for="Salary" class="text-red-600 text-sm"></span>
-        </div>
+            <div class="mb-4">
+                <label asp-for="Shift" class="block font-medium">Shift</label>
+                <select asp-for="Shift" class="form-select w-full" asp-items="Html.GetEnumSelectList<StaffShifts>()"></select>
+            </div>
 
-        <button type="submit" class="w-full bg-amber-600 hover:bg-amber-700 text-white font-semibold py-2 rounded">
-            Create Staff
-        </button>
-    </form>
+            <div class="mb-4">
+                <label asp-for="Salary" class="block font-medium">Salary (€)</label>
+                <input asp-for="Salary" class="form-input w-full" type="number" min="600" />
+                <span asp-validation-for="Salary" class="text-red-600 text-sm"></span>
+            </div>
+
+            <button type="submit" class="w-full bg-amber-600 text-white text-lg font-semibold px-6 py-3 rounded-full shadow-md hover:bg-amber-700 transition duration-200">
+                Create
+            </button>
+        </form>
+    </div>
 </section>
 
-@section Scripts {
-    <partial name="_ValidationScriptsPartial" />
-}
-
+<partial name="_ValidationScriptsPartial" />
