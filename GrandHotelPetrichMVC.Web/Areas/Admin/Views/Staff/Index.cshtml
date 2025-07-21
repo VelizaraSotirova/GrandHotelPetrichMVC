@@ -1,0 +1,47 @@
+﻿@using GrandHotelPetrichMVC.ViewModels.Admin.Staff
+@model List<StaffListViewModel>
+@{
+    ViewData["Title"] = "Staff Management";
+}
+
+<section class="container mx-auto px-4 pt-20">
+    <div class="flex justify-between items-center mb-6">
+        <h1 class="text-2xl font-bold text-gray-800">Staff Management</h1>
+        <a asp-action="Create" class="bg-amber-600 hover:bg-amber-700 text-white font-medium px-4 py-2 rounded">
+            + Add New Staff
+        </a>
+    </div>
+
+    <table class="min-w-full bg-white border border-gray-300 rounded shadow text-sm">
+        <thead>
+            <tr class="bg-gray-100 text-left">
+                <th class="p-3">Name</th>
+                <th class="p-3">Email</th>
+                <th class="p-3">Role</th>
+                <th class="p-3">Shift</th>
+                <th class="p-3">Status</th>
+                <th class="p-3">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var staff in Model)
+            {
+                <tr class="border-t hover:bg-gray-50">
+                    <td class="p-3">@staff.FullName</td>
+                    <td class="p-3">@staff.Email</td>
+                    <td class="p-3">@staff.Role</td>
+                    <td class="p-3">@staff.Shift</td>
+                    <td class="p-3">@staff.Status</td>
+                    <td class="p-3 space-x-2">
+                        <form method="post" asp-action="ChangeStatus" asp-route-id="@staff.Id" asp-route-newStatus="OnLeave" class="inline">
+                            <button type="submit" class="text-blue-600 hover:underline">Mark On Leave</button>
+                        </form>
+                        <form method="post" asp-action="ChangeStatus" asp-route-id="@staff.Id" asp-route-newStatus="Terminated" class="inline">
+                            <button type="submit" class="text-red-600 hover:underline">Terminate</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</section>

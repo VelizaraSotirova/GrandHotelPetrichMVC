@@ -155,10 +155,32 @@ namespace GrandHotelPetrichMVC.Services.Core
             };
 
             _context.Bookings.Add(booking);
-            await _context.SaveChangesAsync();
 
+            var roomRevenueSource = await _context.RevenueSources
+                .FirstOrDefaultAsync(rs => rs.Name == "Room");
+
+            if (roomRevenueSource == null)
+            {
+                throw new Exception("Revenue source 'Room' is missing.");
+            }
+
+            var revenue = new Revenue
+            {
+                Id = Guid.NewGuid(),
+                BookingId = booking.Id,
+                RevenueSourceId = roomRevenueSource.Id,
+                Amount = booking.TotalAmount,
+                Date = DateTime.UtcNow,
+                PaymentMethodId = booking.PaymentMethodId,
+                Description = $"Room booking from {booking.CheckInDate:MMM dd} to {booking.CheckOutDate:MMM dd} for {booking.NumberOfGuests} guests."
+            };
+
+            _context.Revenues.Add(revenue);
+
+            await _context.SaveChangesAsync();
             return booking.Id;
         }
+
 
 
 

@@ -1,0 +1,41 @@
+﻿@using GrandHotelPetrichMVC.ViewModels.Admin.Dashboard
+@model AdminDashboardViewModel
+
+@{
+    ViewData["Title"] = "Admin Dashboard";
+}
+
+<section class="pt-20 pb-10">
+    <div class="container mx-auto px-4">
+        <h1 class="text-3xl font-bold mb-6">Admin Dashboard</h1>
+
+        <div class="grid md:grid-cols-2 gap-6">
+            <div class="bg-white shadow p-6 rounded">
+                <h2 class="text-xl font-semibold mb-2">Rooms</h2>
+                <p><strong>Available:</strong> @Model.AvailableRooms</p>
+                <p><strong>Occupied:</strong> @Model.OccupiedRooms</p>
+                <p><strong>Total:</strong> @Model.TotalRooms</p>
+            </div>
+
+            <div class="bg-white shadow p-6 rounded">
+                <h2 class="text-xl font-semibold mb-2">Users & Staff</h2>
+                <p><strong>Staff Count:</strong> @Model.StaffCount</p>
+            </div>
+
+            <div class="bg-white shadow p-6 rounded">
+                <h2 class="text-xl font-semibold mb-2">Revenue (This Month)</h2>
+                <p><strong>Total Revenue:</strong> €@Model.MonthlyRevenue</p>
+            </div>
+
+            <div class="bg-white shadow p-6 rounded">
+                <h2 class="text-xl font-semibold mb-2">Salaries</h2>
+                <p><strong>Total Paid Salaries:</strong> €@Model.PaidSalaries</p>
+            </div>
+
+            @* <a asp-area="Admin" asp-controller="ContactMessages" asp-action="Index" class="text-sm hover:underline">
+                Contact Messages
+            </a> *@
+
+        </div>
+    </div>
+</section>

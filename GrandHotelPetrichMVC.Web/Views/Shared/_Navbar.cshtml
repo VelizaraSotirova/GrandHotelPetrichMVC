@@ -6,7 +6,7 @@
 <nav class="absolute top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm shadow-sm">
     <div class="container mx-auto px-4">
         <div class="flex items-center justify-between h-16">
-            <a asp-controller="Home" asp-action="Index" class="text-2xl font-bold text-amber-800 font-serif">
+            <a asp-controller="Home" asp-action="Index" asp-area="" class="text-2xl font-bold text-amber-800 font-serif">
                 Grand Hotel Petrich
             </a>
 
@@ -21,18 +21,45 @@
             </div>
 
             <div class="hidden md:flex items-center space-x-4">
+                @if (User.IsInRole("Admin"))
+                {
+                    <div class="relative group">
+                        <button class="flex items-center space-x-2 px-4 py-2 rounded bg-amber-100 hover:bg-amber-200 transition">
+                            <span class="font-semibold text-amber-800">Admin Dashboard</span>
+                            <svg class="w-4 h-4 fill-current text-amber-800" viewBox="0 0 20 20"><path d="M5.25 7.5L10 12.25L14.75 7.5H5.25Z" /></svg>
+                        </button>
+                        <div class="absolute right-0 mt-2 w-48 bg-white border border-gray-200 shadow-lg rounded-md hidden group-hover:block z-10">
+                            <a asp-area="Admin" asp-controller="Dashboard" asp-action="Dashboard" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Overview</a>
+                            <a asp-area="Admin" asp-controller="ContactMessages" asp-action="Index" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Contact Messages</a>
+                            <a asp-area="Admin" asp-controller="Staff" asp-action="Index" class="block px-4 py-2 text-sm hover:bg-gray-100">Manage Staff</a>
+
+                            <!-- Add more links here as needed -->
+                        </div>
+                    </div>
+                }
+
                 @if (SignInManager.IsSignedIn(User))
                 {
                     <partial name="_ProfileDropdown" />
-                    <a asp-area="Guests" asp-controller="Booking" asp-action="Index" class="btn bg-amber-600 text-white hover:bg-amber-700 px-4 py-2 rounded">Book Now</a>
+                
+                    @* Show Book Now only if NOT Admin *@
+                    @if (!User.IsInRole("Admin"))
+                    {
+                        <a asp-area="Guests" asp-controller="Booking" asp-action="Index"
+                           class="btn bg-amber-600 text-white hover:bg-amber-700 px-4 py-2 rounded">
+                            Book Now
+                        </a>
+                    }
                 }
                 else
                 {
+                    @* Show Book Now only for unauthenticated users (who aren’t admins) *@
                     <a asp-area="Identity" asp-page="/Account/Login" class="btn border px-4 py-2 rounded">Sign In</a>
-                    <a asp-area="Guests" asp-controller="Booking" asp-action="Index" class="btn bg-amber-600 text-white hover:bg-amber-700 px-4 py-2 rounded">
+                
+                    <a asp-area="Guests" asp-controller="Booking" asp-action="Index"
+                       class="btn bg-amber-600 text-white hover:bg-amber-700 px-4 py-2 rounded">
                         Book Now
                     </a>
-
                 }
             </div>
         </div>

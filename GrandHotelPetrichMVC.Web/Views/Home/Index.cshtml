@@ -14,9 +14,13 @@
             <a href="/Rooms" class="inline-block bg-orange-400 hover:bg-orange-500 text-white px-8 py-3 rounded-lg text-lg font-semibold transition-colors">
                 Explore Rooms
             </a>
-            <a asp-area="Guests" asp-controller="Booking" asp-action="Index" class="inline-block bg-transparent border-2 border-white text-white hover:bg-white hover:text-gray-900 px-8 py-3 rounded-lg text-lg font-semibold transition-colors">
-                Book Now
-            </a>
+
+            @if (!User.IsInRole("Admin")) 
+            {
+                <a asp-area="Guests" asp-controller="Booking" asp-action="Index" class="inline-block bg-transparent border-2 border-white text-white hover:bg-white hover:text-gray-900 px-8 py-3 rounded-lg text-lg font-semibold transition-colors">
+                    Book Now
+                </a>
+            }
         </div>
     </div>
 </section>

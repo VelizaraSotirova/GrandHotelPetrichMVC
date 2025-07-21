@@ -13,8 +13,9 @@ namespace GrandHotelPetrichMVC.Data.DataSeed
             context.Database.Migrate();
 
             // Seed only if no users or rooms exist
-            if (context.Users.Any() || context.Rooms.Any())
-                return;
+            //if (context.Users.Any() || context.Rooms.Any() || context.PaymentMethods.Any() || context.RoomStatuses.Any() ||
+            //    context.Galleries.Any() || context.Bookings.Any() || context.Revenues.Any() ||)
+            //    return;
 
             var users = SeedUsers(context);
             var rooms = SeedRooms(context);
@@ -83,7 +84,7 @@ namespace GrandHotelPetrichMVC.Data.DataSeed
             };
             context.Staff.Add(staff);
 
-            context.SaveChanges();
+            //context.SaveChanges();
             return users;
         }
 
@@ -97,7 +98,7 @@ namespace GrandHotelPetrichMVC.Data.DataSeed
             var coffee = new Amenity { Id = Guid.NewGuid(), Name = "Coffee Maker" };
 
             context.Amenities.AddRange(wifi, tv, minibar, ac, coffee);
-            context.SaveChanges();
+            //context.SaveChanges();
 
             // Step 2: Create rooms
             var room1 = new Room
@@ -126,7 +127,7 @@ namespace GrandHotelPetrichMVC.Data.DataSeed
             };
 
             context.Rooms.AddRange(room1, room2);
-            context.SaveChanges();
+            //context.SaveChanges();
 
             // Step 3: Link rooms to amenities
             var roomAmenities = new List<RoomAmenity>
@@ -141,7 +142,7 @@ namespace GrandHotelPetrichMVC.Data.DataSeed
             };
 
             context.RoomAmenities.AddRange(roomAmenities);
-            context.SaveChanges();
+            //context.SaveChanges();
 
             return new List<Room> { room1, room2 };
         }
@@ -158,7 +159,7 @@ namespace GrandHotelPetrichMVC.Data.DataSeed
             }).ToList();
 
             context.RoomStatuses.AddRange(statuses);
-            context.SaveChanges();
+            //context.SaveChanges();
         }
 
         private static void SeedGallery(ApplicationDbContext context)
@@ -173,12 +174,12 @@ namespace GrandHotelPetrichMVC.Data.DataSeed
             };
 
             context.Galleries.AddRange(items);
-            context.SaveChanges();
+            //context.SaveChanges();
         }
 
         // This method is public because the data wasn't seeded in the DB and I called it in Program.cs to seed correctly, but just once.
         // Now after I have the methods in the DB, it is commented in Program.cs
-        public static void SeedPaymentMethods(ApplicationDbContext context)
+        private static void SeedPaymentMethods(ApplicationDbContext context)
         {
             var existing = context.PaymentMethods.Select(p => p.Name).ToHashSet();
 
@@ -196,7 +197,7 @@ namespace GrandHotelPetrichMVC.Data.DataSeed
             if (newMethods.Any())
             {
                 context.PaymentMethods.AddRange(newMethods);
-                context.SaveChanges();
+                //context.SaveChanges();
             }
         }
 
@@ -226,11 +227,11 @@ namespace GrandHotelPetrichMVC.Data.DataSeed
             };
 
             context.Bookings.AddRange(bookings);
-            context.SaveChanges();
+            //context.SaveChanges();
             return bookings;
         }
 
-        // Important to edit!!
+        // Public method to seed revenue sources, so it can be called from Program.cs
         private static void SeedRevenueSources(ApplicationDbContext context)
         {
             if (!context.RevenueSources.Any())
@@ -243,7 +244,7 @@ namespace GrandHotelPetrichMVC.Data.DataSeed
                 };
 
                 context.RevenueSources.AddRange(sources);
-                context.SaveChanges();
+                //context.SaveChanges();
             }
         }
 
@@ -263,7 +264,7 @@ namespace GrandHotelPetrichMVC.Data.DataSeed
             }).ToList();
 
             context.Revenues.AddRange(revenues);
-            context.SaveChanges();
+            //context.SaveChanges();
         }
 
         private static void SeedReviews(ApplicationDbContext context, List<User> users, List<Room> rooms)
@@ -284,7 +285,7 @@ namespace GrandHotelPetrichMVC.Data.DataSeed
             };
 
             context.Reviews.AddRange(reviews);
-            context.SaveChanges();
+            //context.SaveChanges();
         }
 
         private static void SeedMessages(ApplicationDbContext context)
@@ -303,7 +304,7 @@ namespace GrandHotelPetrichMVC.Data.DataSeed
             };
 
             context.ContactMessages.AddRange(messages);
-            context.SaveChanges();
+            //context.SaveChanges();
         }
     }
 }

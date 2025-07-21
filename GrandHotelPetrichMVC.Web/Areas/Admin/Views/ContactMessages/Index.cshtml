@@ -1,0 +1,36 @@
+﻿@using GrandHotelPetrichMVC.ViewModels.Admin.ContactMessage
+@model IEnumerable<ContactMessageAdminViewModel>
+
+@{
+    ViewData["Title"] = "Contact Messages";
+}
+
+<section class="pt-20 pb-12 container mx-auto">
+    <h1 class="text-3xl font-bold mb-6 font-serif">Contact Messages</h1>
+
+    <table class="min-w-full bg-white shadow rounded">
+        <thead>
+            <tr class="bg-amber-100 text-left">
+                <th class="py-2 px-4">Name</th>
+                <th class="py-2 px-4">Email</th>
+                <th class="py-2 px-4">Subject</th>
+                <th class="py-2 px-4">Message</th>
+                <th class="py-2 px-4">Status</th>
+                <th class="py-2 px-4">Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var msg in Model)
+            {
+                <tr class="border-t">
+                    <td class="py-2 px-4">@msg.Name</td>
+                    <td class="py-2 px-4">@msg.Email</td>
+                    <td class="py-2 px-4">@msg.Subject</td>
+                    <td class="py-2 px-4">@msg.Message</td>
+                    <td class="py-2 px-4">@msg.Status</td>
+                    <td class="py-2 px-4">@msg.ReceivedAt.ToString("dd MMM yyyy HH:mm")</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</section>

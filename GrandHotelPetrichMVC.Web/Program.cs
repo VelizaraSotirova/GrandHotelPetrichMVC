@@ -45,6 +45,8 @@ namespace GrandHotelPetrichMVC.Web
 
             builder.Services.AddScoped<IProfileService, ProfileService>();
             builder.Services.AddScoped<IBookingService, BookingService>();
+            builder.Services.AddScoped<IAdminService, AdminService>();
+            builder.Services.AddScoped<IStaffService, StaffService>();
 
             builder.Services.AddSingleton<IEmailSender, DummyEmailSender>();
 
@@ -63,7 +65,9 @@ namespace GrandHotelPetrichMVC.Web
                 {
                     var context = services.GetRequiredService<ApplicationDbContext>();
                     DataSeed.Initialize(context);
+                    // Uncomment the following lines if you want to seed specific data or data is not seeded in the database
                     //DataSeed.SeedPaymentMethods(context); 
+                    //DataSeed.SeedRevenueSources(context);
 
                     var roleManager = services.GetRequiredService<RoleManager<IdentityRole>>();
                     var userManager = services.GetRequiredService<UserManager<User>>();
