@@ -13,11 +13,12 @@ namespace GrandHotelPetrichMVC.Data.DataSeed
             context.Database.Migrate();
 
             // Seed only if no users or rooms exist
-            //if (context.Users.Any() || context.Rooms.Any() || context.PaymentMethods.Any() || context.RoomStatuses.Any() ||
-            //    context.Galleries.Any() || context.Bookings.Any() || context.Revenues.Any() ||)
-            //    return;
+            if (context.Users.Any() || context.Rooms.Any())
+                return;
 
             var users = SeedUsers(context);
+            SeedReceptionist(context);
+
             var rooms = SeedRooms(context);
             SeedStatuses(context, rooms);
             SeedGallery(context);
@@ -82,11 +83,57 @@ namespace GrandHotelPetrichMVC.Data.DataSeed
                 Salary = 3000,
                 HireDate = DateTime.UtcNow
             };
+
             context.Staff.Add(staff);
 
             //context.SaveChanges();
             return users;
         }
+
+        private static void SeedReceptionist(ApplicationDbContext context)
+        {
+            var hasher = new PasswordHasher<User>();
+            var email = "receptionist@hotel.com";
+
+            var existingUser = context.Users.FirstOrDefault(u => u.Email == email);
+            if (existingUser == null)
+            {
+                var receptionist = new User
+                {
+                    UserName = email,
+                    NormalizedUserName = email.ToUpper(),
+                    Email = email,
+                    NormalizedEmail = email.ToUpper(),
+                    FirstName = "Reception",
+                    LastName = "Staff",
+                    EmailConfirmed = true,
+                    PhoneNumber = "3333333333",
+                    PhoneNumberConfirmed = true,
+                    SecurityStamp = Guid.NewGuid().ToString()
+                };
+
+                receptionist.PasswordHash = hasher.HashPassword(receptionist, "Reception@123");
+
+                context.Users.Add(receptionist);
+                //context.SaveChanges();
+
+                // Add staff record
+                var staff = new Staff
+                {
+                    Id = Guid.NewGuid(),
+                    UserId = receptionist.Id,
+                    Role = StaffRole.Receptionist,
+                    Shift = StaffShifts.Evening,
+                    Status = StaffStatus.Active,
+                    Salary = 1500,
+                    HireDate = DateTime.UtcNow
+                };
+
+                context.Staff.Add(staff);
+                //context.SaveChanges();
+            }
+        }
+
 
         private static List<Room> SeedRooms(ApplicationDbContext context)
         {

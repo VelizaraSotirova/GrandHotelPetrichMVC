@@ -32,18 +32,24 @@
                             <a asp-area="Admin" asp-controller="Dashboard" asp-action="Dashboard" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Overview</a>
                             <a asp-area="Admin" asp-controller="ContactMessages" asp-action="Index" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Contact Messages</a>
                             <a asp-area="Admin" asp-controller="Staff" asp-action="Index" class="block px-4 py-2 text-sm hover:bg-gray-100">Manage Staff</a>
-
-                            <!-- Add more links here as needed -->
                         </div>
                     </div>
+                }
+
+                @if (User.IsInRole("Receptionist"))
+                {
+                    <a asp-area="Receptionists" asp-controller="Booking" asp-action="Search" 
+                    class="bg-amber-600 text-white px-4 py-2 rounded hover:bg-amber-700 transition">
+                        Receptionist Panel
+                    </a>
                 }
 
                 @if (SignInManager.IsSignedIn(User))
                 {
                     <partial name="_ProfileDropdown" />
                 
-                    @* Show Book Now only if NOT Admin *@
-                    @if (!User.IsInRole("Admin"))
+                    @* Show Book Now only if NOT Admin or Receptionist *@
+                    @if (!(User.IsInRole("Admin") || User.IsInRole("Receptionist")))
                     {
                         <a asp-area="Guests" asp-controller="Booking" asp-action="Index"
                            class="btn bg-amber-600 text-white hover:bg-amber-700 px-4 py-2 rounded">

@@ -1,0 +1,17 @@
+﻿@using GrandHotelPetrichMVC.ViewModels.Receptionists.Booking
+@model ReceptionistBookingSuccessViewModel
+
+<section class="py-8">
+    <div class="container mx-auto max-w-xl text-center">
+        <h2 class="text-3xl font-bold text-green-600 mb-6">Booking Confirmed!</h2>
+        <p class="text-lg mb-2">Guest: <strong>@Model.GuestFullName</strong> (<em>@Model.GuestEmail</em>)</p>
+        <p class="text-lg mb-2">Room: <strong>@Model.RoomName</strong></p>
+        <p class="text-lg mb-2">Dates: @Model.CheckInDate.ToShortDateString() - @Model.CheckOutDate.ToShortDateString()</p>
+        <p class="text-lg mb-2">Total: <strong>€@Model.TotalAmount</strong></p>
+        <p class="text-lg mb-2">Payment: <strong>@Model.PaymentMethod</strong></p>
+
+        <a asp-action="Search" class="mt-6 inline-block bg-amber-600 hover:bg-amber-700 text-white font-bold py-2 px-6 rounded-full transition">
+            Make Another Booking
+        </a>
+    </div>
+</section>

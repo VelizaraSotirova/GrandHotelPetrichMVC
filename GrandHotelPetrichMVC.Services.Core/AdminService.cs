@@ -52,6 +52,5 @@ namespace GrandHotelPetrichMVC.Services.Core
                 })
                 .ToListAsync();
         }
-
     }
 }

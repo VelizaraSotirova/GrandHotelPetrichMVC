@@ -1,0 +1,79 @@
+﻿@using GrandHotelPetrichMVC.GCommon.Enums
+@using GrandHotelPetrichMVC.ViewModels.Receptionists.Booking
+@model ReceptionistBookingSearchViewModel
+
+@{
+    ViewData["Title"] = "Search Available Rooms";
+}
+
+<section class="py-8">
+    <div class="container mx-auto max-w-4xl">
+        <h2 class="text-2xl font-semibold mb-6">Search Available Rooms</h2>
+
+        <form method="post" class="grid grid-cols-1 md:grid-cols-4 gap-4 items-end mb-6">
+            <div>
+                <label asp-for="CheckInDate" class="block font-medium">Check-In</label>
+                <input asp-for="CheckInDate" type="date" class="form-input w-full" />
+                <span asp-validation-for="CheckInDate" class="text-red-600 text-sm"></span>
+            </div>
+
+            <div>
+                <label asp-for="CheckOutDate" class="block font-medium">Check-Out</label>
+                <input asp-for="CheckOutDate" type="date" class="form-input w-full" />
+                <span asp-validation-for="CheckOutDate" class="text-red-600 text-sm"></span>
+            </div>
+
+            <div>
+                <label asp-for="NumberOfGuests" class="block font-medium">Guests</label>
+                <input asp-for="NumberOfGuests" type="number" min="1" max="10" class="form-input w-full" />
+                <span asp-validation-for="NumberOfGuests" class="text-red-600 text-sm"></span>
+            </div>
+
+            <div>
+                <label asp-for="RoomType" class="block font-medium">Room Type (optional)</label>
+                <select asp-for="RoomType" asp-items="Html.GetEnumSelectList<RoomType>()" class="form-select w-full">
+                    <option value="">Any</option>
+                </select>
+            </div>
+
+            <div class="md:col-span-4">
+                <button type="submit" class="w-full bg-amber-600 text-white text-lg font-semibold px-6 py-3 rounded-md hover:bg-amber-700 transition">
+                    Search
+                </button>
+            </div>
+        </form>
+
+        @if (Model.AvailableRooms != null && Model.AvailableRooms.Any())
+        {
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                @foreach (var room in Model.AvailableRooms)
+                {
+                    <div class="border rounded shadow p-4 flex gap-4">
+                        <img src="@room.ImageUrl" alt="@room.Name" class="w-32 h-32 object-cover rounded" />
+                        <div>
+                            <h3 class="text-xl font-semibold">@room.Name</h3>
+                            <p class="text-sm text-gray-600">@room.RoomTypeName</p>
+                            <p class="text-sm">Capacity: @room.Capacity guests</p>
+                            <p class="text-amber-700 font-semibold mt-2">€@room.PricePerNight per night</p>
+                            <form method="get" asp-action="Book">
+                                <input type="hidden" name="roomId" value="@room.Id" />
+                                <input type="hidden" name="checkIn" value="@Model.CheckInDate.ToString("yyyy-MM-dd")" />
+                                <input type="hidden" name="checkOut" value="@Model.CheckOutDate.ToString("yyyy-MM-dd")" />
+                                <input type="hidden" name="guests" value="@Model.NumberOfGuests" />
+                                <button type="submit" class="mt-2 bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded">
+                                    Book This Room
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                }
+            </div>
+        }
+        else if (Model.AvailableRooms?.Count == 0)
+        {
+            <p class="text-gray-500 mt-4">No rooms available for the selected criteria.</p>
+        }
+    </div>
+</section>
+
+<partial name="_ValidationScriptsPartial" />

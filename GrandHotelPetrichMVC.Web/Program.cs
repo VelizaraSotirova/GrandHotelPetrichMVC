@@ -8,7 +8,6 @@ using Humanizer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.Blazor;
 
 namespace GrandHotelPetrichMVC.Web
 {
@@ -47,6 +46,7 @@ namespace GrandHotelPetrichMVC.Web
             builder.Services.AddScoped<IBookingService, BookingService>();
             builder.Services.AddScoped<IAdminService, AdminService>();
             builder.Services.AddScoped<IStaffService, StaffService>();
+            builder.Services.AddScoped<IReceptionistService, ReceptionistService>();
 
             builder.Services.AddSingleton<IEmailSender, DummyEmailSender>();
 
@@ -65,9 +65,11 @@ namespace GrandHotelPetrichMVC.Web
                 {
                     var context = services.GetRequiredService<ApplicationDbContext>();
                     DataSeed.Initialize(context);
-                    // Uncomment the following lines if you want to seed specific data or data is not seeded in the database
+                    // Uncomment the following lines if the data does not seed in database
+                    // Make the methods in DataSeed.cs public 
                     //DataSeed.SeedPaymentMethods(context); 
                     //DataSeed.SeedRevenueSources(context);
+                    //DataSeed.SeedReceptionist(context);
 
                     var roleManager = services.GetRequiredService<RoleManager<IdentityRole>>();
                     var userManager = services.GetRequiredService<UserManager<User>>();
@@ -87,6 +89,12 @@ namespace GrandHotelPetrichMVC.Web
                     if (adminUser != null && !await userManager.IsInRoleAsync(adminUser, "Admin"))
                     {
                         await userManager.AddToRoleAsync(adminUser, "Admin");
+                    }
+
+                    var receptionistUser = await userManager.FindByEmailAsync("receptionist@hotel.com");
+                    if (receptionistUser != null && !await userManager.IsInRoleAsync(receptionistUser, "Receptionist"))
+                    {
+                        await userManager.AddToRoleAsync(receptionistUser, "Receptionist");
                     }
 
                     var customerUser = await userManager.FindByEmailAsync("john@customer.com");

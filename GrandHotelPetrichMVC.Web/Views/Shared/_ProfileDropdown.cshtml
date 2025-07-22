@@ -20,7 +20,7 @@
             <span class="text-xs text-gray-500">@currentUser?.Email</span>
         </div>
         <div class="border-t"></div>
-        @if (!User.IsInRole("Admin"))
+        @if (!(User.IsInRole("Admin") || User.IsInRole("Receptionist")))
         {
             <a asp-area="Guests" asp-controller="Booking" asp-action="MyBookings" class="block px-4 py-2 text-sm hover:bg-gray-100">My Bookings</a>
             <a asp-area="Guests" asp-controller="Profile" asp-action="Index" class="block px-4 py-2 text-sm hover:bg-gray-100">Edit Profile</a>
