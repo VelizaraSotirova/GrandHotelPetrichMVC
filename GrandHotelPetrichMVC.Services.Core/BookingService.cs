@@ -181,7 +181,18 @@ namespace GrandHotelPetrichMVC.Services.Core
             var roomStatus = await _context.RoomStatuses.FirstOrDefaultAsync(s => s.RoomId == booking.RoomId);
             if (roomStatus != null)
             {
-                roomStatus.Status = RoomStatus.Occupied;
+                //roomStatus.Status = RoomStatus.Occupied;
+                //roomStatus.UpdatedAt = DateTime.UtcNow;
+                var today = DateTime.UtcNow.Date;
+                if (booking.CheckInDate.Date <= today && booking.CheckOutDate.Date >= today)
+                {
+                    roomStatus.Status = RoomStatus.Occupied;
+                }
+                else
+                {
+                    roomStatus.Status = RoomStatus.Available;
+                }
+
                 roomStatus.UpdatedAt = DateTime.UtcNow;
             }
 
