@@ -71,17 +71,6 @@ namespace GrandHotelPetrichMVC.Web.Areas.Receptionists.Controllers
                 return View(model);
             }
 
-            //var success = await _receptionistService.CreateBookingAsync(model);
-
-            //if (!success)
-            //{
-            //    ModelState.AddModelError("", "Could not create booking.");
-            //    model.PaymentMethods = await _receptionistService.GetPaymentMethodsAsync();
-            //    return View(model);
-            //}
-
-            //return RedirectToAction("Search");
-
             var result = await _receptionistService.CreateBookingAsync(model);
             if (result == null)
             {

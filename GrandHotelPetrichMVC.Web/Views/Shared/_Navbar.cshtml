@@ -38,11 +38,26 @@
 
                 @if (User.IsInRole("Receptionist"))
                 {
-                    <a asp-area="Receptionists" asp-controller="Booking" asp-action="Search" 
-                    class="bg-amber-600 text-white px-4 py-2 rounded hover:bg-amber-700 transition">
-                        Receptionist Panel
-                    </a>
+                    <div class="relative group">
+                        <button class="flex items-center space-x-2 px-4 py-2 rounded bg-amber-100 hover:bg-amber-200 transition">
+                            <span class="font-semibold text-amber-800">Receptionist Panel</span>
+                            <svg class="w-4 h-4 fill-current text-amber-800" viewBox="0 0 20 20">
+                                <path d="M5.25 7.5L10 12.25L14.75 7.5H5.25Z" />
+                            </svg>
+                        </button>
+                        <div class="absolute right-0 mt-2 w-56 bg-white border border-gray-200 shadow-lg rounded-md hidden group-hover:block z-10">
+                            <a asp-area="Receptionists" asp-controller="Booking" asp-action="Search"
+                               class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                                Create Booking
+                            </a>
+                            <a asp-area="Receptionists" asp-controller="Rooms" asp-action="OutForCleaning"
+                               class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                                Rooms Needing Cleaning
+                            </a>
+                        </div>
+                    </div>
                 }
+
 
                 @if (SignInManager.IsSignedIn(User))
                 {

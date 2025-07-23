@@ -5,7 +5,7 @@
         Available,
         Occupied,
         Maintenance,
-        Cleaning,
+        OutForCleaning,
         OutOfOrder
     }
 }

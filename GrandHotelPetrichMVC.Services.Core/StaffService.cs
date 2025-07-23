@@ -76,7 +76,6 @@ namespace GrandHotelPetrichMVC.Services.Core
 
         public async Task<bool> CreateStaffAsync(CreateStaffViewModel model)
         {
-            //var user = await _context.Users.FindAsync(model.UserEmail);
             var user = await _userManager.FindByEmailAsync(model.UserEmail);
             if (user == null) return false;
 

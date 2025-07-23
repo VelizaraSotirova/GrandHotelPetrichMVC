@@ -124,6 +124,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcUmVjZXB0aW9uaXN0c1xWaWV3c1xCb29raW5nXFN1Y2Nlc3MuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/SoftUni/GitHub/GrandHotelPetrichMVC/GrandHotelPetrichMVC.Web/Areas/Receptionists/Views/Rooms/OutForCleaning.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcUmVjZXB0aW9uaXN0c1xWaWV3c1xSb29tc1xPdXRGb3JDbGVhbmluZy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/SoftUni/GitHub/GrandHotelPetrichMVC/GrandHotelPetrichMVC.Web/Areas/Receptionists/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcUmVjZXB0aW9uaXN0c1xWaWV3c1xfVmlld0ltcG9ydHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 

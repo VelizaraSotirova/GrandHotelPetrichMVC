@@ -177,6 +177,15 @@ namespace GrandHotelPetrichMVC.Services.Core
 
             _context.Revenues.Add(revenue);
 
+            // Changing status of the room to occupied
+            var roomStatus = await _context.RoomStatuses.FirstOrDefaultAsync(s => s.RoomId == booking.RoomId);
+            if (roomStatus != null)
+            {
+                roomStatus.Status = RoomStatus.Occupied;
+                roomStatus.UpdatedAt = DateTime.UtcNow;
+            }
+
+
             await _context.SaveChangesAsync();
             return booking.Id;
         }
