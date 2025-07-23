@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace GrandHotelPetrichMVC.Web.Areas.Admin.Controllers
 {
-    [Area("Admin")]
+    [Area(nameof(Admin))]
     public class StaffController : Controller
     {
         private readonly IStaffService _staffService;

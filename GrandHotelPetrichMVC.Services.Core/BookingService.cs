@@ -190,9 +190,6 @@ namespace GrandHotelPetrichMVC.Services.Core
             return booking.Id;
         }
 
-
-
-
         public async Task<List<PaymentMethodViewModel>> GetPaymentMethodsAsync()
         {
             return await _context.PaymentMethods

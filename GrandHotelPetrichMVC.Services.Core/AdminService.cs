@@ -32,6 +32,7 @@ namespace GrandHotelPetrichMVC.Services.Core
                                     .Where(r => r.Date >= startOfMonth)
                                     .SumAsync(r => (decimal?)r.Amount) ?? 0,
                 PaidSalaries = await _context.Staff
+                                    .Where(s => s.Status == StaffStatus.Active || s.Status == StaffStatus.OnLeave)
                                     .SumAsync(s => (decimal?)s.Salary) ?? 0 // Assuming salaries are paid monthly
             };
         }
