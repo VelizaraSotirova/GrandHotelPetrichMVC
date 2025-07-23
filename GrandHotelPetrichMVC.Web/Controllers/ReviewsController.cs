@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using GrandHotelPetrichMVC.Services.Core.Contracts;
+using Microsoft.AspNetCore.Mvc;
 
 namespace GrandHotelPetrichMVC.Web.Controllers
 {

@@ -1,0 +1,28 @@
+﻿@using GrandHotelPetrichMVC.ViewModels.Guests.Review
+@model CreateReviewViewModel
+
+<section class="pt-20 pb-10 max-w-xl mx-auto">
+    <h1 class="text-2xl font-semibold mb-4">Write a Review</h1>
+
+    <form asp-action="Create" method="post">
+        <div class="mb-4">
+            <label asp-for="Title" class="block font-medium">Title</label>
+            <input asp-for="Title" class="form-input w-full" />
+            <span asp-validation-for="Title" class="text-sm text-red-600"></span>
+        </div>
+
+        <div class="mb-4">
+            <label asp-for="Comment" class="block font-medium">Comment</label>
+            <textarea asp-for="Comment" rows="5" class="form-input w-full"></textarea>
+            <span asp-validation-for="Comment" class="text-sm text-red-600"></span>
+        </div>
+
+        <div class="mb-4">
+            <label asp-for="Rating" class="block font-medium">Rating</label>
+            <input asp-for="Rating" type="number" min="1" max="5" class="form-input w-24" />
+            <span asp-validation-for="Rating" class="text-sm text-red-600"></span>
+        </div>
+
+        <button type="submit" class="bg-amber-600 text-white px-4 py-2 rounded">Submit</button>
+    </form>
+</section>

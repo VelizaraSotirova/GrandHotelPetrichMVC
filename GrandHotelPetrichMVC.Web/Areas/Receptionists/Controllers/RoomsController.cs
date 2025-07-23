@@ -1,9 +1,11 @@
 ﻿using GrandHotelPetrichMVC.Services.Core.Contracts;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GrandHotelPetrichMVC.Web.Areas.Receptionists.Controllers
 {
     [Area(nameof(Receptionists))]
+    [Authorize(Roles = "Receptionist")]
     public class RoomsController : Controller
     {
         private readonly IReceptionistService _service;

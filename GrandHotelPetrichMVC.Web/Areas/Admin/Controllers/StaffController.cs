@@ -65,12 +65,6 @@ namespace GrandHotelPetrichMVC.Web.Areas.Admin.Controllers
                 ModelState.AddModelError(nameof(model.Salary), "Salary must be greater than 600.");
             }
 
-            //if (!ModelState.IsValid)
-            //{
-            //    ViewBag.EligibleUsers = await _staffService.GetEligibleUsersDropdownAsync();
-            //    return View(model);
-            //}
-
             var result = await _staffService.CreateStaffAsync(model);
             if (!result)
             {

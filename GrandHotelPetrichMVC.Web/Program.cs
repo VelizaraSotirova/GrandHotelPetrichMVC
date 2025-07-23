@@ -47,6 +47,8 @@ namespace GrandHotelPetrichMVC.Web
             builder.Services.AddScoped<IAdminService, AdminService>();
             builder.Services.AddScoped<IStaffService, StaffService>();
             builder.Services.AddScoped<IReceptionistService, ReceptionistService>();
+            builder.Services.AddScoped<IReviewService, ReviewService>();
+
 
             builder.Services.AddSingleton<IEmailSender, DummyEmailSender>();
 

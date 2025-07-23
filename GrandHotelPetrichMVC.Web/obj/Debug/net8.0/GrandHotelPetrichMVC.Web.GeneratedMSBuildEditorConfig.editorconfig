@@ -36,6 +36,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcRGFzaGJvYXJkXERhc2hib2FyZC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/SoftUni/GitHub/GrandHotelPetrichMVC/GrandHotelPetrichMVC.Web/Areas/Admin/Views/Reviews/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUmV2aWV3c1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/SoftUni/GitHub/GrandHotelPetrichMVC/GrandHotelPetrichMVC.Web/Areas/Admin/Views/Staff/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU3RhZmZcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -70,6 +74,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [D:/SoftUni/GitHub/GrandHotelPetrichMVC/GrandHotelPetrichMVC.Web/Areas/Guests/Views/Profile/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcR3Vlc3RzXFZpZXdzXFByb2ZpbGVcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/SoftUni/GitHub/GrandHotelPetrichMVC/GrandHotelPetrichMVC.Web/Areas/Guests/Views/Reviews/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcR3Vlc3RzXFZpZXdzXFJldmlld3NcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/SoftUni/GitHub/GrandHotelPetrichMVC/GrandHotelPetrichMVC.Web/Areas/Guests/_ValidationScriptsPartial.cshtml]

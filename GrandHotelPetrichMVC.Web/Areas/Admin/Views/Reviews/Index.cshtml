@@ -1,0 +1,49 @@
+﻿@using GrandHotelPetrichMVC.ViewModels.Admin.Review
+@model IEnumerable<ReviewAdminViewModel>
+@{
+    ViewData["Title"] = "Manage Reviews";
+}
+
+<section class="pt-20 pb-12 container mx-auto">
+    <h1 class="text-3xl font-bold mb-6 font-serif">Manage Reviews</h1>
+
+    <table class="min-w-full bg-white shadow rounded">
+        <thead>
+            <tr class="bg-amber-100 text-left">
+                <th class="py-2 px-4">User</th>
+                <th class="py-2 px-4">Email</th>
+                <th class="py-2 px-4">Room</th>
+                <th class="py-2 px-4">Rating</th>
+                <th class="py-2 px-4">Title</th>
+                <th class="py-2 px-4">Comment</th>
+                <th class="py-2 px-4">Status</th>
+                <th class="py-2 px-4">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var r in Model)
+            {
+                <tr class="border-t">
+                    <td class="py-2 px-4">@r.UserFullName</td>
+                    <td class="py-2 px-4">@r.Email</td>
+                    <td class="py-2 px-4">@r.RoomName</td>
+                    <td class="py-2 px-4">@r.Rating</td>
+                    <td class="py-2 px-4">@r.Title</td>
+                    <td class="py-2 px-4">@r.Comment</td>
+                    <td class="py-2 px-4">@((r.IsApproved ? "Approved" : "Pending"))</td>
+                    <td class="py-2 px-4">
+                        @if (!r.IsApproved)
+                        {
+                            <form asp-action="Approve" method="post">
+                                <input type="hidden" name="id" value="@r.Id" />
+                                <button type="submit" class="text-white bg-green-600 hover:bg-green-700 px-3 py-1 rounded">
+                                    Approve
+                                </button>
+                            </form>
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</section>
