@@ -59,19 +59,16 @@ namespace GrandHotelPetrichMVC.Web
 
             var app = builder.Build();
 
+            Console.WriteLine(app.Environment.IsDevelopment());
+
             // Seed the database
             using (var scope = app.Services.CreateScope())
             {
                 var services = scope.ServiceProvider;
                 try
                 {
-                    var context = services.GetRequiredService<ApplicationDbContext>();
+                    ApplicationDbContext context = services.GetRequiredService<ApplicationDbContext>();
                     DataSeed.Initialize(context);
-                    // Uncomment the following lines if the data does not seed in database
-                    // Make the methods in DataSeed.cs public 
-                    //DataSeed.SeedPaymentMethods(context); 
-                    //DataSeed.SeedRevenueSources(context);
-                    //DataSeed.SeedReceptionist(context);
 
                     var roleManager = services.GetRequiredService<RoleManager<IdentityRole>>();
                     var userManager = services.GetRequiredService<UserManager<User>>();
