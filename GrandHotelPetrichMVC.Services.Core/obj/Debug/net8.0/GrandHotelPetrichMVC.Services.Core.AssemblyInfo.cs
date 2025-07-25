@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("GrandHotelPetrichMVC.Services.Core")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+71ac522a2f29e15ea753c83000b6b09d5953b63e")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+32a9cf12c8cce077aefc8dcc21ae5fe6ddf772b0")]
 [assembly: System.Reflection.AssemblyProductAttribute("GrandHotelPetrichMVC.Services.Core")]
 [assembly: System.Reflection.AssemblyTitleAttribute("GrandHotelPetrichMVC.Services.Core")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

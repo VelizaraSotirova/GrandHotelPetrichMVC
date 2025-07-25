@@ -62,15 +62,15 @@ namespace GrandHotelPetrichMVC.Services.Core
                 .FirstOrDefaultAsync();
         }
 
-        public async Task<bool> MarkRoomAsOccupiedAsync(Guid roomId)
-        {
-            var room = await _context.Rooms.FindAsync(roomId);
-            if (room == null) return false;
+        //public async Task<bool> MarkRoomAsOccupiedAsync(Guid roomId)
+        //{
+        //    var room = await _context.Rooms.FindAsync(roomId);
+        //    if (room == null) return false;
 
-            room.IsActive = false;
-            await _context.SaveChangesAsync();
-            return true;
-        }
+        //    room.IsActive = false;
+        //    await _context.SaveChangesAsync();
+        //    return true;
+        //}
 
         public async Task<BookingConfirmationViewModel> PrepareBookingConfirmationAsync(Guid roomId, DateTime checkIn, DateTime checkOut, int guests)
         {
@@ -181,8 +181,6 @@ namespace GrandHotelPetrichMVC.Services.Core
             var roomStatus = await _context.RoomStatuses.FirstOrDefaultAsync(s => s.RoomId == booking.RoomId);
             if (roomStatus != null)
             {
-                //roomStatus.Status = RoomStatus.Occupied;
-                //roomStatus.UpdatedAt = DateTime.UtcNow;
                 var today = DateTime.UtcNow.Date;
                 if (booking.CheckInDate.Date <= today && booking.CheckOutDate.Date >= today)
                 {
