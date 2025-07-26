@@ -159,13 +159,32 @@ namespace GrandHotelPetrichMVC.Services.Core
                     RoomId = rs.Room.Id,
                     RoomName = rs.Room.Name,
                     ImageUrl = rs.Room.ImageUrl,
-                    Status = rs.Status
+                    Status = rs.Status,
+                    LastCheckOutDate = _context.Bookings
+                        .Where(b => b.RoomId == rs.Room.Id)
+                        .OrderByDescending(b => b.CheckOutDate)
+                        .Select(b => (DateTime?)b.CheckOutDate)
+                        .FirstOrDefault()
                 })
                 .ToListAsync();
         }
 
         public async Task<bool> MarkRoomAsCleanedAsync(Guid roomId)
         {
+            var today = DateTime.UtcNow.Date;
+
+            // Find latest booking for this room
+            var latestBooking = await _context.Bookings
+                .Where(b => b.RoomId == roomId)
+                .OrderByDescending(b => b.CheckOutDate)
+                .FirstOrDefaultAsync();
+
+            // Ensure latest booking has ended
+            if (latestBooking == null || latestBooking.CheckOutDate.Date > today)
+            {
+                return false; // Don't allow cleaning if no booking or booking hasn't ended yet
+            }
+
             var status = await _context.RoomStatuses.FirstOrDefaultAsync(rs => rs.RoomId == roomId);
             if (status == null) return false;
 
@@ -184,7 +203,7 @@ namespace GrandHotelPetrichMVC.Services.Core
             var now = DateTime.UtcNow;
 
             var expiredBookings = await _context.Bookings
-                .Where(b => b.CheckOutDate < now)
+                .Where(b => b.CheckOutDate <= now)
                 .Include(b => b.Room)
                 .ToListAsync();
 

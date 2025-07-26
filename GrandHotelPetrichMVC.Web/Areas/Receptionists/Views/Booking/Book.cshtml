@@ -1,48 +1,4 @@
 ﻿@using GrandHotelPetrichMVC.ViewModels.Receptionists.Booking
-@* @using GrandHotelPetrichMVC.ViewModels.Receptionists.Booking
-@model ReceptionistBookingCreateViewModel
-
-@{
-    ViewData["Title"] = "Book Room";
-}
-
-<section class="py-8">
-    <div class="container mx-auto max-w-md">
-        <h2 class="text-2xl font-semibold mb-6">Create Booking</h2>
-
-        <form method="post">
-            <input type="hidden" asp-for="RoomId" />
-            <input type="hidden" asp-for="CheckInDate" />
-            <input type="hidden" asp-for="CheckOutDate" />
-            <input type="hidden" asp-for="NumberOfGuests" />
-            <input type="hidden" asp-for="TotalAmount" />
-
-            <div class="mb-4">
-                <label asp-for="Email" class="block font-medium">Guest Email</label>
-                <input asp-for="Email" class="form-input w-full" />
-                <span asp-validation-for="Email" class="text-red-600 text-sm"></span>
-            </div>
-
-            <div class="mb-4">
-                <label asp-for="PaymentMethodId" class="block font-medium">Payment Method</label>
-                <select asp-for="PaymentMethodId" asp-items="@(new SelectList(Model.PaymentMethods, "Id", "Name"))" class="form-select w-full"></select>
-                <span asp-validation-for="PaymentMethodId" class="text-red-600 text-sm"></span>
-            </div>
-
-            <div class="mb-6">
-                <label class="block font-medium">Total Price</label>
-                <p class="text-lg font-semibold text-amber-700">@Model.TotalAmount.ToString("C")</p>
-            </div>
-
-            <button type="submit" class="w-full bg-amber-600 text-white text-lg font-semibold px-6 py-3 rounded-md hover:bg-amber-700 transition">
-                Confirm Booking
-            </button>
-        </form>
-    </div>
-</section>
-
-<partial name="_ValidationScriptsPartial" /> *@
-
 @model ReceptionistBookingCreateViewModel
 
 @{
@@ -80,23 +36,41 @@
 
             <div>
                 <label asp-for="CheckInDate" class="block">Check-In</label>
-                <input asp-for="CheckInDate" type="date" class="form-input w-full" id="CheckInDate" min="@DateTime.Today.ToString("yyyy-MM-dd")" />
+                <input type="text"
+                       class="form-input w-full bg-gray-100 cursor-not-allowed"
+                       value="@Model.CheckInDate.ToString("yyyy-MM-dd")"
+                       readonly />
+                <input type="hidden" asp-for="CheckInDate" />
             </div>
 
             <div>
                 <label asp-for="CheckOutDate" class="block">Check-Out</label>
-                <input asp-for="CheckOutDate" type="date" class="form-input w-full" id="CheckOutDate" min="@DateTime.Today.AddDays(1).ToString("yyyy-MM-dd")" />
+                <input type="text"
+                       class="form-input w-full bg-gray-100 cursor-not-allowed"
+                       value="@Model.CheckOutDate.ToString("yyyy-MM-dd")"
+                       readonly />
+                <input type="hidden" asp-for="CheckOutDate" />
             </div>
 
             <div>
                 <label asp-for="NumberOfGuests" class="block">Guests</label>
-                <input asp-for="NumberOfGuests" class="form-input w-full" type="number" min="1" max="10" />
+                <input type="text"
+                       class="form-input w-full bg-gray-100 cursor-not-allowed"
+                       value="@Model.NumberOfGuests"
+                       readonly />
+                <input type="hidden" asp-for="NumberOfGuests" />
             </div>
+
 
             <div>
                 <label asp-for="RoomId" class="block">Room ID</label>
-                <input asp-for="RoomId" class="form-input w-full" />
+                <input type="text"
+                       class="form-input w-full bg-gray-100 cursor-not-allowed"
+                       value="@Model.RoomId"
+                       readonly />
+                <input type="hidden" asp-for="RoomId" />
             </div>
+
 
             <div>
                 <label asp-for="PaymentMethodId" class="block">Payment</label>
@@ -115,7 +89,7 @@
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
 
-    <script>
+    @* <script>
         $(function () {
             $('form').submit(function (e) {
                 const checkIn = new Date($('#CheckInDate').val());
@@ -136,6 +110,6 @@
                 return true;
             });
         });
-    </script>
+    </script> *@
 }
 

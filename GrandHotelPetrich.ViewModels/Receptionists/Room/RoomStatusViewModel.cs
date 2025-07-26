@@ -8,5 +8,7 @@ namespace GrandHotelPetrichMVC.ViewModels.Receptionists.Room
         public string RoomName { get; set; } = null!;
         public string ImageUrl { get; set; } = null!;
         public RoomStatus Status { get; set; }
+
+        public DateTime? LastCheckOutDate { get; set; }
     }
 }
