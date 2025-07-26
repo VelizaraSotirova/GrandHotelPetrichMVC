@@ -74,7 +74,7 @@ namespace GrandHotelPetrichMVC.Web
                     var userManager = services.GetRequiredService<UserManager<User>>();
                     // START: Assign role to user
                     // Create roles if they don't exist
-                    var roles = new[] { "Admin", "Customer", "Receptionist", "Manager" };
+                    var roles = new[] { "Admin", "Customer", "Receptionist", "Manager", "Housekeeping" };
                     foreach (var role in roles)
                     {
                         if (!await roleManager.RoleExistsAsync(role))

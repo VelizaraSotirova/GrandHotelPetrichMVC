@@ -4,7 +4,7 @@
     {
         public int AvailableRooms { get; set; }
         public int OccupiedRooms { get; set; }
-        public int TotalRooms => AvailableRooms + OccupiedRooms;
+        public int TotalRooms { get; set; }
 
         public int StaffCount { get; set; }
 

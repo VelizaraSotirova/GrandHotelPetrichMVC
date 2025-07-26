@@ -17,6 +17,13 @@
                 <span asp-validation-for="UserEmail" class="text-red-600 text-sm"></span>
             </div>
 
+            <div>
+                <label asp-for="PhoneNumber" class="block">Phone Number</label>
+                <input asp-for="PhoneNumber" class="form-input w-full" />
+                <span asp-validation-for="PhoneNumber" class="text-red-600 text-sm"></span>
+            </div>
+
+
             <div class="mb-4">
                 <label asp-for="Role" class="block font-medium">Role</label>
                 <select asp-for="Role" class="form-select w-full" asp-items="Html.GetEnumSelectList<StaffRole>()"></select>

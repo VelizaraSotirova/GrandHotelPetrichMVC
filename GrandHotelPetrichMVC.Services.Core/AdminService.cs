@@ -1,11 +1,9 @@
 ﻿using GrandHotelPetrichMVC.Data;
-using GrandHotelPetrichMVC.Data.Models;
 using GrandHotelPetrichMVC.GCommon.Enums;
 using GrandHotelPetrichMVC.Services.Core.Contracts;
 using GrandHotelPetrichMVC.ViewModels.Admin.ContactMessage;
 using GrandHotelPetrichMVC.ViewModels.Admin.Dashboard;
 using GrandHotelPetrichMVC.ViewModels.Admin.Review;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 namespace GrandHotelPetrichMVC.Services.Core
@@ -28,7 +26,10 @@ namespace GrandHotelPetrichMVC.Services.Core
             {
                 AvailableRooms = await _context.RoomStatuses.CountAsync(r => r.Status == RoomStatus.Available),
                 OccupiedRooms = await _context.RoomStatuses.CountAsync(r => r.Status == RoomStatus.Occupied),
-                StaffCount = await _context.Staff.CountAsync(),
+                TotalRooms = await _context.Rooms.CountAsync(),
+                StaffCount = await _context.Staff
+                                .Where(s => s.Status != StaffStatus.Terminated)
+                                .CountAsync(),
                 MonthlyRevenue = await _context.Revenues
                                     .Where(r => r.Date >= startOfMonth)
                                     .SumAsync(r => (decimal?)r.Amount) ?? 0,

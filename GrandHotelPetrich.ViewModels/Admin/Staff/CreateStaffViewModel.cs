@@ -12,10 +12,17 @@ namespace GrandHotelPetrichMVC.ViewModels.Admin.Staff
         public string FullName { get; set; } = null!;
 
         [Required]
+        [Phone]
+        public string PhoneNumber { get; set; } = null!;
+
+        [Required]
         public StaffRole Role { get; set; }
 
         [Required]
         public StaffShifts Shift { get; set; }
+
+        [Required]
+        public StaffStatus Status { get; set; }
 
         [Range(600, 10000)]
         public decimal Salary { get; set; }

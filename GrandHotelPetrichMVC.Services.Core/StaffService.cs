@@ -20,26 +20,35 @@ namespace GrandHotelPetrichMVC.Services.Core
             _userManager = userManager;
         }
 
-        public async Task<IEnumerable<StaffListViewModel>> GetStaffAsync(string statusFilter)
+        public async Task<IEnumerable<StaffListViewModel>> GetStaffAsync(string filter)
         {
-            var query = _context.Staff.Include(s => s.User).AsQueryable();
+            var staffQuery = _context.Staff.Include(s => s.User).AsQueryable();
 
-            if (!string.IsNullOrEmpty(statusFilter) && statusFilter.ToLower() != "all")
+            if (filter != "All" && Enum.TryParse<StaffStatus>(filter, out var status))
             {
-                if (Enum.TryParse<StaffStatus>(statusFilter, true, out var parsedStatus))
-                {
-                    query = query.Where(s => s.Status == parsedStatus);
-                }
+                staffQuery = staffQuery.Where(s => s.Status == status);
             }
 
-            return await query.Select(s => new StaffListViewModel
+            var staffList = await staffQuery.ToListAsync();
+            var result = new List<StaffListViewModel>();
+
+            foreach (var staff in staffList)
             {
-                Id = s.Id,
-                FullName = s.User.FirstName + " " + s.User.LastName,
-                Email = s.User.Email!,
-                PhoneNumber = s.User.PhoneNumber!,
-                Status = s.Status
-            }).ToListAsync();
+                var user = staff.User;
+                var roles = await _userManager.GetRolesAsync(user);
+
+                result.Add(new StaffListViewModel
+                {
+                    Id = staff.Id,
+                    FullName = $"{user.FirstName} {user.LastName}",
+                    Email = user.Email!,
+                    PhoneNumber = user.PhoneNumber!,
+                    Role = roles.FirstOrDefault() ?? "N/A", // fallback if no role
+                    Status = staff.Status
+                });
+            }
+
+            return result;
         }
 
         public async Task<bool> ChangeStaffStatusAsync(Guid staffId, string newStatus)
@@ -78,6 +87,22 @@ namespace GrandHotelPetrichMVC.Services.Core
         {
             var user = await _userManager.FindByEmailAsync(model.UserEmail);
             if (user == null) return false;
+
+            user.PhoneNumber = model.PhoneNumber;
+            await _userManager.UpdateAsync(user);
+
+            // Remove default Customer role if exists
+            if (await _userManager.IsInRoleAsync(user, "Customer"))
+            {
+                await _userManager.RemoveFromRoleAsync(user, "Customer");
+            }
+
+            // Assign correct role
+            var roleName = model.Role.ToString(); // e.g., "Receptionist"
+            if (!await _userManager.IsInRoleAsync(user, roleName))
+            {
+                await _userManager.AddToRoleAsync(user, roleName);
+            }
 
             var staff = new Staff
             {
