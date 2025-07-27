@@ -1,10 +1,12 @@
 wwwroot\css\site.css
 wwwroot\favicon.ico
+wwwroot\images\c58c7a2c-5a12-40cc-b5df-7c8120ced193.jpg
+wwwroot\images\gallery\ef0e37be-427c-4c40-a0b2-cf9016734944.jpg
 wwwroot\images\gallery\lobby.jpg
 wwwroot\images\gallery\pool.jpg
 wwwroot\images\gallery\restaurant.jpg
-wwwroot\images\gallery\spa.jpg
 wwwroot\images\gallery\suite.jpg
+wwwroot\images\jakub-klucky-7yeqemd-p90-unsplash.jpg
 wwwroot\images\restaurant\restaurant.jpg
 wwwroot\images\rooms\deluxe.jpg
 wwwroot\images\rooms\executive-suite.jpg

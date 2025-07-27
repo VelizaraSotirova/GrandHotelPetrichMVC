@@ -4,7 +4,7 @@ using GrandHotelPetrichMVC.Data.Models;
 using GrandHotelPetrichMVC.Services;
 using GrandHotelPetrichMVC.Services.Core;
 using GrandHotelPetrichMVC.Services.Core.Contracts;
-using Humanizer;
+using GrandHotelPetrichMVC.Services.Core.GrandHotelPetrichMVC.Services.Core;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
@@ -48,6 +48,7 @@ namespace GrandHotelPetrichMVC.Web
             builder.Services.AddScoped<IStaffService, StaffService>();
             builder.Services.AddScoped<IReceptionistService, ReceptionistService>();
             builder.Services.AddScoped<IReviewService, ReviewService>();
+            builder.Services.AddScoped<IGalleryService, GalleryService>();
 
 
             builder.Services.AddSingleton<IEmailSender, DummyEmailSender>();

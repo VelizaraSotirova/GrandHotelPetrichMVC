@@ -18,7 +18,7 @@ namespace GrandHotelPetrichMVC.Data.Models
         public string Title { get; set; } = null!;
 
         [MaxLength(DescriptionMaxLength)]
-        public string Description { get; set; } = null!;
+        public string? Description { get; set; }
 
         [Required]
         public Guid CategoryId { get; set; }

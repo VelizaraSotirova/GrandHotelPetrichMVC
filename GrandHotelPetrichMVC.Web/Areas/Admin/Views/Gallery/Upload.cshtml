@@ -1,0 +1,41 @@
+﻿@using GrandHotelPetrichMVC.ViewModels.Admin.Gallery
+@model GalleryUploadViewModel
+
+@{
+    ViewData["Title"] = "Upload Image";
+}
+
+<section class="py-8 max-w-2xl mx-auto">
+    <h2 class="text-2xl font-bold mb-4">Upload New Image</h2>
+
+    <form asp-action="Upload" method="post" enctype="multipart/form-data">
+        <div class="mb-4">
+            <label asp-for="CategoryId" class="block mb-1">Category</label>
+            <select asp-for="CategoryId" asp-items="ViewBag.Categories" class="form-select w-full">
+                <option value="">-- Select Category --</option>
+            </select>
+            <span asp-validation-for="CategoryId" class="text-red-600 text-sm"></span>
+        </div>
+
+        <div class="mb-4">
+            <label asp-for="ImageFile" class="block mb-1">Select Image</label>
+            <input asp-for="ImageFile" type="file" accept="image/*" class="form-input w-full" />
+            <span asp-validation-for="ImageFile" class="text-red-600 text-sm"></span>
+        </div>
+
+        <div class="mb-4">
+            <label for="Description" class="block text-sm font-medium text-gray-700">Description (optional)</label>
+            <textarea asp-for="Description" rows="2" class="form-textarea mt-1 block w-full" placeholder="Enter description..."></textarea>
+            <span asp-validation-for="Description" class="text-red-500 text-sm"></span>
+        </div>
+
+
+        <button type="submit" class="bg-amber-600 text-white px-4 py-2 rounded hover:bg-amber-700">
+            Upload
+        </button>
+    </form>
+</section>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
