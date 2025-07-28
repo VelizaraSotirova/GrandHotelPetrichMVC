@@ -1,0 +1,64 @@
+﻿@using GrandHotelPetrichMVC.GCommon.Enums
+@model IEnumerable<GrandHotelPetrichMVC.ViewModels.Admin.Room.RoomListViewModel>
+
+@{
+    ViewData["Title"] = "Manage Rooms";
+}
+
+<section class="pt-20 px-6">
+    <h2 class="text-3xl font-bold mb-6">Manage Rooms</h2>
+
+    <a asp-action="Create" class="bg-amber-600 text-white px-4 py-2 rounded hover:bg-amber-700 mb-4 inline-block">
+        + Create New Room
+    </a>
+
+    <table class="w-full table-auto bg-white shadow rounded">
+        <thead class="bg-amber-100">
+            <tr>
+                <th class="px-4 py-2">Name</th>
+                <th class="px-4 py-2">Type</th>
+                <th class="px-4 py-2">Price</th>
+                <th class="px-4 py-2">Capacity</th>
+                <th class="px-4 py-2">Badge</th>
+                <th class="px-4 py-2">Status</th>
+                <th class="px-4 py-2">Active</th>
+                <th class="px-4 py-2">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var room in Model)
+            {
+                <tr class="border-t">
+                    <td class="px-4 py-2">@room.Name</td>
+                    <td class="px-4 py-2">@room.RoomType</td>
+                    <td class="px-4 py-2">€@room.PricePerNight</td>
+                    <td class="px-4 py-2">@room.MaxCapacity</td>
+                    <td class="px-4 py-2">@room.Badge</td>
+                    <td class="px-4 py-2">@room.Status</td>
+                    <td class="px-4 py-2 text-center">
+                        <form asp-action="ToggleActive" method="post">
+                            <input type="hidden" name="id" value="@room.Id" />
+                            <input type="hidden" name="isActive" value="@(room.IsActive ? "false" : "true")" />
+                            <button class="text-sm bg-blue-500 text-white px-2 py-1 rounded">
+                                @(room.IsActive ? "Deactivate" : "Activate")
+                            </button>
+                        </form>
+                    </td>
+                    <td class="px-4 py-2 space-x-2">
+                        <a asp-action="Edit" asp-route-id="@room.Id" class="text-blue-700">Edit</a>
+                        <form asp-action="ChangeStatus" method="post" class="inline">
+                            <input type="hidden" name="id" value="@room.Id" />
+                            <select name="status" class="text-sm p-1">
+                                @foreach (var status in Enum.GetValues(typeof(RoomStatus)))
+                                {
+                                    <option value="@status" selected="@(status.Equals(room.Status))">@status</option>
+                                }
+                            </select>
+                            <button class="bg-amber-600 text-white px-2 py-1 rounded text-sm">Set</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</section>

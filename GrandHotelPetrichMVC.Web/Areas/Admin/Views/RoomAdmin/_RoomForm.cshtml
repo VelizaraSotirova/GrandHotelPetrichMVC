@@ -1,0 +1,60 @@
+﻿@model GrandHotelPetrichMVC.ViewModels.Admin.Room.RoomCreateViewModel
+@using GrandHotelPetrichMVC.GCommon.Enums
+
+<div class="grid gap-4">
+    <div>
+        <label asp-for="Name"></label>
+        <input asp-for="Name" class="form-input w-full" />
+        <span asp-validation-for="Name" class="text-red-600 text-sm"></span>
+    </div>
+
+    <div>
+        <label asp-for="RoomType"></label>
+        <select asp-for="RoomType" class="form-select w-full">
+            @foreach (RoomType type in Enum.GetValues(typeof(RoomType)))
+            {
+                <option value="@type">@type</option>
+            }
+        </select>
+    </div>
+
+    <div>
+        <label asp-for="PricePerNight"></label>
+        <input asp-for="PricePerNight" class="form-input w-full" />
+    </div>
+
+    <div>
+        <label asp-for="MaxCapacity"></label>
+        <input asp-for="MaxCapacity" class="form-input w-full" />
+    </div>
+
+    <div>
+        <label asp-for="BedConfiguration"></label>
+        <select asp-for="BedConfiguration" class="form-select w-full">
+            @foreach (BedConfiguration bed in Enum.GetValues(typeof(BedConfiguration)))
+            {
+                <option value="@bed">@bed</option>
+            }
+        </select>
+    </div>
+
+    <div>
+        <label asp-for="Badge"></label>
+        <select asp-for="Badge" class="form-select w-full">
+            @foreach (RoomBadge badge in Enum.GetValues(typeof(RoomBadge)))
+            {
+                <option value="@badge">@badge</option>
+            }
+        </select>
+    </div>
+
+    <div>
+        <label asp-for="ImageUrl"></label>
+        <input asp-for="ImageUrl" class="form-input w-full" />
+    </div>
+
+    <div>
+        <label asp-for="Description"></label>
+        <textarea asp-for="Description" class="form-textarea w-full"></textarea>
+    </div>
+</div>
