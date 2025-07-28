@@ -1,0 +1,71 @@
+﻿@using GrandHotelPetrichMVC.ViewModels.Admin.Payment
+@model List<PaymentMethodViewModel>
+
+@{
+    ViewData["Title"] = "Manage Payment Methods";
+}
+
+<section class="pt-24 pb-10">
+    <div class="container mx-auto px-4">
+        <h1 class="text-3xl font-bold mb-6">Payment Methods</h1>
+
+        <form asp-action="Add" method="post" class="mb-6">
+            <div class="flex gap-4 items-center">
+                <input type="text" name="name" placeholder="New Payment Method"
+                       class="form-input px-4 py-2 w-80 border border-gray-300 rounded" required />
+                <button type="submit"
+                        class="bg-amber-600 hover:bg-amber-700 text-white px-4 py-2 rounded">
+                    + Add
+                </button>
+            </div>
+        </form>
+
+        <table class="w-full table-auto bg-white shadow rounded mt-4">
+            <thead class="bg-amber-100">
+                <tr>
+                    <th class="px-4 py-2 text-left">Name</th>
+                    <th class="px-4 py-2 text-left">Status</th>
+                    <th class="px-4 py-2 text-left">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var method in Model)
+                {
+                    <tr class="border-t">
+                        <td class="px-4 py-2">@method.Name</td>
+                        <td class="px-4 py-2">
+                            @if (method.IsActive)
+                            {
+                                <span class="text-green-600 font-semibold">Active</span>
+                            }
+                            else
+                            {
+                                <span class="text-red-600 font-semibold">Inactive</span>
+                            }
+                        </td>
+                        <td class="px-4 py-2">
+                            @if (method.IsActive)
+                            {
+                                <form asp-action="Disable" method="post" class="inline">
+                                    <input type="hidden" name="id" value="@method.Id" />
+                                    <button class="text-sm bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded">
+                                        Disable
+                                    </button>
+                                </form>
+                            }
+                            else
+                            {
+                                <form asp-action="Reactivate" method="post" class="inline">
+                                    <input type="hidden" name="id" value="@method.Id" />
+                                    <button class="text-sm bg-green-500 hover:bg-green-600 text-white px-3 py-1 rounded">
+                                        Reactivate
+                                    </button>
+                                </form>
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</section>

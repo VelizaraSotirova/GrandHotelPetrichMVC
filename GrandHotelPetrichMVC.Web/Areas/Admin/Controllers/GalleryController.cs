@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace GrandHotelPetrichMVC.Web.Areas.Admin.Controllers
 {
-    [Area("Admin")]
+    [Area(nameof(Admin))]
     [Authorize(Roles = "Admin")]
     public class GalleryController : Controller
     {
