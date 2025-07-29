@@ -7,13 +7,13 @@ namespace GrandHotelPetrichMVC.ViewModels.Guests.Review
     {
         [Required]
         [MaxLength(TitleMaxLength)]
-        public string Title { get; set; } = string.Empty;
+        public string Title { get; set; } = null!;
 
         [Required]
         [MaxLength(CommentMaxLength)]
-        public string Comment { get; set; } = string.Empty;
+        public string Comment { get; set; } = null!;
 
-        [Range(1, 5)]
+        [Range(MinRating, MaxRating)]
         public int Rating { get; set; }
 
         public Guid? RoomId { get; set; } // Optional

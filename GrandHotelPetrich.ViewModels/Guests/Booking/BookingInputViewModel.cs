@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc.Rendering;
 using System.ComponentModel.DataAnnotations;
 
+using static GrandHotelPetrichMVC.GCommon.ValidationConstants.Booking;
+
 namespace GrandHotelPetrichMVC.ViewModels.Guests.Booking
 {
     public class BookingInputViewModel
@@ -14,7 +16,7 @@ namespace GrandHotelPetrichMVC.ViewModels.Guests.Booking
         public DateTime CheckOutDate { get; set; }
 
         [Required]
-        [Range(1, 6)]
+        [Range(MinNumberOfGuests, MaxNumberOfGuests)]
         public int NumberOfGuests { get; set; }
 
         public Guid? SelectedRoomId { get; set; }

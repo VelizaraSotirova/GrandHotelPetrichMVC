@@ -1,6 +1,8 @@
 ﻿using GrandHotelPetrichMVC.GCommon.Enums;
 using System.ComponentModel.DataAnnotations;
 
+using static GrandHotelPetrichMVC.GCommon.ValidationConstants.Booking;
+
 namespace GrandHotelPetrichMVC.ViewModels.Guests.Booking
 {
     public class BookingConfirmationViewModel
@@ -21,7 +23,7 @@ namespace GrandHotelPetrichMVC.ViewModels.Guests.Booking
         public int NumberOfGuests { get; set; }
         public decimal TotalAmount { get; set; }
 
-        [MaxLength(300)]
+        [MaxLength(SpecialRequestsMaxLength)]
         public string? SpecialRequests { get; set; }
 
         [Required]

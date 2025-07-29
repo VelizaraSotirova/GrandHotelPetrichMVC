@@ -1,6 +1,8 @@
 ﻿using GrandHotelPetrichMVC.GCommon.Enums;
 using System.ComponentModel.DataAnnotations;
 
+using static GrandHotelPetrichMVC.GCommon.ValidationConstants.Staff;
+
 namespace GrandHotelPetrichMVC.ViewModels.Admin.Staff
 {
     public class CreateStaffViewModel
@@ -24,7 +26,7 @@ namespace GrandHotelPetrichMVC.ViewModels.Admin.Staff
         [Required]
         public StaffStatus Status { get; set; }
 
-        [Range(600, 10000)]
+        [Range(StaffMinSalary, StaffMaxSalary)]
         public decimal Salary { get; set; }
     }
 }

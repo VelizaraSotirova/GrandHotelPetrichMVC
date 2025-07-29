@@ -10,7 +10,7 @@ namespace GrandHotelPetrichMVC.Data.Models
 
         [Required]
         [MaxLength(AmentiesMaxLength)]
-        public string Name { get; set; } = string.Empty; // e.g. "Wi-Fi"
+        public string Name { get; set; } = null!; 
 
         public bool IsActive { get; set; } = true; // Indicates if the amenity is currently available
 

@@ -27,9 +27,6 @@ namespace GrandHotelPetrichMVC.Data.Models
 
         public Guid? BookingId { get; set; }
 
-        //[MaxLength(50)]
-        //public string? PaymentMethod { get; set; }
-
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 
         // Navigation properties

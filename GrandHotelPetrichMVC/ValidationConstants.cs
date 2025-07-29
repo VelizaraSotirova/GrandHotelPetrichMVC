@@ -9,6 +9,9 @@
             public const int PaymentMethodMaxLength = 30;
             public const int CheckInNotesMaxLength = 500;
             public const int CheckOutNotesMaxLength = 500;
+
+            public const int MinNumberOfGuests = 1; 
+            public const int MaxNumberOfGuests = 6;
         }
 
         public static class ContactMessage
@@ -40,6 +43,9 @@
             public const int TitleMaxLength = 100;
             public const int CommentMaxLength = 2000;
             public const int StatusMaxLength = 10; // Pending, Approved, Rejected
+
+            public const int MinRating = 1;
+            public const int MaxRating = 5;
         }
 
         public static class Room
@@ -51,6 +57,12 @@
             public const int ImageUrlMaxLength = 200;
             public const int AmentiesMaxLength = 2000; // JSON array as string
             public const int BadgeMaxLength = 100;
+
+            public const int PricePerNightMin = 1;
+            public const int PricePerNightMax = 10000;
+
+            public const int MaxConstCapacity = 20; // Maximum number of guests
+            public const int MinCapacity = 1;
         }
 
         public static class StatusOfRoom
@@ -69,6 +81,14 @@
         public static class Staff
         {
             public const int UserIdMaxLength = 450;
+
+            public const int StaffMinSalary = 600;
+            public const int StaffMaxSalary = 10000;
+        }
+
+        public static class Amenity
+        {
+            public const int NameMaxLength = 100;
         }
     }
 }

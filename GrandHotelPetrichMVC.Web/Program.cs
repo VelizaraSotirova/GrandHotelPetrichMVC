@@ -4,7 +4,6 @@ using GrandHotelPetrichMVC.Data.Models;
 using GrandHotelPetrichMVC.Services;
 using GrandHotelPetrichMVC.Services.Core;
 using GrandHotelPetrichMVC.Services.Core.Contracts;
-using GrandHotelPetrichMVC.Services.Core.GrandHotelPetrichMVC.Services.Core;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;

@@ -22,11 +22,11 @@ namespace GrandHotelPetrichMVC.Data.Models
 
         [Required]
         [MaxLength(TitleMaxLength)]
-        public string Title { get; set; } = string.Empty;
+        public string Title { get; set; } = null!;
 
         [Required]
         [MaxLength(CommentMaxLength)]
-        public string Comment { get; set; } = string.Empty;
+        public string Comment { get; set; } = null!;
 
         public bool IsApproved { get; set; } = false;
         public bool IsFeatured { get; set; } = false;

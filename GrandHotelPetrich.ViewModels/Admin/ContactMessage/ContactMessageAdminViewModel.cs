@@ -4,15 +4,15 @@
     {
         public Guid Id { get; set; }
 
-        public string Name { get; set; } = string.Empty;
+        public string Name { get; set; } = null!;
 
-        public string Email { get; set; } = string.Empty;
+        public string Email { get; set; } = null!;
 
-        public string Subject { get; set; } = string.Empty;
+        public string Subject { get; set; } = null!;
 
-        public string Message { get; set; } = string.Empty;
+        public string Message { get; set; } = null!;
 
-        public string Status { get; set; } = string.Empty;
+        public string Status { get; set; } = null!;
 
         public DateTime ReceivedAt { get; set; }
     }

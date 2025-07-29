@@ -13,7 +13,7 @@ namespace GrandHotelPetrichMVC.Data.Models
 
         [Required]
         [MaxLength(MaxNameLength)]
-        public string Name { get; set; } = string.Empty;
+        public string Name { get; set; } = null!;
 
         public RoomType RoomType { get; set; } = RoomType.Standard;
 

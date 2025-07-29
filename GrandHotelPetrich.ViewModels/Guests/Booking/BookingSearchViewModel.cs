@@ -1,6 +1,8 @@
 ﻿using GrandHotelPetrichMVC.GCommon.Enums;
 using System.ComponentModel.DataAnnotations;
 
+using static GrandHotelPetrichMVC.GCommon.ValidationConstants.Booking;
+
 namespace GrandHotelPetrichMVC.ViewModels.Guests.Booking
 {
     public class BookingSearchViewModel : IValidatableObject
@@ -13,7 +15,7 @@ namespace GrandHotelPetrichMVC.ViewModels.Guests.Booking
         [DataType(DataType.Date)]
         public DateTime CheckOutDate { get; set; }
 
-        [Range(1, 6)]
+        [Range(MinNumberOfGuests, MaxNumberOfGuests)]
         public int NumberOfGuests { get; set; }
 
         public RoomType? RoomType { get; set; }

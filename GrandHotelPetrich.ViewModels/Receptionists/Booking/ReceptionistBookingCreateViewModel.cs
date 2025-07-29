@@ -1,6 +1,8 @@
 ﻿using GrandHotelPetrichMVC.ViewModels.Guests.Booking;
 using System.ComponentModel.DataAnnotations;
 
+using static GrandHotelPetrichMVC.GCommon.ValidationConstants.Booking;
+
 namespace GrandHotelPetrichMVC.ViewModels.Receptionists.Booking
 {
     public class ReceptionistBookingCreateViewModel 
@@ -30,7 +32,7 @@ namespace GrandHotelPetrichMVC.ViewModels.Receptionists.Booking
         public DateTime CheckOutDate { get; set; }
 
         [Required]
-        [Range(1, 10)]
+        [Range(MinNumberOfGuests, MaxNumberOfGuests)]
         public int NumberOfGuests { get; set; }
 
         [Required]

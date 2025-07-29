@@ -1,12 +1,12 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using static GrandHotelPetrichMVC.GCommon.ValidationConstants.Amenity;
 
 namespace GrandHotelPetrichMVC.ViewModels.Admin.Amenity
 {
     public class AddAmenityViewModel
     {
         [Required]
-        [StringLength(100)]
+        [MaxLength(NameMaxLength)]
         public string Name { get; set; } = null!;
     }
-
 }
