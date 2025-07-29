@@ -1,5 +1,6 @@
 ﻿using GrandHotelPetrichMVC.Data;
 using GrandHotelPetrichMVC.Data.Models;
+using GrandHotelPetrichMVC.Services.Core.Contracts;
 using GrandHotelPetrichMVC.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
@@ -7,15 +8,20 @@ namespace GrandHotelPetrichMVC.Web.Controllers
 {
     public class ContactController : Controller
     {
-        private readonly ApplicationDbContext _context;
+        private readonly IContactService _publicService;
 
-        public ContactController(ApplicationDbContext context)
+        public ContactController(IContactService publicService)
         {
-            _context = context;
+            _publicService = publicService;
         }
 
         [HttpGet]
-        public IActionResult Index() => View();
+        public async Task<IActionResult> Index()
+        {
+            var email = User.Identity?.IsAuthenticated == true ? User.Identity.Name : null;
+            var model = await _publicService.GetPrefilledContactFormAsync(email);
+            return View(model);
+        }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -24,17 +30,7 @@ namespace GrandHotelPetrichMVC.Web.Controllers
             if (!ModelState.IsValid)
                 return View("Index", model);
 
-            var message = new ContactMessage
-            {
-                Name = model.Name,
-                Email = model.Email,
-                PhoneNumber = model.Phone,
-                Subject = model.Subject,
-                Message = model.Message,
-            };
-
-            _context.ContactMessages.Add(message);
-            await _context.SaveChangesAsync();
+            await _publicService.SubmitContactFormAsync(model);
 
             TempData["Success"] = "Your message has been sent successfully!";
             return RedirectToAction("Index");

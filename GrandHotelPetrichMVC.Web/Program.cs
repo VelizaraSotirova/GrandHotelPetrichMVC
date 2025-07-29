@@ -52,6 +52,7 @@ namespace GrandHotelPetrichMVC.Web
             builder.Services.AddScoped<IPaymentMethodService, PaymentMethodService>();
             builder.Services.AddScoped<IRoomAdminService, RoomAdminService>();
             builder.Services.AddScoped<IAmenityService, AmenityService>();
+            builder.Services.AddScoped<IContactService, ContactService>();
 
 
 

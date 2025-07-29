@@ -1,7 +1,7 @@
 ﻿@model GrandHotelPetrichMVC.ViewModels.ContactMessageFormViewModel
-
 @{
     ViewData["Title"] = "Contact Us";
+    var isLoggedIn = User.Identity?.IsAuthenticated ?? false;
 }
 
 <!-- Hero Section -->
@@ -16,7 +16,7 @@
     </div>
 </section>
 
-<!-- Contact Information -->
+<!-- Contact Info-->
 <section class="py-16">
     <div class="container mx-auto px-4">
         <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
@@ -70,7 +70,7 @@
             </div>
         </div>
 
-        <!-- Contact Form -->
+        <!--Contact Form-->
         <div class="grid lg:grid-cols-2 gap-12">
             <div class="bg-white p-8 rounded-lg shadow">
                 <h2 class="text-2xl font-bold font-serif mb-6">Send us a Message</h2>
@@ -82,19 +82,22 @@
                     </div>
                 }
 
-                @* Validation summary *@
                 <div asp-validation-summary="ModelOnly" class="text-red-500 text-sm mb-4"></div>
 
                 <form method="post" asp-action="Submit" novalidate>
                     <div class="grid md:grid-cols-2 gap-4">
                         <div>
                             <label for="Name" class="block text-sm font-medium mb-2">Full Name *</label>
-                            <input id="Name" name="Name" type="text" required class="form-input" placeholder="Your full name" />
+                            <input type="text" id="Name" name="Name" value="@Model.Name"
+                                   class="form-input" placeholder="Your full name"
+                                   @(isLoggedIn ? "readonly" : "") />
                             <span asp-validation-for="Name" class="text-red-500 text-sm"></span>
                         </div>
                         <div>
                             <label for="Email" class="block text-sm font-medium mb-2">Email *</label>
-                            <input id="Email" name="Email" type="email" required class="form-input" placeholder="your.email@example.com" />
+                            <input type="email" id="Email" name="Email" value="@Model.Email"
+                                   class="form-input" placeholder="your.email@example.com"
+                                   @(isLoggedIn ? "readonly" : "") />
                             <span asp-validation-for="Email" class="text-red-500 text-sm"></span>
                         </div>
                     </div>
@@ -102,19 +105,23 @@
                     <div class="grid md:grid-cols-2 gap-4">
                         <div>
                             <label for="Phone" class="block text-sm font-medium mb-2">Phone Number</label>
-                            <input id="Phone" name="Phone" type="tel" class="form-input" placeholder="+359 888 123 456" />
+                            <input type="tel" id="Phone" name="Phone" value="@Model.Phone"
+                                   class="form-input" placeholder="+359 888 123 456"
+                                   @(isLoggedIn ? "readonly" : "") />
                             <span asp-validation-for="Phone" class="text-red-500 text-sm"></span>
                         </div>
                         <div>
                             <label for="Subject" class="block text-sm font-medium mb-2">Subject *</label>
-                            <input id="Subject" name="Subject" type="text" required class="form-input" placeholder="How can we help?" />
+                            <input type="text" id="Subject" name="Subject" value="@Model.Subject"
+                                   class="form-input" placeholder="How can we help?" />
                             <span asp-validation-for="Subject" class="text-red-500 text-sm"></span>
                         </div>
                     </div>
 
                     <div>
                         <label for="Message" class="block text-sm font-medium mb-2">Message *</label>
-                        <textarea id="Message" name="Message" required rows="5" class="form-input" placeholder="Tell us more about your inquiry..."></textarea>
+                        <textarea id="Message" name="Message" rows="5"
+                                  class="form-input" placeholder="Tell us more about your inquiry...">@Model.Message</textarea>
                         <span asp-validation-for="Message" class="text-red-500 text-sm"></span>
                     </div>
 
@@ -122,25 +129,17 @@
                         Send Message
                     </button>
                 </form>
-
             </div>
 
             <!-- Map -->
             <div class="space-y-6">
                 <div class="bg-white p-6 rounded-lg shadow">
                     <h3 class="text-2xl font-bold font-serif mb-4">Location</h3>
-
-                    <gmp-map center="41.398193,23.206503"
-                             zoom="10"
-                             map-id="DEMO_MAP_ID"
-                             style="height: 400px"></gmp-map>
-
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d23941.93249198205!2d23.186220653154987!3d41.40141855397565!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14aa2636399d1a0b%3A0x400a01269bf4f10!2zMjg1MCDQn9C10YLRgNC40Yc!5e0!3m2!1sbg!2sbg!4v1753441680232!5m2!1sbg!2sbg"
-                        width="600" height="450" style="border:0;" 
-                        allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-
-
-                    <p class="text-gray-600 mb-4">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d23941.93249198205!2d23.186220653154987!3d41.40141855397565!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14aa2636399d1a0b%3A0x400a01269bf4f10!2zMjg1MCDQn9C10YLRgNC40Yc!5e0!3m2!1sbg!2sbg!4v1753788758997!5m2!1sbg!2sbg"
+                            width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                    <p class="text-gray-600 mt-4">
                         Located in the heart of Petrich, our hotel is easily accessible from major transportation hubs and local attractions.
                     </p>
                 </div>
@@ -148,8 +147,6 @@
         </div>
     </div>
 </section>
-
-<input class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-amber-500" />
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
