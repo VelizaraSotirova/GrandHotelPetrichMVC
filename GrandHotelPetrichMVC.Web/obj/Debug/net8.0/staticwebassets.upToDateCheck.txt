@@ -11,6 +11,7 @@ wwwroot\images\jakub-klucky-7yeqemd-p90-unsplash.jpg
 wwwroot\images\restaurant\restaurant.jpg
 wwwroot\images\rooms\deluxe.jpg
 wwwroot\images\rooms\executive-suite.jpg
+wwwroot\images\rooms\family.jpg
 wwwroot\images\rooms\family-room.jpg
 wwwroot\images\rooms\presidential-suite.jpg
 wwwroot\images\rooms\standard-double.jpg

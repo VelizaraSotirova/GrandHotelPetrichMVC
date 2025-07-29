@@ -28,6 +28,14 @@ build_property._RazorSourceGeneratorDebug =
 build_property.EffectiveAnalysisLevelStyle = 8.0
 build_property.EnableCodeStyleSeverity = 
 
+[D:/SoftUni/GitHub/GrandHotelPetrichMVC/GrandHotelPetrichMVC.Web/Areas/Admin/Views/Amenities/Add.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQW1lbml0aWVzXEFkZC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/SoftUni/GitHub/GrandHotelPetrichMVC/GrandHotelPetrichMVC.Web/Areas/Admin/Views/Amenities/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQW1lbml0aWVzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/SoftUni/GitHub/GrandHotelPetrichMVC/GrandHotelPetrichMVC.Web/Areas/Admin/Views/ContactMessages/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQ29udGFjdE1lc3NhZ2VzXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 

@@ -24,17 +24,29 @@ namespace GrandHotelPetrichMVC.Web.Areas.Admin.Controllers
         }
 
         [HttpGet]
-        public IActionResult Create()
+        public async Task<IActionResult> Create()
         {
-            return View(new RoomCreateViewModel());
+            var model = await _roomService.GetRoomCreateViewModelAsync();
+            return View(model);
         }
 
         [HttpPost]
         public async Task<IActionResult> Create(RoomCreateViewModel model)
         {
-            if (!ModelState.IsValid) return View(model);
+            if (!ModelState.IsValid)
+            {
+                model.AvailableAmenities = await _roomService.GetAmenitiesSelectListAsync();
+                return View(model);
+            }
 
-            await _roomService.CreateRoomAsync(model);
+            var success = await _roomService.CreateRoomAsync(model);
+            if (!success)
+            {
+                ModelState.AddModelError("", "Could not create room.");
+                model.AvailableAmenities = await _roomService.GetAmenitiesSelectListAsync();
+                return View(model);
+            }
+
             return RedirectToAction(nameof(Index));
         }
 

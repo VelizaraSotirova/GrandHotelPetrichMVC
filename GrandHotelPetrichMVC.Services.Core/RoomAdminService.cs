@@ -3,6 +3,7 @@ using GrandHotelPetrichMVC.Data.Models;
 using GrandHotelPetrichMVC.GCommon.Enums;
 using GrandHotelPetrichMVC.Services.Core.Contracts;
 using GrandHotelPetrichMVC.ViewModels.Admin.Room;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 
 namespace GrandHotelPetrichMVC.Services.Core
@@ -81,6 +82,16 @@ namespace GrandHotelPetrichMVC.Services.Core
                 UpdatedAt = DateTime.UtcNow
             });
 
+            // Add amenities
+            foreach (var amenityId in model.SelectedAmenityIds)
+            {
+                room.RoomAmenities.Add(new RoomAmenity
+                {
+                    RoomId = room.Id,
+                    AmenityId = amenityId
+                });
+            }
+
             await _context.SaveChangesAsync();
             return true;
         }
@@ -124,6 +135,36 @@ namespace GrandHotelPetrichMVC.Services.Core
             room.UpdatedAt = DateTime.UtcNow;
             await _context.SaveChangesAsync();
             return true;
+        }
+
+        public async Task<RoomCreateViewModel> GetRoomCreateViewModelAsync()
+        {
+            var amenities = await _context.Amenities
+                .Where(a => a.IsActive)
+                .ToListAsync();
+
+            return new RoomCreateViewModel
+            {
+                AvailableAmenities = amenities
+                .Select(a => new SelectListItem
+                {
+                    Value = a.Id.ToString(),
+                    Text = a.Name
+                }).ToList()
+            };
+        }
+
+        public async Task<List<SelectListItem>> GetAmenitiesSelectListAsync()
+        {
+            return await _context.Amenities
+                .Where(a => a.IsActive)
+                .OrderBy(a => a.Name)
+                .Select(a => new SelectListItem
+                {
+                    Value = a.Id.ToString(),
+                    Text = a.Name
+                })
+                .ToListAsync();
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using GrandHotelPetrichMVC.GCommon.Enums;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System.ComponentModel.DataAnnotations;
 
 namespace GrandHotelPetrichMVC.ViewModels.Admin.Room
@@ -30,5 +31,8 @@ namespace GrandHotelPetrichMVC.ViewModels.Admin.Room
         public string ImageUrl { get; set; } = null!;
 
         public RoomBadge Badge { get; set; }
+
+        public List<Guid> SelectedAmenityIds { get; set; } = new();
+        public List<SelectListItem> AvailableAmenities { get; set; } = new();
     }
 }
