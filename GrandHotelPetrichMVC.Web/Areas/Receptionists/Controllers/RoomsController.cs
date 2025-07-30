@@ -24,6 +24,7 @@ namespace GrandHotelPetrichMVC.Web.Areas.Receptionists.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> MarkAsCleaned(Guid roomId)
         {
             var success = await _service.MarkRoomAsCleanedAsync(roomId);

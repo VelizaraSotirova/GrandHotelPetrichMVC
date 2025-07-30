@@ -22,6 +22,7 @@ namespace GrandHotelPetrichMVC.Web.Areas.Admin.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Approve(Guid id)
         {
             await _adminService.ApproveReviewAsync(id);

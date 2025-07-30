@@ -30,6 +30,7 @@ namespace GrandHotelPetrichMVC.Web.Areas.Admin.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Upload(GalleryUploadViewModel model)
         {
             if (!ModelState.IsValid)
@@ -51,6 +52,7 @@ namespace GrandHotelPetrichMVC.Web.Areas.Admin.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Delete(Guid id)
         {
             var success = await _galleryService.DeleteImageAsync(id);

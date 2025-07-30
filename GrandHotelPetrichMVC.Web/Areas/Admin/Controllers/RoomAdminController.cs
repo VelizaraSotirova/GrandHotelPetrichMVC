@@ -31,6 +31,7 @@ namespace GrandHotelPetrichMVC.Web.Areas.Admin.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(RoomCreateViewModel model)
         {
             if (!ModelState.IsValid)
@@ -60,6 +61,7 @@ namespace GrandHotelPetrichMVC.Web.Areas.Admin.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(RoomCreateViewModel model)
         {
             if (!ModelState.IsValid) return View(model);
@@ -69,6 +71,7 @@ namespace GrandHotelPetrichMVC.Web.Areas.Admin.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> ToggleActive(Guid id, bool isActive)
         {
             await _roomService.ToggleRoomActiveAsync(id, isActive);
@@ -76,6 +79,7 @@ namespace GrandHotelPetrichMVC.Web.Areas.Admin.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> ChangeStatus(Guid id, RoomStatus status)
         {
             await _roomService.ChangeRoomStatusAsync(id, status);

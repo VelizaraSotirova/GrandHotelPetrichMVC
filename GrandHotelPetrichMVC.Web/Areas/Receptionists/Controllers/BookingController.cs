@@ -29,6 +29,7 @@ namespace GrandHotelPetrichMVC.Web.Areas.Receptionists.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Search(ReceptionistBookingSearchViewModel model)
         {
             if (!ModelState.IsValid) return View(model);

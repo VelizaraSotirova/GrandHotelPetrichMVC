@@ -29,6 +29,7 @@ namespace GrandHotelPetrichMVC.Web.Areas.Admin.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> UpdateStatus(Guid staffId, string status)
         {
             var success = await _staffService.ChangeStaffStatusAsync(staffId, status);

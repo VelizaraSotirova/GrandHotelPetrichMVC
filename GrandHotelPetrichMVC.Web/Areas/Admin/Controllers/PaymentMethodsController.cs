@@ -25,6 +25,7 @@ namespace GrandHotelPetrichMVC.Web.Areas.Admin.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Add(string name)
         {
             if (!string.IsNullOrWhiteSpace(name))
@@ -34,6 +35,7 @@ namespace GrandHotelPetrichMVC.Web.Areas.Admin.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Disable(Guid id)
         {
             await _service.DisableMethodAsync(id);
@@ -41,6 +43,7 @@ namespace GrandHotelPetrichMVC.Web.Areas.Admin.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Reactivate(Guid id)
         {
             await _service.ReactivateMethodAsync(id);

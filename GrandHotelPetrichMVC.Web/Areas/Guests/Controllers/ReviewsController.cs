@@ -49,16 +49,6 @@ namespace GrandHotelPetrichMVC.Web.Areas.Guests.Controllers
             if (!ModelState.IsValid)
                 return View(model);
 
-            //var result = await _reviewService.SubmitReviewAsync(model, userId);
-            //if (!result)
-            //{
-            //    TempData["Error"] = "You're not eligible to submit a review.";
-            //    return RedirectToAction("Index");
-            //}
-
-            //TempData["Success"] = "Review submitted and awaiting approval!";
-
-            //return RedirectToAction("Index", "Reviews", new { area = "" });
             await _reviewService.SubmitReviewAsync(model, userId);
 
             return RedirectToAction("Success");

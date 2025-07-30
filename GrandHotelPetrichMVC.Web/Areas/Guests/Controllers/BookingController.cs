@@ -33,6 +33,7 @@ namespace GrandHotelPetrichMVC.Web.Areas.Guests.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Index(BookingSearchViewModel model)
         {
             if (!ModelState.IsValid)

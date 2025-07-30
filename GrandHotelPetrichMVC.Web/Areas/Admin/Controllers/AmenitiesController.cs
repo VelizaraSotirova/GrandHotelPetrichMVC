@@ -23,6 +23,7 @@ namespace GrandHotelPetrichMVC.Web.Areas.Admin.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Deactivate(Guid id)
         {
             await _amenityService.DeactivateAsync(id);
@@ -30,6 +31,7 @@ namespace GrandHotelPetrichMVC.Web.Areas.Admin.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Activate(Guid id)
         {
             await _amenityService.ActivateAsync(id);
@@ -43,6 +45,7 @@ namespace GrandHotelPetrichMVC.Web.Areas.Admin.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Add(AddAmenityViewModel model)
         {
             if (!ModelState.IsValid) return View(model);
