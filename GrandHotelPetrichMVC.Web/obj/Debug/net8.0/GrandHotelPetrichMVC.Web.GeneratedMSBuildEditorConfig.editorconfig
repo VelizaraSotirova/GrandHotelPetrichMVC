@@ -220,6 +220,14 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/SoftUni/GitHub/GrandHotelPetrichMVC/GrandHotelPetrichMVC.Web/Views/Shared/Error404.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yNDA0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/SoftUni/GitHub/GrandHotelPetrichMVC/GrandHotelPetrichMVC.Web/Views/Shared/ServerError.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXFNlcnZlckVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/SoftUni/GitHub/GrandHotelPetrichMVC/GrandHotelPetrichMVC.Web/Views/Shared/_LoginPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Mb2dpblBhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 

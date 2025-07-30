@@ -14,10 +14,10 @@ namespace GrandHotelPetrichMVC.Web
     {
         public static async Task Main(string[] args)
         {
-            var builder = WebApplication.CreateBuilder(args);
+            WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
-            var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
+            string connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
             builder.Services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(connectionString));
             builder.Services.AddDatabaseDeveloperPageExceptionFilter();
@@ -53,23 +53,17 @@ namespace GrandHotelPetrichMVC.Web
             builder.Services.AddScoped<IAmenityService, AmenityService>();
             builder.Services.AddScoped<IContactService, ContactService>();
 
-
-
             builder.Services.AddSingleton<IEmailSender, DummyEmailSender>();
-
-
 
             builder.Services.AddControllersWithViews();
             builder.Services.AddRazorPages();
 
-            var app = builder.Build();
-
-            Console.WriteLine(app.Environment.IsDevelopment());
+            WebApplication app = builder.Build();
 
             // Seed the database
-            using (var scope = app.Services.CreateScope())
+            using (IServiceScope scope = app.Services.CreateScope())
             {
-                var services = scope.ServiceProvider;
+                IServiceProvider services = scope.ServiceProvider;
                 try
                 {
                     ApplicationDbContext context = services.GetRequiredService<ApplicationDbContext>();
@@ -115,7 +109,6 @@ namespace GrandHotelPetrichMVC.Web
             }
 
 
-
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
             {
@@ -127,6 +120,8 @@ namespace GrandHotelPetrichMVC.Web
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+
+            app.UseStatusCodePagesWithRedirects("/Home/Error?statusCode={0}");
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
