@@ -15,6 +15,6 @@ namespace GrandHotelPetrichMVC.Services.Core.Contracts
 
         Task<BookingSuccessViewModel?> GetBookingSuccessAsync(Guid bookingId, string userId);
 
-        Task<MyBookingsViewModel> GetBookingsForUserAsync(string userId, string filter);
+        Task<MyBookingsViewModel> GetBookingsForUserAsync(string userId, string filter, int page);
     }
 }

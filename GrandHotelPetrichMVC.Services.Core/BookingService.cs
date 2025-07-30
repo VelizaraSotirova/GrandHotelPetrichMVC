@@ -221,7 +221,7 @@ namespace GrandHotelPetrichMVC.Services.Core
             };
         }
 
-        public async Task<MyBookingsViewModel> GetBookingsForUserAsync(string userId, string filter)
+        public async Task<MyBookingsViewModel> GetBookingsForUserAsync(string userId, string filter, int page = 1)
         {
             var query = _context.Bookings
                 .Where(b => b.UserId == userId)
@@ -236,8 +236,14 @@ namespace GrandHotelPetrichMVC.Services.Core
             else if (filter == "passed")
                 query = query.Where(b => b.CheckOutDate < today);
 
+            var totalCount = await query.CountAsync();
+
+            int pageSize = 2;
+
             var bookings = await query
                 .OrderByDescending(b => b.CheckInDate)
+                .Skip((page - 1) * pageSize)
+                .Take(pageSize)
                 .Select(b => new BookingDisplayViewModel
                 {
                     Id = b.Id,
@@ -253,8 +259,11 @@ namespace GrandHotelPetrichMVC.Services.Core
             return new MyBookingsViewModel
             {
                 Filter = filter,
-                Bookings = bookings
+                Bookings = bookings,
+                CurrentPage = page,
+                TotalPages = (int)Math.Ceiling((double)totalCount / pageSize)
             };
         }
+
     }
 }

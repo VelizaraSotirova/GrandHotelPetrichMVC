@@ -116,13 +116,14 @@ namespace GrandHotelPetrichMVC.Web.Areas.Guests.Controllers
             return View(viewModel);
         }
 
-        public async Task<IActionResult> MyBookings(string filter = "All")
+        public async Task<IActionResult> MyBookings(string filter = "All", int page = 1)
         {
             var user = await _userManager.GetUserAsync(User);
             if (user == null) return Unauthorized();
 
-            var viewModel = await _roomService.GetBookingsForUserAsync(user.Id, filter);
+            var viewModel = await _roomService.GetBookingsForUserAsync(user.Id, filter, page);
             return View(viewModel);
         }
+
     }
 }
