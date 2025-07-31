@@ -12,11 +12,13 @@ namespace GrandHotelPetrichMVC.Services.Core
     {
         private readonly ApplicationDbContext _context;
         private readonly IWebHostEnvironment _env;
+        private readonly IFileService _fileService;
 
-        public GalleryService(ApplicationDbContext context, IWebHostEnvironment env)
+        public GalleryService(ApplicationDbContext context, IWebHostEnvironment env, IFileService fileService)
         {
             _context = context;
             _env = env;
+            _fileService = fileService;
         }
 
         public async Task<List<GalleryImageViewModel>> GetAllImagesAsync()
@@ -55,11 +57,12 @@ namespace GrandHotelPetrichMVC.Services.Core
                 Directory.CreateDirectory(uploadPath);
 
             var fullPath = Path.Combine(uploadPath, fileName);
+            await _fileService.SaveFileAsync(model.ImageFile, fullPath);
 
-            using (var stream = new FileStream(fullPath, FileMode.Create))
-            {
-                await model.ImageFile.CopyToAsync(stream);
-            }
+            //using (var stream = new FileStream(fullPath, FileMode.Create))
+            //{
+            //    await model.ImageFile.CopyToAsync(stream);
+            //}
 
             var category = await _context.GalleryCategories.FindAsync(model.CategoryId);
             if (category == null)
@@ -89,8 +92,10 @@ namespace GrandHotelPetrichMVC.Services.Core
 
             var filePath = Path.Combine(_env.WebRootPath, image.ImageUrl!.TrimStart('/'));
 
-            if (File.Exists(filePath))
-                File.Delete(filePath);
+            //if (File.Exists(filePath))
+            //    File.Delete(filePath);
+            if (_fileService.FileExists(filePath))
+                _fileService.DeleteFile(filePath);
 
             _context.Galleries.Remove(image);
             await _context.SaveChangesAsync();
