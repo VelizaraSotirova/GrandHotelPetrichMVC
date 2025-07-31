@@ -90,6 +90,5 @@ namespace GrandHotelPetrichMVC.Services.Core
             await _context.SaveChangesAsync();
             return true;
         }
-
     }
 }

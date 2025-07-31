@@ -21,6 +21,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GrandHotelPetrichMVC.ViewMo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GrandHotelPetrichMVC.Web", "GrandHotelPetrichMVC.Web\GrandHotelPetrichMVC.Web.csproj", "{58CF629B-AE79-43E8-A586-2CD0CACE887F}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{6656F92C-E188-4851-965F-97A66E6DD1F2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceTests", "ServiceTests\ServiceTests.csproj", "{A0697071-D7E9-4681-A470-1A706E545979}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +55,10 @@ Global
 		{58CF629B-AE79-43E8-A586-2CD0CACE887F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{58CF629B-AE79-43E8-A586-2CD0CACE887F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{58CF629B-AE79-43E8-A586-2CD0CACE887F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A0697071-D7E9-4681-A470-1A706E545979}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A0697071-D7E9-4681-A470-1A706E545979}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A0697071-D7E9-4681-A470-1A706E545979}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A0697071-D7E9-4681-A470-1A706E545979}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -61,6 +69,7 @@ Global
 		{0DAB41D3-1DB7-4E77-872C-0326C2C23F73} = {A55F4694-1588-4875-BF56-8561DE9D7707}
 		{75F219C4-C3F2-4E91-AEAB-83DC682A0AEB} = {6FEB84D3-EF9B-4C1B-8AEC-ECD222D3F57A}
 		{58CF629B-AE79-43E8-A586-2CD0CACE887F} = {6FEB84D3-EF9B-4C1B-8AEC-ECD222D3F57A}
+		{A0697071-D7E9-4681-A470-1A706E545979} = {6656F92C-E188-4851-965F-97A66E6DD1F2}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E5F0CA43-30FF-40F6-986F-3308FE461736}

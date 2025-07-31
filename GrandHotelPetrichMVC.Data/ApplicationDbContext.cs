@@ -13,19 +13,19 @@ namespace GrandHotelPetrichMVC.Data
         {
         }
 
-        public DbSet<Room> Rooms { get; set; }
-        public DbSet<Amenity> Amenities { get; set; }
-        public DbSet<RoomAmenity> RoomAmenities { get; set; }
-        public DbSet<Booking> Bookings { get; set; }
-        public DbSet<PaymentMethod> PaymentMethods { get; set; }
-        public DbSet<Revenue> Revenues { get; set; }
-        public DbSet<RevenueSource> RevenueSources { get; set; }
-        public DbSet<Review> Reviews { get; set; }
-        public DbSet<Gallery> Galleries { get; set; }
-        public DbSet<GalleryCategory> GalleryCategories { get; set; }
-        public DbSet<ContactMessage> ContactMessages { get; set; }
-        public DbSet<Staff> Staff { get; set; }
-        public DbSet<StatusOfRoom> RoomStatuses { get; set; }
+        public virtual DbSet<Room> Rooms { get; set; }
+        public virtual DbSet<Amenity> Amenities { get; set; }
+        public virtual DbSet<RoomAmenity> RoomAmenities { get; set; }
+        public virtual DbSet<Booking> Bookings { get; set; }
+        public virtual DbSet<PaymentMethod> PaymentMethods { get; set; }
+        public virtual DbSet<Revenue> Revenues { get; set; }
+        public virtual DbSet<RevenueSource> RevenueSources { get; set; }
+        public virtual DbSet<Review> Reviews { get; set; }
+        public virtual DbSet<Gallery> Galleries { get; set; }
+        public virtual DbSet<GalleryCategory> GalleryCategories { get; set; }
+        public virtual DbSet<ContactMessage> ContactMessages { get; set; }
+        public virtual DbSet<Staff> Staff { get; set; }
+        public virtual DbSet<StatusOfRoom> RoomStatuses { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder builder)
