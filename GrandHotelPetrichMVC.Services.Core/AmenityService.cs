@@ -2,7 +2,6 @@
 using GrandHotelPetrichMVC.Data.Models;
 using GrandHotelPetrichMVC.Services.Core.Contracts;
 using GrandHotelPetrichMVC.ViewModels.Admin.Amenity;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 
 namespace GrandHotelPetrichMVC.Services.Core

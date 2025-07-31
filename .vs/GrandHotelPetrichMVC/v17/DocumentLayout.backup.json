@@ -3,8 +3,16 @@
   "WorkspaceRootPath": "D:\\SoftUni\\GitHub\\GrandHotelPetrichMVC\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{A0697071-D7E9-4681-A470-1A706E545979}|ServiceTests\\ServiceTests.csproj|d:\\softuni\\github\\grandhotelpetrichmvc\\servicetests\\amenitytests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A0697071-D7E9-4681-A470-1A706E545979}|ServiceTests\\ServiceTests.csproj|solutionrelative:servicetests\\amenitytests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{A0697071-D7E9-4681-A470-1A706E545979}|ServiceTests\\ServiceTests.csproj|d:\\softuni\\github\\grandhotelpetrichmvc\\servicetests\\admintests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A0697071-D7E9-4681-A470-1A706E545979}|ServiceTests\\ServiceTests.csproj|solutionrelative:servicetests\\admintests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0DAB41D3-1DB7-4E77-872C-0326C2C23F73}|GrandHotelPetrichMVC.Services.Core\\GrandHotelPetrichMVC.Services.Core.csproj|d:\\softuni\\github\\grandhotelpetrichmvc\\grandhotelpetrichmvc.services.core\\amenityservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0DAB41D3-1DB7-4E77-872C-0326C2C23F73}|GrandHotelPetrichMVC.Services.Core\\GrandHotelPetrichMVC.Services.Core.csproj|solutionrelative:grandhotelpetrichmvc.services.core\\amenityservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{FB6C4249-0326-46D3-BF27-E5621F2B8C22}|GrandHotelPetrichMVC.Data\\GrandHotelPetrichMVC.Data.csproj|d:\\softuni\\github\\grandhotelpetrichmvc\\grandhotelpetrichmvc.data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -26,7 +34,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
@@ -38,7 +46,33 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
+              "Title": "AmenityTests.cs",
+              "DocumentMoniker": "D:\\SoftUni\\GitHub\\GrandHotelPetrichMVC\\ServiceTests\\AmenityTests.cs",
+              "RelativeDocumentMoniker": "ServiceTests\\AmenityTests.cs",
+              "ToolTip": "D:\\SoftUni\\GitHub\\GrandHotelPetrichMVC\\ServiceTests\\AmenityTests.cs*",
+              "RelativeToolTip": "ServiceTests\\AmenityTests.cs*",
+              "ViewState": "AgIAACgAAAAAAAAAAAAuwCIAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-31T07:54:58.021Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "AmenityService.cs",
+              "DocumentMoniker": "D:\\SoftUni\\GitHub\\GrandHotelPetrichMVC\\GrandHotelPetrichMVC.Services.Core\\AmenityService.cs",
+              "RelativeDocumentMoniker": "GrandHotelPetrichMVC.Services.Core\\AmenityService.cs",
+              "ToolTip": "D:\\SoftUni\\GitHub\\GrandHotelPetrichMVC\\GrandHotelPetrichMVC.Services.Core\\AmenityService.cs*",
+              "RelativeToolTip": "GrandHotelPetrichMVC.Services.Core\\AmenityService.cs*",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAA0AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-31T07:54:10.406Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "ApplicationDbContext.cs",
               "DocumentMoniker": "D:\\SoftUni\\GitHub\\GrandHotelPetrichMVC\\GrandHotelPetrichMVC.Data\\ApplicationDbContext.cs",
               "RelativeDocumentMoniker": "GrandHotelPetrichMVC.Data\\ApplicationDbContext.cs",
@@ -50,7 +84,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "IAdminService.cs",
               "DocumentMoniker": "D:\\SoftUni\\GitHub\\GrandHotelPetrichMVC\\GrandHotelPetrichMVC.Services.Core\\Contracts\\IAdminService.cs",
               "RelativeDocumentMoniker": "GrandHotelPetrichMVC.Services.Core\\Contracts\\IAdminService.cs",
@@ -62,7 +96,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "AdminService.cs",
               "DocumentMoniker": "D:\\SoftUni\\GitHub\\GrandHotelPetrichMVC\\GrandHotelPetrichMVC.Services.Core\\AdminService.cs",
               "RelativeDocumentMoniker": "GrandHotelPetrichMVC.Services.Core\\AdminService.cs",
@@ -74,13 +108,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "AdminTests.cs",
               "DocumentMoniker": "D:\\SoftUni\\GitHub\\GrandHotelPetrichMVC\\ServiceTests\\AdminTests.cs",
               "RelativeDocumentMoniker": "ServiceTests\\AdminTests.cs",
               "ToolTip": "D:\\SoftUni\\GitHub\\GrandHotelPetrichMVC\\ServiceTests\\AdminTests.cs",
               "RelativeToolTip": "ServiceTests\\AdminTests.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAApAAAAAAAAAA==",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAAwAgAAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-07-30T18:21:33.086Z",
               "EditorCaption": ""
