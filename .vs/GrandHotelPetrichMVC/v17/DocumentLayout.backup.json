@@ -3,12 +3,8 @@
   "WorkspaceRootPath": "D:\\SoftUni\\GitHub\\GrandHotelPetrichMVC\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A0697071-D7E9-4681-A470-1A706E545979}|ServiceTests\\ServiceTests.csproj|d:\\softuni\\github\\grandhotelpetrichmvc\\servicetests\\receptionisttests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A0697071-D7E9-4681-A470-1A706E545979}|ServiceTests\\ServiceTests.csproj|solutionrelative:servicetests\\receptionisttests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0DAB41D3-1DB7-4E77-872C-0326C2C23F73}|GrandHotelPetrichMVC.Services.Core\\GrandHotelPetrichMVC.Services.Core.csproj|d:\\softuni\\github\\grandhotelpetrichmvc\\grandhotelpetrichmvc.services.core\\receptionistservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0DAB41D3-1DB7-4E77-872C-0326C2C23F73}|GrandHotelPetrichMVC.Services.Core\\GrandHotelPetrichMVC.Services.Core.csproj|solutionrelative:grandhotelpetrichmvc.services.core\\receptionistservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A0697071-D7E9-4681-A470-1A706E545979}|ServiceTests\\ServiceTests.csproj|d:\\softuni\\github\\grandhotelpetrichmvc\\servicetests\\roomadmintests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A0697071-D7E9-4681-A470-1A706E545979}|ServiceTests\\ServiceTests.csproj|solutionrelative:servicetests\\roomadmintests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -31,27 +27,14 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "ReceptionistTests.cs",
-              "DocumentMoniker": "D:\\SoftUni\\GitHub\\GrandHotelPetrichMVC\\ServiceTests\\ReceptionistTests.cs",
-              "RelativeDocumentMoniker": "ServiceTests\\ReceptionistTests.cs",
-              "ToolTip": "D:\\SoftUni\\GitHub\\GrandHotelPetrichMVC\\ServiceTests\\ReceptionistTests.cs*",
-              "RelativeToolTip": "ServiceTests\\ReceptionistTests.cs*",
-              "ViewState": "AgIAAFkBAAAAAAAAAAAwwGYBAAAOAAAAAAAAAA==",
+              "Title": "RoomAdminTests.cs",
+              "DocumentMoniker": "D:\\SoftUni\\GitHub\\GrandHotelPetrichMVC\\ServiceTests\\RoomAdminTests.cs",
+              "RelativeDocumentMoniker": "ServiceTests\\RoomAdminTests.cs",
+              "ToolTip": "D:\\SoftUni\\GitHub\\GrandHotelPetrichMVC\\ServiceTests\\RoomAdminTests.cs*",
+              "RelativeToolTip": "ServiceTests\\RoomAdminTests.cs*",
+              "ViewState": "AgIAAKUAAAAAAAAAAADgv68AAAAnAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-31T13:53:53.72Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "ReceptionistService.cs",
-              "DocumentMoniker": "D:\\SoftUni\\GitHub\\GrandHotelPetrichMVC\\GrandHotelPetrichMVC.Services.Core\\ReceptionistService.cs",
-              "RelativeDocumentMoniker": "GrandHotelPetrichMVC.Services.Core\\ReceptionistService.cs",
-              "ToolTip": "D:\\SoftUni\\GitHub\\GrandHotelPetrichMVC\\GrandHotelPetrichMVC.Services.Core\\ReceptionistService.cs",
-              "RelativeToolTip": "GrandHotelPetrichMVC.Services.Core\\ReceptionistService.cs",
-              "ViewState": "AgIAAKgAAAAAAAAAAAAowNUAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-31T13:45:36.439Z",
+              "WhenOpened": "2025-07-31T14:45:03.087Z",
               "EditorCaption": ""
             }
           ]
