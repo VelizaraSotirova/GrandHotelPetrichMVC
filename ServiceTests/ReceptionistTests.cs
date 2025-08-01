@@ -305,6 +305,128 @@ namespace ServiceTests
             Assert.ThrowsAsync<Exception>(async () => await _service.CreateBookingAsync(model));
         }
 
+        [Test]
+        public async Task CreateBookingAsync_ReturnsNull_WhenUserCreationFails()
+        {
+            // Arrange
+            var room = new Room
+            {
+                Id = Guid.NewGuid(),
+                Name = "Room X",
+                Description = "Test",
+                ImageUrl = "/x.jpg",
+                PricePerNight = 100,
+                MaxCapacity = 2,
+                RoomType = RoomType.Standard
+            };
+
+            var method = new PaymentMethod
+            {
+                Id = Guid.NewGuid(),
+                Name = "Test Payment",
+                IsActive = true
+            };
+
+            var source = new RevenueSource
+            {
+                Id = Guid.NewGuid(),
+                Name = "Room",
+                IsActive = true
+            };
+
+            var status = new StatusOfRoom
+            {
+                Id = Guid.NewGuid(),
+                RoomId = room.Id,
+                Status = RoomStatus.Available
+            };
+
+            await _context.Rooms.AddAsync(room);
+            await _context.PaymentMethods.AddAsync(method);
+            await _context.RevenueSources.AddAsync(source);
+            await _context.RoomStatuses.AddAsync(status);
+            await _context.SaveChangesAsync();
+
+            var mockManager = new Mock<UserManager<User>>(Mock.Of<IUserStore<User>>(), null, null, null, null, null, null, null, null);
+            mockManager.Setup(x => x.FindByEmailAsync(It.IsAny<string>())).ReturnsAsync((User)null!);
+            mockManager.Setup(x => x.CreateAsync(It.IsAny<User>())).ReturnsAsync(IdentityResult.Failed());
+            _service = new ReceptionistService(_context, mockManager.Object);
+
+            var model = new ReceptionistBookingCreateViewModel
+            {
+                Email = "failuser@hotel.com",
+                FirstName = "Fail",
+                LastName = "User",
+                RoomId = room.Id,
+                CheckInDate = DateTime.UtcNow,
+                CheckOutDate = DateTime.UtcNow.AddDays(1),
+                NumberOfGuests = 1,
+                PaymentMethodId = method.Id
+            };
+
+            // Act
+            var result = await _service.CreateBookingAsync(model);
+
+            // Assert
+            Assert.That(result, Is.Null);
+        }
+
+        [Test]
+        public async Task CreateBookingAsync_SkipsStatusUpdate_WhenRoomStatusNotFound()
+        {
+            // Arrange
+            var room = new Room
+            {
+                Id = Guid.NewGuid(),
+                Name = "Stateless Room",
+                Description = "No Status Record",
+                ImageUrl = "/none.jpg",
+                PricePerNight = 150,
+                MaxCapacity = 2,
+                RoomType = RoomType.Standard
+            };
+
+            var method = new PaymentMethod
+            {
+                Id = Guid.NewGuid(),
+                Name = "Cash",
+                IsActive = true
+            };
+
+            var source = new RevenueSource
+            {
+                Id = Guid.NewGuid(),
+                Name = "Room",
+                IsActive = true
+            };
+
+            await _context.Rooms.AddAsync(room);
+            await _context.PaymentMethods.AddAsync(method);
+            await _context.RevenueSources.AddAsync(source);
+            await _context.SaveChangesAsync(); // Intentionally not adding RoomStatus
+
+            var model = new ReceptionistBookingCreateViewModel
+            {
+                Email = "nostatus@guest.com",
+                FirstName = "No",
+                LastName = "Status",
+                RoomId = room.Id,
+                CheckInDate = DateTime.UtcNow.Date,
+                CheckOutDate = DateTime.UtcNow.Date.AddDays(1),
+                NumberOfGuests = 1,
+                PaymentMethodId = method.Id
+            };
+
+            // Act
+            var result = await _service.CreateBookingAsync(model);
+
+            // Assert
+            Assert.That(result, Is.Not.Null);
+            var updatedStatus = await _context.RoomStatuses.FirstOrDefaultAsync(s => s.RoomId == room.Id);
+            Assert.That(updatedStatus, Is.Null); // No status update occurred
+        }
+
+
 
         [Test]
         public async Task GetRoomsOutForCleaningAsync_ReturnsCorrectRooms()

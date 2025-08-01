@@ -123,10 +123,10 @@ namespace ServiceTests
             var result = await _service.CreateStaffAsync(model);
 
             Assert.IsTrue(result);
-            Assert.AreEqual(1, _context.Staff.Count());
+            Assert.That(_context.Staff.Count(), Is.EqualTo(1));
             var staff = await _context.Staff.FirstOrDefaultAsync();
-            Assert.AreEqual(StaffRole.Receptionist, staff!.Role);
-            Assert.AreEqual("user123", staff.UserId);
+            Assert.That(staff!.Role, Is.EqualTo(StaffRole.Receptionist));
+            Assert.That(staff.UserId, Is.EqualTo("user123"));
         }
 
         [Test]
@@ -146,6 +146,66 @@ namespace ServiceTests
             Assert.IsFalse(result);
             Assert.That(_context.Staff.Count(), Is.EqualTo(0));
         }
+
+        [Test]
+        public async Task CreateStaffAsync_UserAlreadyInCorrectRole_SkipsAddingRole()
+        {
+            var user = new User
+            {
+                Id = "staff123",
+                FirstName = "Emily",
+                LastName = "White",
+                Email = "emily@hotel.com"
+            };
+            _context.Users.Add(user);
+            await _context.SaveChangesAsync();
+
+            _userManagerMock.Setup(m => m.FindByEmailAsync(user.Email))
+                .ReturnsAsync(user);
+            _userManagerMock.Setup(m => m.UpdateAsync(user))
+                .ReturnsAsync(IdentityResult.Success);
+            _userManagerMock.Setup(m => m.IsInRoleAsync(user, "Customer"))
+                .ReturnsAsync(false);
+            _userManagerMock.Setup(m => m.IsInRoleAsync(user, "Cleaner"))
+                .ReturnsAsync(true); // already has role
+                                     // No AddToRoleAsync call expected
+
+            var model = new CreateStaffViewModel
+            {
+                UserEmail = user.Email,
+                PhoneNumber = "888888",
+                Role = StaffRole.Housekeeping,
+                Salary = 950,
+                Shift = StaffShifts.Night
+            };
+
+            var result = await _service.CreateStaffAsync(model);
+
+            Assert.IsTrue(result);
+            Assert.That(_context.Staff.Count(), Is.EqualTo(1));
+        }
+
+
+        [Test]
+        public async Task GetEligibleUsersDropdownAsync_ReturnsFormattedSelectListItems()
+        {
+            var user = new User
+            {
+                Id = "1",
+                FirstName = "Anna",
+                LastName = "Smith",
+                Email = "anna@hotel.com"
+            };
+            _context.Users.Add(user);
+            await _context.SaveChangesAsync();
+
+            var result = await _service.GetEligibleUsersDropdownAsync();
+
+            Assert.That(result.Count, Is.EqualTo(1));
+            Assert.That(result[0].Text, Is.EqualTo("Anna Smith (anna@hotel.com)"));
+            Assert.That(result[0].Value, Is.EqualTo("1"));
+        }
+
     }
 }
 

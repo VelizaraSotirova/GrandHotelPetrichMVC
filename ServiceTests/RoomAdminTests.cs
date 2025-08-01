@@ -91,6 +91,22 @@ namespace ServiceTests
         }
 
         [Test]
+        public async Task GetRoomCreateViewModelAsync_ReturnsOnlyActiveAmenities()
+        {
+            var amenity1 = new Amenity { Id = Guid.NewGuid(), Name = "WiFi", IsActive = true };
+            var amenity2 = new Amenity { Id = Guid.NewGuid(), Name = "TV", IsActive = false };
+            await _context.Amenities.AddRangeAsync(amenity1, amenity2);
+            await _context.SaveChangesAsync();
+
+            var result = await _service.GetRoomCreateViewModelAsync();
+
+            Assert.That(result.AvailableAmenities.Count, Is.EqualTo(1));
+            Assert.That(result.AvailableAmenities[0].Text, Is.EqualTo("WiFi"));
+            Assert.That(result.AvailableAmenities[0].Value, Is.EqualTo(amenity1.Id.ToString()));
+        }
+
+
+        [Test]
         public async Task UpdateRoomAsync_UpdatesRoomProperties()
         {
             var room = new Room

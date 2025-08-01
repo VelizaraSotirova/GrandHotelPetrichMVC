@@ -177,5 +177,139 @@ namespace ServiceTests
             var result = await _service.GetBookingSuccessAsync(Guid.NewGuid(), Guid.NewGuid().ToString());
             Assert.IsNull(result);
         }
+
+        [Test]
+        public async Task GetRoomDetailsAsync_ReturnsRoomDetails_WhenExists()
+        {
+            var room = new Room
+            {
+                Id = Guid.NewGuid(),
+                Name = "Eco Room",
+                PricePerNight = 90,
+                MaxCapacity = 2,
+                RoomType = RoomType.BusinessRoom,
+                Description = "Eco desc",
+                ImageUrl = "/eco.jpg"
+            };
+            await _context.Rooms.AddAsync(room);
+            await _context.SaveChangesAsync();
+
+            var result = await _service.GetRoomDetailsAsync(room.Id);
+
+            Assert.IsNotNull(result);
+            Assert.That(result!.Name, Is.EqualTo("Eco Room"));
+        }
+
+        [Test]
+        public async Task GetRoomDetailsAsync_ReturnsNull_WhenRoomNotFound()
+        {
+            var result = await _service.GetRoomDetailsAsync(Guid.NewGuid());
+            Assert.IsNull(result);
+        }
+
+        [Test]
+        public async Task PrepareBookingConfirmationAsync_Throws_WhenRoomNotFound()
+        {
+            var ex = Assert.ThrowsAsync<ArgumentException>(() =>
+                _service.PrepareBookingConfirmationAsync(Guid.NewGuid(), DateTime.UtcNow, DateTime.UtcNow.AddDays(1), 2));
+
+            Assert.That(ex!.Message, Does.Contain("Invalid Room ID"));
+        }
+
+        [Test]
+        public async Task PrepareBookingConfirmationAsync_ReturnsConfirmationWithTotal()
+        {
+            var room = new Room
+            {
+                Id = Guid.NewGuid(),
+                Name = "Premium",
+                PricePerNight = 200,
+                MaxCapacity = 2,
+                RoomType = RoomType.Suite,
+                Description = "Premium room",
+                ImageUrl = "/premium.jpg"
+            };
+            var paymentMethod = new PaymentMethod { Id = Guid.NewGuid(), Name = "Card" };
+
+            await _context.Rooms.AddAsync(room);
+            await _context.PaymentMethods.AddAsync(paymentMethod);
+            await _context.SaveChangesAsync();
+
+            var checkIn = DateTime.UtcNow;
+            var checkOut = checkIn.AddDays(3);
+
+            var result = await _service.PrepareBookingConfirmationAsync(room.Id, checkIn, checkOut, 2);
+
+            Assert.That(result.TotalAmount, Is.EqualTo(600));
+            Assert.That(result.PaymentMethods.Count, Is.EqualTo(1));
+        }
+
+        [Test]
+        public async Task GetBookingConfirmationAsync_ReturnsViewModel()
+        {
+            // Arrange
+            var roomId = Guid.NewGuid();
+            var paymentMethod = new PaymentMethod
+            {
+                Id = Guid.NewGuid(),
+                Name = "Card",
+                IsActive = true
+            };
+
+            var room = new Room
+            {
+                Id = roomId,
+                Name = "Executive Suite",
+                Description = "Spacious and elegant",
+                RoomType = RoomType.Suite,
+                MaxCapacity = 3,
+                PricePerNight = 200m,
+                ImageUrl = "/img/exec.jpg"
+            };
+
+            await _context.Rooms.AddAsync(room);
+            await _context.PaymentMethods.AddAsync(paymentMethod);
+            await _context.SaveChangesAsync();
+
+            var checkIn = DateTime.UtcNow.Date;
+            var checkOut = checkIn.AddDays(2);
+
+            // Act
+            var result = await _service.GetBookingConfirmationAsync(roomId, checkIn, checkOut, 2);
+
+            // Assert
+            Assert.That(result, Is.Not.Null);
+            Assert.That(result.RoomId, Is.EqualTo(roomId));
+            Assert.That(result.RoomName, Is.EqualTo("Executive Suite"));
+            Assert.That(result.RoomImageUrl, Is.EqualTo("/img/exec.jpg"));
+            Assert.That(result.RoomType, Is.EqualTo(RoomType.Suite));
+            Assert.That(result.TotalAmount, Is.EqualTo(2 * 200m));
+            Assert.That(result.PaymentMethods.Count, Is.EqualTo(1));
+            Assert.That(result.PaymentMethods.First().Name, Is.EqualTo("Card"));
+        }
+
+
+        [Test]
+        public void GetBookingConfirmationAsync_Throws_WhenRoomNotFound()
+        {
+            var ex = Assert.ThrowsAsync<ArgumentException>(() =>
+                _service.GetBookingConfirmationAsync(Guid.NewGuid(), DateTime.UtcNow, DateTime.UtcNow.AddDays(1), 2));
+
+            Assert.That(ex!.Message, Does.Contain("Invalid room"));
+        }
+
+        [Test]
+        public async Task GetPaymentMethodsAsync_ReturnsAllMethods()
+        {
+            await _context.PaymentMethods.AddRangeAsync(
+                new PaymentMethod { Id = Guid.NewGuid(), Name = "Cash" },
+                new PaymentMethod { Id = Guid.NewGuid(), Name = "Bank Transfer" }
+            );
+            await _context.SaveChangesAsync();
+
+            var result = await _service.GetPaymentMethodsAsync();
+
+            Assert.That(result.Count, Is.EqualTo(2));
+        }
     }
 }

@@ -68,8 +68,14 @@ namespace GrandHotelPetrichMVC.Services.Core
                     LastName = model.LastName,
                     EmailConfirmed = true
                 };
-                await _userManager.CreateAsync(user);
-                await _userManager.AddToRoleAsync(user, "Customer");
+
+                var creationResult = await _userManager.CreateAsync(user);
+                if (!creationResult.Succeeded)
+                    return null;
+
+                var roleResult = await _userManager.AddToRoleAsync(user, "Customer");
+                if (!roleResult.Succeeded)
+                    return null;
             }
 
             var room = await _context.Rooms.FindAsync(model.RoomId);

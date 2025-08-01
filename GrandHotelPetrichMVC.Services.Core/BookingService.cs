@@ -95,7 +95,7 @@ namespace GrandHotelPetrichMVC.Services.Core
         public async Task<BookingConfirmationViewModel> GetBookingConfirmationAsync(Guid roomId, DateTime checkIn, DateTime checkOut, int guests)
         {
             var room = await _context.Rooms
-                .Include(r => r.RoomType)
+                //.Include(r => r.RoomType)
                 .FirstOrDefaultAsync(r => r.Id == roomId);
 
             if (room == null) throw new ArgumentException("Invalid room");
