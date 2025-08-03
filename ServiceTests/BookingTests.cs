@@ -2,6 +2,7 @@
 using GrandHotelPetrichMVC.Data.Models;
 using GrandHotelPetrichMVC.GCommon.Enums;
 using GrandHotelPetrichMVC.Services.Core;
+using GrandHotelPetrichMVC.Services.Core.Contracts;
 using GrandHotelPetrichMVC.ViewModels.Guests.Booking;
 using Microsoft.EntityFrameworkCore;
 
@@ -123,6 +124,70 @@ namespace ServiceTests
         }
 
         [Test]
+        public async Task ConfirmBookingAsync_SavesSpecialRequestsCorrectly()
+        {
+            // Arrange
+            var room = new Room
+            {
+                Id = Guid.NewGuid(),
+                Name = "Room A",
+                PricePerNight = 100,
+                ImageUrl = "/suite.jpg",
+                Description = "Big suite",
+                MaxCapacity = 2
+            };
+
+            var paymentMethod = new PaymentMethod
+            {
+                Id = Guid.NewGuid(),
+                Name = "Credit Card",
+                IsActive = true
+            };
+
+            var revenueSource = new RevenueSource
+            {
+                Id = Guid.NewGuid(),
+                Name = "Room"
+            };
+
+            var roomStatus = new StatusOfRoom
+            {
+                RoomId = room.Id,
+                Status = RoomStatus.Available,
+                UpdatedAt = DateTime.UtcNow
+            };
+
+            await _context.Rooms.AddAsync(room);
+            await _context.PaymentMethods.AddAsync(paymentMethod);
+            await _context.RevenueSources.AddAsync(revenueSource);
+            await _context.RoomStatuses.AddAsync(roomStatus);
+            await _context.SaveChangesAsync();
+
+            var viewModel = new BookingConfirmationViewModel
+            {
+                RoomId = room.Id,
+                CheckInDate = DateTime.UtcNow.Date.AddDays(1),
+                CheckOutDate = DateTime.UtcNow.Date.AddDays(3),
+                NumberOfGuests = 2,
+                PaymentMethodId = paymentMethod.Id,
+                TotalAmount = 200,
+                SpecialRequests = "I want a crib and a sea view." // ✅ this is what we test
+            };
+
+            var userId = "test-user-id";
+
+            // Act
+            var bookingId = await _service.ConfirmBookingAsync(viewModel, userId);
+
+            // Assert
+            var booking = await _context.Bookings.FindAsync(bookingId);
+
+            Assert.That(booking, Is.Not.Null);
+            Assert.That(booking!.SpecialRequests, Is.EqualTo("I want a crib and a sea view."));
+        }
+
+
+        [Test]
         public async Task GetBookingsForUserAsync_ReturnsCorrectFilteredBookings()
         {
             // Arrange
@@ -208,7 +273,7 @@ namespace ServiceTests
         }
 
         [Test]
-        public async Task PrepareBookingConfirmationAsync_Throws_WhenRoomNotFound()
+        public void PrepareBookingConfirmationAsync_Throws_WhenRoomNotFound()
         {
             var ex = Assert.ThrowsAsync<ArgumentException>(() =>
                 _service.PrepareBookingConfirmationAsync(Guid.NewGuid(), DateTime.UtcNow, DateTime.UtcNow.AddDays(1), 2));

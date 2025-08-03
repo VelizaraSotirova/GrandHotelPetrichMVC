@@ -140,6 +140,7 @@ namespace GrandHotelPetrichMVC.Services.Core
                 TotalAmount = model.TotalAmount,
                 BookingStatus = BookingStatus.Confirmed,
                 PaymentStatus = PaymentStatus.Paid,
+                SpecialRequests = model.SpecialRequests,
                 CreatedAt = DateTime.UtcNow,
                 UpdatedAt = DateTime.UtcNow
             };
@@ -183,7 +184,6 @@ namespace GrandHotelPetrichMVC.Services.Core
 
                 roomStatus.UpdatedAt = DateTime.UtcNow;
             }
-
 
             await _context.SaveChangesAsync();
             return booking.Id;
