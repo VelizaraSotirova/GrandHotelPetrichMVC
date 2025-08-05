@@ -9,11 +9,13 @@
 <section class="p-6">
     <h1 class="text-3xl font-bold font-serif mb-4">Manage Staff</h1>
 
-    <div class="mb-4 space-x-2">
-        <a asp-action="Index" asp-route-filter="All" class="btn @(filter == "All" ? "bg-amber-600 text-white" : "bg-gray-200")">All</a>
-        <a asp-action="Index" asp-route-filter="Active" class="btn @(filter == "Active" ? "bg-amber-600 text-white" : "bg-gray-200")">Active</a>
-        <a asp-action="Index" asp-route-filter="OnLeave" class="btn @(filter == "OnLeave" ? "bg-amber-600 text-white" : "bg-gray-200")">On Leave</a>
-        <a asp-action="Index" asp-route-filter="Terminated" class="btn @(filter == "Terminated" ? "bg-amber-600 text-white" : "bg-gray-200")">Terminated</a>
+    <div class="container mx-auto px-4 gap-4 mb-6">
+        <div class="flex flex-wrap gap-4 justify-center">
+            <a asp-action="Index" asp-route-filter="All" class="btn px-4 py-2 bg-amber-600 text-white rounded hover:bg-amber-700">All</a>
+            <a asp-action="Index" asp-route-filter="Active" class="btn px-4 py-2 bg-amber-600 text-white rounded hover:bg-amber-700">Active</a>
+            <a asp-action="Index" asp-route-filter="OnLeave" class="btn px-4 py-2 bg-amber-600 text-white rounded hover:bg-amber-700">OnLeave</a>
+            <a asp-action="Index" asp-route-filter="Terminated" class="btn px-4 py-2 bg-amber-600 text-white rounded hover:bg-amber-700">Terminated</a>
+        </div>
     </div>
 
     <div class="flex justify-between items-center mb-6">

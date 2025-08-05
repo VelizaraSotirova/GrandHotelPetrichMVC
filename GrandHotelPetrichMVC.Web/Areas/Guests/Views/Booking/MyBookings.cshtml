@@ -8,10 +8,12 @@
     <div class="container mx-auto px-4">
         <h1 class="text-3xl font-bold font-serif mb-6">My Bookings</h1>
 
-        <div class="flex gap-4 mb-6">
-            <a asp-action="MyBookings" asp-route-filter="All" class="btn @(Model.Filter == "all" ? "bg-amber-600 text-white" : "bg-gray-200")">All</a>
-            <a asp-action="MyBookings" asp-route-filter="Active" class="btn @(Model.Filter == "active" ? "bg-amber-600 text-white" : "bg-gray-200")">Active</a>
-            <a asp-action="MyBookings" asp-route-filter="Passed" class="btn @(Model.Filter == "passed" ? "bg-amber-600 text-white" : "bg-gray-200")">Expired</a>
+        <div class="container mx-auto px-4 gap-4 mb-6">
+            <div class="flex flex-wrap gap-4 justify-center">
+                <a asp-action="MyBookings" asp-route-filter="All" class="btn px-4 py-2 bg-amber-600 text-white rounded hover:bg-amber-700">All</a>
+                <a asp-action="MyBookings" asp-route-filter="Active" class="btn px-4 py-2 bg-amber-600 text-white rounded hover:bg-amber-700" >Active</a> 
+                <a asp-action="MyBookings" asp-route-filter="Passed" class="btn px-4 py-2 bg-amber-600 text-white rounded hover:bg-amber-700">Expired</a>
+            </div>
         </div>
 
         @if (Model.Bookings.Any())
