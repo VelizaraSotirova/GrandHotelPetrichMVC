@@ -30,7 +30,9 @@ namespace GrandHotelPetrichMVC.Services.Core
                 {
                     Id = g.Id,
                     ImageUrl = g.ImageUrl!,
-                    Description = g.Description
+                    Description = g.Description,
+                    Title = g.Title,
+                    CategoryName = g.Category.Name.ToLower().Replace(" ", "").Replace("&", "")
                 }).ToListAsync();
         }
 
@@ -58,11 +60,6 @@ namespace GrandHotelPetrichMVC.Services.Core
 
             var fullPath = Path.Combine(uploadPath, fileName);
             await _fileService.SaveFileAsync(model.ImageFile, fullPath);
-
-            //using (var stream = new FileStream(fullPath, FileMode.Create))
-            //{
-            //    await model.ImageFile.CopyToAsync(stream);
-            //}
 
             var category = await _context.GalleryCategories.FindAsync(model.CategoryId);
             if (category == null)
@@ -92,8 +89,6 @@ namespace GrandHotelPetrichMVC.Services.Core
 
             var filePath = Path.Combine(_env.WebRootPath, image.ImageUrl!.TrimStart('/'));
 
-            //if (File.Exists(filePath))
-            //    File.Delete(filePath);
             if (_fileService.FileExists(filePath))
                 _fileService.DeleteFile(filePath);
 
